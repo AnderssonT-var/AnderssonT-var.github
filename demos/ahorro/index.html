@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ahorro · demo</title>
+<link rel="icon" href="icon.png">
+<style>
+:root{
+  --bg:#131313;--surface:#1B1B1A;--surface2:#232322;--border:rgba(255,255,255,.09);
+  --text:#EDEDEA;--muted:#98978F;--muted2:#6F6E67;--accent:#9CA890;--accentStrong:#B7C2AC;--danger:#B37067;--onAccent:#15170F;
+  --f:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+.light{--bg:#F5F6F8;--surface:#FFFFFF;--surface2:#ECEFF2;--border:rgba(0,0,0,.08);--text:#1B1C1D;--muted:#74777B;--muted2:#8C9095;--accent:#5E7056;--accentStrong:#4D6246;--danger:#B6534D;color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{background:#0b0b0b;font-family:var(--f);color:var(--text);display:flex;align-items:center;justify-content:center;gap:56px;padding:24px}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;padding:0}
+input,select{font:inherit;color:var(--text)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Presentación junto al teléfono (solo escritorio) */
+.side{max-width:330px;color:#EDEDEA}
+.side img{width:76px;height:76px;border-radius:18px;display:block}
+.side h1{font-size:34px;margin:18px 0 6px;letter-spacing:-.02em}
+.side p{color:#98978F;line-height:1.5;margin:0 0 14px;font-size:15px}
+.side ul{margin:0 0 20px;padding-left:18px;color:#c9c8c0;line-height:1.7;font-size:14.5px}
+.side a{color:#B7C2AC}
+.side .tag{display:inline-block;font-size:12px;font-weight:600;color:#15170F;background:#9CA890;padding:4px 10px;border-radius:999px}
+.side .btns{display:flex;gap:14px;align-items:center;margin-top:18px;font-size:14px}
+
+/* Teléfono */
+.phone{width:390px;height:844px;border-radius:54px;background:#000;padding:12px;box-shadow:0 0 0 2px #2a2a2a,0 40px 90px rgba(0,0,0,.6);flex:none}
+.screen{position:relative;width:100%;height:100%;border-radius:43px;overflow:hidden;background:var(--bg);color:var(--text)}
+.status{position:absolute;top:0;left:0;right:0;height:50px;display:flex;justify-content:space-between;align-items:center;padding:6px 30px 0 34px;font-size:15px;font-weight:600;z-index:30;pointer-events:none}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:122px;height:35px;border-radius:20px;background:#000;z-index:31}
+@media (max-width:860px){
+  body{padding:0;display:block;background:var(--bg)}
+  .side{display:none}
+  .phone{width:100%;height:100dvh;border-radius:0;padding:0;box-shadow:none}
+  .screen{border-radius:0}
+  .status,.island{display:none}
+}
+
+.view{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;background:var(--bg);padding:58px 20px 120px;scrollbar-width:none;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.view::-webkit-scrollbar{display:none}
+@media (max-width:860px){.view{padding-top:calc(16px + env(safe-area-inset-top,0px))}}
+.view.off{transform:translateX(100%)}
+.view.back{transform:translateX(-28%)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:44px;margin-bottom:4px}
+.nav .icons{display:flex;gap:18px;color:var(--accent)}
+.nav .icons svg,.navback svg{width:23px;height:23px}
+.large{font-size:34px;font-weight:700;letter-spacing:-.01em;margin:2px 0 16px}
+.navback{display:flex;align-items:center;gap:2px;color:var(--accent);font-size:17px}
+.title2{font-size:28px;font-weight:700;margin:4px 0 16px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap{font-size:12px;letter-spacing:1.1px;color:var(--muted);text-transform:uppercase;margin:0 4px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px}
+.stack{display:flex;flex-direction:column;gap:16px}
+.stack20{display:flex;flex-direction:column;gap:20px}
+
+.totals{padding:20px;border-radius:20px}
+.totals .big{font-size:34px;font-weight:600;margin:4px 0}
+.totals small{font-size:13px;color:var(--muted)}
+.goal{padding:18px;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%}
+.goal .row{display:flex;align-items:center;gap:10px}
+.goal .name{font-size:17px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.goal .pct{font-size:13px;font-weight:600}
+.meta{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.meta b{color:var(--text);font-weight:600}
+.bar{height:7px;border-radius:9px;background:var(--border);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;transition:width .4s}
+.badge{flex:none;border-radius:50%;display:grid;place-items:center}
+.badge svg{width:52%;height:52%}
+
+.fab{position:absolute;right:20px;bottom:28px;width:56px;height:56px;border-radius:17px;background:var(--accent);color:var(--onAccent);display:grid;place-items:center;box-shadow:0 8px 16px rgba(0,0,0,.4);z-index:5}
+.fab svg{width:24px;height:24px}
+
+.widget{width:170px;height:170px;border-radius:22px;padding:15px;display:flex;flex-direction:column;justify-content:space-between;background:var(--surface);border:1px solid var(--border)}
+.widget small{font-size:10px;letter-spacing:.9px;color:var(--muted);font-weight:600}
+.widget .w-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.widget .w-amt{font-size:22px;font-weight:700}
+.widget button{background:var(--accent);color:var(--onAccent);border-radius:10px;padding:7px;font-size:12px;font-weight:700}
+.wrow{display:flex;gap:14px;align-items:center}
+.wrow p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.45}
+
+/* Detalle */
+.cover{position:relative;height:150px;border-radius:22px;overflow:hidden;border:1px solid var(--border)}
+.cover .bigicon{position:absolute;right:-20px;top:-22px;width:150px;height:150px;color:rgba(255,255,255,.13);transform:rotate(-12deg)}
+.cover .who{position:absolute;left:17px;bottom:17px;right:17px;display:flex;align-items:center;gap:11px;color:#fff}
+.cover .who .badge{background:rgba(255,255,255,.86)}
+.cover b{display:block;font-size:19px}
+.cover span{display:block;font-size:12px;opacity:.88;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prog{padding:20px;display:flex;flex-direction:column;gap:12px}
+.prog .top{display:flex;align-items:baseline;justify-content:space-between}
+.prog .top b{font-size:28px}
+.prog .top span{font-size:13.5px;color:var(--muted)}
+.prog .bot{display:flex;justify-content:space-between;align-items:flex-end}
+.prog .bot small{display:block;font-size:11px;letter-spacing:.8px;color:var(--muted);font-weight:600}
+.prog .bot strong{font-size:20px}
+.prog .bot em{font-style:normal;font-size:12px;color:var(--muted);text-align:right;font-weight:500}
+.pad17{padding:17px}
+.headrow{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ms{display:flex;align-items:center;gap:11px;margin-top:10px}
+.ms .ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);color:var(--muted)}
+.ms .ic svg{width:15px;height:15px}
+.ms b{display:block;font-size:14px}
+.ms span{font-size:12px;color:var(--muted2)}
+.quick{display:flex;gap:9px;margin-top:9px}
+.quick button{flex:1;padding:12px 0;border-radius:12px;font-weight:700;font-size:14px;transition:transform .15s}
+.quick button:active,.cell:active{transform:scale(.95)}
+.primary{width:100%;padding:13px;border-radius:13px;background:var(--accent);color:var(--onAccent);font-weight:600;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.cell{position:relative;aspect-ratio:1;border-radius:13px;background:var(--surface);border:1px solid var(--border);display:grid;place-items:center;font-weight:600;font-size:14px;transition:background .2s,transform .15s}
+.cell.done{color:var(--muted2);text-decoration:line-through;text-decoration-color:rgba(152,151,143,.5)}
+.cell .ck{position:absolute;top:5px;right:5px;width:15px;height:15px;border-radius:50%;display:grid;place-items:center;color:var(--onAccent);animation:pop .3s}
+.cell .ck svg{width:9px;height:9px}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.morecells{width:100%;padding:12px;border-radius:13px;background:var(--surface2);color:var(--accentStrong);font-weight:600;font-size:14px}
+.sim .in{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin:12px 0}
+.sim input{width:82px;text-align:center;font-size:18px;font-weight:700;background:var(--surface2);border:0;border-radius:10px;padding:7px}
+.sim .res{padding:12px;border-radius:13px}
+.sim .res small{font-size:12px;color:var(--muted);display:block}
+.sim .res b{font-size:18px;display:block;margin:2px 0}
+.sim .res span{font-size:12px;color:var(--muted2)}
+.cal .days,.cal .wk{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.cal .wk span{font-size:10px;font-weight:700;color:var(--muted2);text-align:center}
+.cal .d{aspect-ratio:1;border-radius:9px;display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--muted)}
+.cal .d.on{color:var(--onAccent)}
+.cal .d.today{outline:1.5px solid var(--accent)}
+.cal .metrics{display:flex;margin-top:14px;border-top:1px solid var(--border);padding-top:12px}
+.cal .metrics div{flex:1;font-size:12px;color:var(--muted)}
+.cal .metrics b{display:block;font-size:16px;color:var(--accentStrong)}
+.chart svg{width:100%;height:120px;display:block;margin-top:10px}
+.histbtn{display:flex;justify-content:space-between;align-items:center;width:100%;padding-top:6px;color:var(--text)}
+.histbtn svg{width:18px;height:18px;flex:none}
+.histbtn .cap{white-space:nowrap}
+.hist{display:flex;flex-direction:column;gap:8px}
+.hist .it{display:flex;align-items:center;justify-content:space-between;padding:14px;border-radius:13px}
+.hist b{color:var(--accentStrong);font-size:14px}
+.hist small{display:block;font-size:12px;color:var(--muted)}
+.hist em{display:block;font-style:normal;font-size:11px;color:var(--muted2)}
+.hist .x{color:var(--danger);padding:6px}
+.hist .x svg{width:14px;height:14px}
+.danger-row{display:flex;gap:10px;padding-top:10px}
+.danger-row button{padding:8px 14px;border-radius:999px;background:var(--surface2);font-size:15px}
+.danger-row .del{color:var(--danger);background:rgba(179,112,103,.15)}
+.pace{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pace small{display:block;font-size:11px;letter-spacing:.8px;color:var(--muted);font-weight:600}
+.pace b{font-size:15px}
+.pace .chip{font-size:12px;font-weight:600;padding:6px 10px;border-radius:999px}
+
+/* Hojas (sheets) */
+.dim{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.dim.show{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;top:54px;background:var(--bg);border-radius:14px 14px 0 0;transform:translateY(105%);transition:transform .38s cubic-bezier(.2,.9,.2,1);z-index:41;display:flex;flex-direction:column}
+.sheet.show{transform:none}
+.sheet header{display:flex;justify-content:space-between;align-items:center;padding:16px 18px 8px;font-size:17px}
+.sheet header b{font-weight:600}
+.sheet header button{color:var(--accent)}
+.sheet header button.strong{font-weight:600}
+.sheet .body{overflow-y:auto;padding:8px 18px 40px}
+.sec{margin-top:18px}
+.sec label,.sec .lbl{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin:0 0 7px 14px}
+.field{background:var(--surface);border-radius:11px;overflow:hidden}
+.field input,.field select{width:100%;background:none;border:0;padding:12px 14px;font-size:16px;outline:none}
+.field select{appearance:none}
+.foot{font-size:12.5px;color:var(--muted);margin:7px 14px 0;line-height:1.4}
+.seg{display:flex;background:var(--surface2);border-radius:9px;padding:2px}
+.seg button{flex:1;padding:7px;border-radius:7px;font-size:13px;font-weight:500}
+.seg button.on{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.25);font-weight:600}
+.themes{display:flex;gap:10px;flex-wrap:wrap;padding:12px 14px}
+.themes button{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff}
+.themes button svg{width:17px;height:17px}
+.themes button.on{box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--text)}
+.setrow{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--border)}
+.setrow:last-child{border-bottom:0}
+.toggle{width:51px;height:31px;border-radius:99px;background:var(--surface2);position:relative;transition:background .2s}
+.toggle::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.3)}
+.toggle.on{background:#34C759}
+.toggle.on::after{transform:translateX(20px)}
+.toast{position:absolute;left:50%;bottom:100px;transform:translate(-50%,20px);background:rgba(40,40,38,.96);color:#EDEDEA;font-size:14px;padding:10px 16px;border-radius:14px;opacity:0;transition:.3s;z-index:60;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.demo-pill{text-align:center;font-size:11px;color:var(--muted2);margin-top:28px}
+.empty{text-align:center;padding-top:80px;color:var(--muted);font-size:13px}
+.empty b{display:block;color:var(--text);font-size:17px;margin:10px 0 4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<aside class="side">
+  <img src="icon.png" alt="Icono de la app Ahorro">
+  <h1>Ahorro</h1>
+  <p>App para iPhone que convierte una meta de ahorro en una tabla de casillas: marcas cada monto que guardas y ves tu avance.</p>
+  <ul>
+    <li>Tablas secuenciales o de patrón variado</li>
+    <li>Depósitos rápidos, manuales y programados</li>
+    <li>Hitos, fecha límite y ritmo semanal</li>
+    <li>Calendario de rachas y simulador</li>
+    <li>Widget, Face ID, recordatorios y reporte PDF</li>
+  </ul>
+  <span class="tag">Demo web con datos ficticios</span>
+  <p style="margin-top:14px;font-size:13px">La app real está hecha en SwiftUI. Esta demo recrea sus pantallas en el navegador; los cambios se guardan solo en tu navegador.</p>
+  <div class="btns"><a href="https://github.com/AnderssonT-var/ahorro-ios" target="_blank" rel="noopener">Ver código</a><button id="resetDemo" style="color:#98978F;text-decoration:underline">Reiniciar demo</button></div>
+</aside>
+
+<div class="phone"><div class="screen" id="screen">
+  <div class="island"></div>
+  <div class="status"><span id="clock">9:41</span><span>●●● 􀙇</span></div>
+
+  <section class="view" id="home"></section>
+  <section class="view off" id="detail"></section>
+  <button class="fab" id="fab" aria-label="Nueva meta"></button>
+
+  <div class="dim" id="dim"></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+  <div class="toast" id="toast"></div>
+</div></div>
+
+<script>
+(function(){
+// ---------- Iconos (equivalentes a SF Symbols) ----------
+const I={
+ leaf:'<path d="M5 19c8 0 14-6 14-15C10 4 4 9 4 16c0 1 0 2 1 3Zm0 0c3-5 6-8 10-10"/>',
+ waves:'<path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/>',
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+ heart:'<path d="M12 20s-7-4.4-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.6-9 9-9 9Z"/>',
+ sparkles:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3ZM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/>',
+ flag:'<path d="M5 21V4m0 0h11l-2 4 2 4H5"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0-1.1-2.7H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.1-2.7l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9.7 4V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 2.7 1.1l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0 1.1 2.7H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1.3Z"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>', minus:'<path d="M5 12h14"/>',
+ check:'<path d="m5 12 4.5 4.5L19 7"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>',
+ back:'<path d="M15 5l-7 7 7 7"/>', more:'<circle cx="12" cy="12" r="9"/><path d="M8 12h.01M12 12h.01M16 12h.01"/>',
+ doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Zm0 0v5h5M9 13h6M9 17h4"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
+ flame:'<path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 1-6 1-8Z"/>',
+ chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>', seal:'<path d="m12 2 2.4 2 3.1-.4.9 3 2.6 1.8-1.2 2.9 1.2 2.9-2.6 1.8-.9 3-3.1-.4L12 22l-2.4-2-3.1.4-.9-3L3 15.6l1.2-2.9L3 9.8l2.6-1.8.9-3 3.1.4L12 2Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+ checks:'<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
+ checkered:'<path d="M5 21V4h13l-2 5 2 5H5"/>', trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>'
+};
+const svg=(n,sw=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[n]}</svg>`;
+
+// ---------- Temas (GoalTheme) ----------
+const THEMES={
+ sage:{t:'Salvia',icon:'leaf',tint:'#9CA890',deep:'#B7C2AC',tintL:'#5E7056',deepL:'#4D6246',g:['#6E8063','#3F4D39']},
+ ocean:{t:'Océano',icon:'waves',tint:'#4E7F98',deep:'#7FB0C8',tintL:'#4E7F98',deepL:'#315E77',g:['#4E7F98','#2A4A5C']},
+ sunrise:{t:'Amanecer',icon:'sun',tint:'#B46E4C',deep:'#DA9A78',tintL:'#B46E4C',deepL:'#8D4A32',g:['#C07A55','#7A3F28']},
+ berry:{t:'Baya',icon:'heart',tint:'#975C79',deep:'#C48AA6',tintL:'#975C79',deepL:'#743A5A',g:['#9E6380','#5A2D45']},
+ amber:{t:'Ámbar',icon:'sparkles',tint:'#A47B35',deep:'#D1A75C',tintL:'#A47B35',deepL:'#75531F',g:['#B08640','#6A4A18']},
+ graphite:{t:'Grafito',icon:'flag',tint:'#98978F',deep:'#C8C7BF',tintL:'#74777B',deepL:'#54565A',g:['#5E5F62','#2C2D2F']}
+};
+const isLight=()=>S.settings.appearance==='light';
+const th=g=>{const t=THEMES[g.theme]||THEMES.sage;return {...t,tint:isLight()?t.tintL:t.tint,deep:isLight()?t.deepL:t.deep}};
+const alpha=(hex,a)=>{const n=parseInt(hex.slice(1),16);return `rgba(${n>>16},${n>>8&255},${n&255},${a})`};
+
+// ---------- Generador de tablas (TableGenerator) ----------
+function niceRound(v){if(v>=100)return Math.round(v/10)*10;if(v>=20)return Math.round(v/5)*5;return Math.max(1,Math.round(v))}
+function sequential(target){const whole=Math.floor(target);const a=[];let sum=0,n=1;while(sum+n<=whole){a.push(n);sum+=n;n++}const r=target-sum;if(r>1e-6)a.push(+r.toFixed(2));return a.sort((x,y)=>x-y)}
+function pattern(target,count){const m=[.5,1,.25,1,.5,1,.75,1,.75,1];const a=[...Array(count)].map((_,i)=>niceRound(target/count*m[i%m.length]));a[a.length-1]=Math.max(1,a[a.length-1]+target-a.reduce((s,x)=>s+x,0));return a}
+
+// ---------- Estado con datos ficticios ----------
+const DAY=864e5, now=()=>Date.now();
+const uid=()=>Math.random().toString(36).slice(2,10);
+function seed(){
+  const g1={id:uid(),name:'Viaje a Galápagos',theme:'ocean',motivation:'Conocer las islas con mi familia',target:0,amounts:sequential(1500),style:'seq',deposits:[],deadline:now()+150*DAY,created:now()-40*DAY};
+  g1.target=g1.amounts.reduce((s,x)=>s+x,0);
+  const order=[...g1.amounts.keys()];
+  [0,1,2,3,4,5,6,7,8,9,10,12,14,16,19,22,25,30,34,40].forEach((k,i)=>{if(order[k]!==undefined)g1.deposits.push({id:uid(),type:'cell',idx:order[k],amount:g1.amounts[order[k]],date:now()-(38-i*1.8)*DAY})});
+  g1.deposits.push({id:uid(),type:'manual',amount:40,note:'Venta de ropa usada',date:now()-12*DAY},{id:uid(),type:'manual',amount:20,note:'Depósito rápido',date:now()-2*DAY});
+  const g2={id:uid(),name:'Laptop nueva',theme:'sage',motivation:'Para programar más rápido',target:900,amounts:pattern(900,24),style:'pat',deposits:[],deadline:now()+60*DAY,created:now()-25*DAY};
+  [0,1,2,3,4,5,6,7,8,9,10,11,12].forEach((k,i)=>g2.deposits.push({id:uid(),type:'cell',idx:k,amount:g2.amounts[k],date:now()-(24-i*1.9)*DAY}));
+  const g3={id:uid(),name:'Fondo de emergencia',theme:'amber',motivation:'Tranquilidad para cualquier imprevisto',target:600,amounts:pattern(600,20),style:'pat',deposits:[],deadline:null,created:now()-10*DAY};
+  [0,1,2].forEach((k,i)=>g3.deposits.push({id:uid(),type:'cell',idx:k,amount:g3.amounts[k],date:now()-(9-i*3)*DAY}));
+  return {goals:[g1,g2,g3],settings:{currency:'USD',appearance:'dark',faceID:true,reminders:true,icloud:false}};
+}
+const KEY='ahorro-demo-v1';
+let S; try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){} if(!S||!S.goals)S=seed();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+
+// ---------- Utilidades ----------
+const CUR={USD:['en-US','USD'],MXN:['es-MX','MXN'],EUR:['es-ES','EUR']};
+const fmt=v=>{const [l,c]=CUR[S.settings.currency];const whole=Math.abs(v-Math.round(v))<1e-6;return new Intl.NumberFormat(l,{style:'currency',currency:c,minimumFractionDigits:whole?0:2,maximumFractionDigits:2}).format(v)};
+const saved=g=>g.deposits.reduce((s,d)=>s+d.amount,0);
+const progress=g=>g.target>0?Math.min(1,saved(g)/g.target):0;
+const remaining=g=>Math.max(0,g.target-saved(g));
+const isDone=(g,i)=>g.deposits.some(d=>d.type==='cell'&&d.idx===i);
+const active=g=>{const idx=g.amounts.map((_,i)=>i).filter(i=>isDone(g,i)||g.amounts[i]>1e-6);return g.style==='seq'?idx.sort((a,b)=>g.amounts[a]-g.amounts[b]||a-b):idx};
+const pending=g=>g.amounts.filter((a,i)=>!isDone(g,i)&&a>1e-6).length;
+const dShort=t=>new Date(t).toLocaleDateString('es',{day:'numeric',month:'short',year:'numeric'});
+const dTime=t=>new Date(t).toLocaleDateString('es',{day:'numeric',month:'short'})+', '+new Date(t).toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=s=>document.querySelector(s);
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1800)}
+function badge(g,size){const t=th(g);return `<span class="badge" style="width:${size}px;height:${size}px;background:${alpha(t.tint,.2)};color:${t.deep}">${svg(t.icon,2.2)}</span>`}
+
+// ---------- Inicio ----------
+let current=null, showAll=false, showHist=false;
+function renderHome(){
+  const tSaved=S.goals.reduce((s,g)=>s+saved(g),0), tTarget=S.goals.reduce((s,g)=>s+g.target,0);
+  const wg=S.goals.find(g=>progress(g)<1)||S.goals[0];
+  let h=`<div class="nav"><span></span><div class="icons"><button id="openSettings" aria-label="Ajustes">${svg('gear',1.8)}</button></div></div><div class="large">Ahorro</div>`;
+  if(!S.goals.length){h+=`<div class="empty">${svg('plus')}<b>Aún no tienes metas</b>Crea tu primera tabla de ahorro y empieza<br>a registrar cada monto que guardes.</div>`}
+  else{
+    h+=`<div class="stack"><div class="card totals"><div class="cap" style="margin:0">Ahorrado en total</div><div class="big">${fmt(tSaved)}</div><small>de ${fmt(tTarget)} entre ${S.goals.length} meta${S.goals.length===1?'':'s'}</small></div>`;
+    h+=`<div class="cap">Tus metas</div>`;
+    for(const g of S.goals){const t=th(g),p=progress(g);
+      h+=`<button class="card goal" data-open="${g.id}"><div class="row">${badge(g,38)}<span class="name">${esc(g.name)}</span><span class="pct" style="color:${t.deep}">${Math.floor(p*100)}%</span></div><div class="bar"><i style="width:${p*100}%;background:${t.tint}"></i></div><div class="meta"><span>Ahorrado <b>${fmt(saved(g))}</b></span><span>Meta <b>${fmt(g.target)}</b></span></div></button>`}
+    if(wg){const nx=active(wg).find(i=>!isDone(wg,i));
+      h+=`<div class="cap" style="margin-top:8px">Widget de pantalla de inicio</div><div class="wrow"><div class="widget"><div><small>META DE AHORRO</small><div class="w-name">${esc(wg.name)}</div></div><div><small>AHORRADO · ${Math.floor(progress(wg)*100)}%</small><div class="w-amt">${fmt(saved(wg))}</div></div>${nx!==undefined?`<button data-widget="${wg.id}">Marcar ${fmt(wg.amounts[nx])}</button>`:'<small>¡Meta completada!</small>'}</div><p>En el iPhone, el widget muestra la meta activa y permite marcar la siguiente casilla sin abrir la app.</p></div>`}
+    h+=`</div>`}
+  h+=`<div class="demo-pill">Demo con datos ficticios</div>`;
+  $('#home').innerHTML=h;
+}
+
+// ---------- Detalle ----------
+function renderDetail(keepScroll){
+  const g=S.goals.find(x=>x.id===current); if(!g){return}
+  const el=$('#detail'), st=el.scrollTop, t=th(g), sv=saved(g), p=progress(g);
+  const act=active(g), vis=showAll?act:act.slice(0,16);
+  // hitos
+  let ms=[]; if(g.target>=500)ms.push(['Primer 500',500,'flag']); ms.push(['50% completado',g.target*.5,'chart'],['75% completado',g.target*.75,'sparkles'],['Meta completada',g.target,'seal']);
+  const seen=new Set(); ms=ms.filter(m=>{const k=Math.round(m[1]*100);if(seen.has(k))return false;seen.add(k);return true});
+  // ritmo
+  let pace='';
+  if(g.deadline){const days=Math.round((new Date(g.deadline).setHours(0,0,0,0)-new Date().setHours(0,0,0,0))/DAY);const weekly=remaining(g)/Math.max(Math.max(days,1)/7,1/7);
+    pace=`<div class="card pad17 pace"><div><small>FECHA LÍMITE</small><b>${dShort(g.deadline)}</b><small style="margin-top:8px">RITMO RECOMENDADO</small><b style="color:${t.deep}">${fmt(Math.round(weekly*100)/100)} por semana</b></div><span class="chip" style="background:${alpha(t.tint,.16)};color:${t.deep}">${days>0?days+' días':'Hoy'}</span></div>`}
+  else pace=`<button class="card pad17 pace" data-act="deadline" style="text-align:left;width:100%"><div><b>Sin fecha límite</b><small style="letter-spacing:0;text-transform:none;font-weight:400;margin-top:3px">Añade una fecha para conocer tu ritmo semanal.</small></div><span class="chip" style="background:${alpha(t.tint,.16)};color:${t.deep}">Añadir</span></button>`;
+  // gráfico
+  const deps=[...g.deposits].sort((a,b)=>a.date-b.date); let chart;
+  if(!deps.length) chart=`<div style="text-align:center;padding:24px 0;color:var(--muted);font-size:13px"><b style="display:block;color:var(--text);margin-bottom:4px">Aún no hay movimientos</b>Registra un depósito o marca una casilla para ver tu avance.</div>`;
+  else{const W=320,H=110,t0=Math.min(g.created,deps[0].date),t1=Math.max(now(),deps[deps.length-1].date+DAY);let acc=0;const pts=[[0,H]];deps.forEach(d=>{acc+=d.amount;pts.push([(d.date-t0)/(t1-t0)*W,H-acc/g.target*H*0.92])});pts.push([W,pts[pts.length-1][1]]);
+    const line=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+','+q[1].toFixed(1)).join(' ');
+    chart=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><line x1="0" x2="${W}" y1="${H-H*.92}" y2="${H-H*.92}" stroke="var(--muted2)" stroke-dasharray="4 4"/><path d="${line} L${W},${H} L0,${H}Z" fill="${alpha(t.tint,.18)}"/><path d="${line}" fill="none" stroke="${t.tint}" stroke-width="2.5" stroke-linejoin="round"/></svg><div class="meta" style="margin-top:6px"><span>Inicio</span><span>Meta ${fmt(g.target)}</span></div>`}
+  // calendario (5 semanas hasta hoy)
+  const today=new Date();today.setHours(0,0,0,0);const start=new Date(today);start.setDate(start.getDate()-((today.getDay()+6)%7)-28);
+  const byDay={};g.deposits.forEach(d=>{const k=new Date(d.date);k.setHours(0,0,0,0);byDay[+k]=(byDay[+k]||0)+d.amount});
+  let cells='';for(let i=0;i<35;i++){const d=new Date(start);d.setDate(d.getDate()+i);const v=byDay[+d];const fut=d>today;cells+=`<div class="d ${v?'on':''} ${+d===+today?'today':''}" style="${v?`background:${t.tint}`:''};${fut?'opacity:.3':''}" title="${v?fmt(v):''}">${d.getDate()}</div>`}
+  let streak=0;for(let d=new Date(today);byDay[+d]||(+d===+today&&streak===0&&byDay[+d-DAY]);d.setDate(d.getDate()-1)){if(byDay[+d])streak++;else if(+d!==+today)break}
+  const activeDays=Object.keys(byDay).length;
+  const months=[start,today].map(d=>d.toLocaleDateString('es',{month:'long'})); const range=months[0]===months[1]?months[0]:months[0]+' – '+months[1];
+  // simulador
+  const wk=parseFloat(S.simWeekly??30); let simRes;
+  if(remaining(g)<=0) simRes=`<div style="color:${t.deep};font-size:13px">Esta meta ya está completada.</div>`;
+  else if(wk>0){const weeks=Math.max(1,Math.ceil(remaining(g)/wk));simRes=`<div class="res" style="background:${alpha(t.tint,.11)}"><small>Terminas aproximadamente el</small><b style="color:${t.deep}">${dShort(now()+weeks*7*DAY)}</b><span>en ${weeks} semana${weeks===1?'':'s'} · ${fmt(wk)} por semana</span></div>`}
+  else simRes=`<div style="font-size:12px;color:var(--muted2)">Ingresa un monto semanal válido para calcular una fecha.</div>`;
+  const hist=[...g.deposits].sort((a,b)=>b.date-a.date);
+  const desc=d=>d.type==='cell'?'Casilla marcada':(d.note||'Depósito manual');
+
+  el.innerHTML=`
+  <div class="nav"><button class="navback" id="back">${svg('back',2.4)}Ahorro</button><div class="icons"><button data-act="pdf" aria-label="Exportar PDF">${svg('doc',1.8)}</button><button data-act="menu" aria-label="Más opciones">${svg('more',1.8)}</button></div></div>
+  <div class="title2">${esc(g.name)}</div>
+  <div class="stack20">
+   <div class="cover" style="background:linear-gradient(135deg,${th(g).g[0]},${th(g).g[1]})"><div class="bigicon">${svg(t.icon,1.6)}</div><div class="who"><span class="badge" style="width:40px;height:40px;background:rgba(255,255,255,.86);color:${THEMES[g.theme].deepL}">${svg(t.icon,2.2)}</span><div style="min-width:0"><b>${esc(g.name)}</b>${g.motivation?`<span>${esc(g.motivation)}</span>`:''}<span>${Math.round(p*100)}% completado</span></div></div></div>
+   <div class="card prog"><div class="top"><b style="color:${t.deep}">${fmt(sv)}</b><span>de ${fmt(g.target)}</span></div><div class="bar"><i style="width:${p*100}%;background:${t.tint}"></i></div><div class="bot"><div><small>FALTA POR AHORRAR</small><strong>${fmt(remaining(g))}</strong></div><em>${pending(g)} casillas<br>por marcar</em></div></div>
+   <div class="card pad17"><div class="headrow" style="margin:0"><span class="cap" style="margin:0;font-weight:600">Hitos</span><b style="font-size:12px;color:${t.deep}">${ms.filter(m=>sv>=m[1]).length}/${ms.length}</b></div>
+    ${ms.map(m=>{const ok=sv>=m[1];return `<div class="ms"><span class="ic" style="${ok?`background:${alpha(t.tint,.18)};color:${t.deep}`:''}">${svg(ok?'checks':m[2],2)}</span><div><b style="${ok?'':'color:var(--muted)'}">${m[0]}</b><span style="${ok?`color:${t.deep}`:''}">${ok?'¡Alcanzado!':'Al llegar a '+fmt(m[1])}</span></div></div>`}).join('')}</div>
+   ${pace}
+   <div class="card pad17 chart"><div class="headrow" style="margin:0"><div><div class="cap" style="margin:0">Avance de la meta</div><b style="font-size:15px">${fmt(sv)} ahorrado</b></div><b style="color:${t.deep};font-size:20px">${Math.round(p*100)}%</b></div>${chart}</div>
+   <div><div class="cap" style="font-weight:600;margin:0">Depósito rápido</div><div class="quick">${[5,10,20].map(v=>`<button data-quick="${v}" style="background:${alpha(t.tint,.14)};color:${t.deep}">+${fmt(v)}</button>`).join('')}</div></div>
+   <button class="primary" data-act="deposit">Registrar depósito</button>
+   <div><div class="grid">${vis.map(i=>{const dn=isDone(g,i);return `<button class="cell ${dn?'done':''}" data-cell="${i}" style="${dn?`background:${alpha(t.tint,.16)};border-color:${alpha(t.tint,.4)}`:''}" aria-label="${fmt(g.amounts[i])}${dn?' marcada':''}">${fmt(g.amounts[i])}${dn?`<span class="ck" style="background:${t.tint}">${svg('check',3.5)}</span>`:''}</button>`}).join('')}</div>
+   ${act.length>16?`<button class="morecells" data-act="cells" style="margin-top:12px">${showAll?'Mostrar solo 4 filas':`Ver ${act.length-16} casilla${act.length-16===1?'':'s'} más`}</button>`:''}</div>
+   <div class="card pad17 sim"><b style="font-size:15px">Simulador</b>${remaining(g)>0?`<div class="in">Si ahorro <input id="simIn" inputmode="decimal" value="${esc(S.simWeekly??30)}" aria-label="Monto semanal"> cada semana</div>`:''}<div id="simRes">${simRes}</div></div>
+   <div class="card pad17 cal"><div class="headrow"><div><div class="cap" style="margin:0">Calendario de ahorro</div><b style="font-size:16px;text-transform:capitalize">${range}</b></div><span style="width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:${alpha(t.tint,.14)};color:var(--accentStrong)">${svg('cal',2)}</span></div>
+     <div class="wk">${['L','M','X','J','V','S','D'].map(x=>`<span>${x}</span>`).join('')}</div><div class="days" style="margin-top:6px">${cells}</div>
+     <div class="metrics"><div><b>${streak===1?'1 día':streak+' días'}</b>Racha actual</div><div><b>${activeDays===1?'1 día':activeDays+' días'}</b>Días con ahorro</div></div></div>
+   <button class="histbtn" data-act="hist"><span class="cap" style="margin:0">Historial de movimientos</span>${svg(showHist?'minus':'plus',2)}</button>
+   ${showHist?`<div class="hist">${hist.length?hist.map(d=>`<div class="card it"><div><b>+${fmt(d.amount)}</b><small>${esc(desc(d))}</small><em>${dTime(d.date)}</em></div><button class="x" data-del="${d.id}" aria-label="Eliminar movimiento">${svg('x',2.4)}</button></div>`).join(''):'<div style="font-size:13px;color:var(--muted2)">Todavía no hay movimientos registrados.</div>'}</div>`:''}
+   <div class="danger-row"><button data-act="reset">Reiniciar progreso</button><button class="del" data-act="delete">Eliminar meta</button></div>
+  </div>`;
+  if(keepScroll) el.scrollTop=st;
+  const si=$('#simIn'); if(si) si.oninput=()=>{S.simWeekly=si.value;save();const v=parseFloat(si.value);const g2=S.goals.find(x=>x.id===current);const tt=th(g2);
+    $('#simRes').innerHTML=v>0?(()=>{const w=Math.max(1,Math.ceil(remaining(g2)/v));return `<div class="res" style="background:${alpha(tt.tint,.11)}"><small>Terminas aproximadamente el</small><b style="color:${tt.deep}">${dShort(now()+w*7*DAY)}</b><span>en ${w} semana${w===1?'':'s'} · ${fmt(v)} por semana</span></div>`})():'<div style="font-size:12px;color:var(--muted2)">Ingresa un monto semanal válido para calcular una fecha.</div>'};
+}
+
+// ---------- Navegación ----------
+function open(id){current=id;showAll=false;showHist=false;renderDetail();$('#detail').scrollTop=0;$('#detail').classList.remove('off');$('#home').classList.add('back');$('#fab').style.display='none'}
+function close(){$('#detail').classList.add('off');$('#home').classList.remove('back');$('#fab').style.display='';renderHome()}
+function refresh(){save();renderHome();if(!$('#detail').classList.contains('off'))renderDetail(true)}
+
+// ---------- Hojas ----------
+function sheet(html,onReady){const s=$('#sheet');s.innerHTML=html;$('#dim').classList.add('show');s.classList.add('show');onReady&&onReady(s);setTimeout(()=>{const f=s.querySelector('input');f&&f.focus({preventScroll:true})},380)}
+function closeSheet(){$('#sheet').classList.remove('show');$('#dim').classList.remove('show')}
+$('#dim').onclick=closeSheet;
+
+function newGoalSheet(){
+  let style='seq',theme='sage',count=20;
+  sheet(`<header><button data-x>Cancelar</button><b>Nueva meta</b><button class="strong" id="create">Crear tabla</button></header><div class="body">
+   <div class="sec"><label for="ng-name">Nombre de la meta</label><div class="field"><input id="ng-name" placeholder="Ej. Para mi moto"></div></div>
+   <div class="sec"><label for="ng-target">Monto objetivo (${S.settings.currency})</label><div class="field"><input id="ng-target" inputmode="decimal" placeholder="1500"></div></div>
+   <div class="sec"><span class="lbl">Estilo de tabla</span><div class="seg" id="ng-style"><button class="on" data-v="seq">Secuencial</button><button data-v="pat">Patrón variado</button></div><p class="foot" id="ng-foot">Casillas de $1, $2, $3… hasta llegar a tu meta.</p></div>
+   <div class="sec" id="ng-count-sec" hidden><label for="ng-count">Cantidad de casillas</label><div class="field"><select id="ng-count">${[10,20,30,40,52].map(c=>`<option ${c===20?'selected':''}>${c}</option>`).join('')}</select></div></div>
+   <div class="sec"><span class="lbl">Personaliza tu meta</span><div class="field themes" id="ng-themes">${Object.entries(THEMES).map(([k,t])=>`<button data-v="${k}" class="${k==='sage'?'on':''}" style="background:${t.tint}" aria-label="Tema ${t.t}">${svg(t.icon,2.2)}</button>`).join('')}</div></div>
+   <div class="sec"><label for="ng-mot">¿Para qué ahorras?</label><div class="field"><input id="ng-mot" placeholder="Ej. Viajar en vacaciones"></div><p class="foot">Esta nota aparecerá en la portada de la meta.</p></div>
+  </div>`,s=>{
+    s.querySelector('#ng-style').onclick=e=>{const b=e.target.closest('button');if(!b)return;style=b.dataset.v;s.querySelectorAll('#ng-style button').forEach(x=>x.classList.toggle('on',x===b));s.querySelector('#ng-count-sec').hidden=style==='seq';s.querySelector('#ng-foot').textContent=style==='seq'?'Casillas de $1, $2, $3… hasta llegar a tu meta.':'Montos variados que suman tu meta en la cantidad de casillas que elijas.'};
+    s.querySelector('#ng-themes').onclick=e=>{const b=e.target.closest('button');if(!b)return;theme=b.dataset.v;s.querySelectorAll('#ng-themes button').forEach(x=>x.classList.toggle('on',x===b))};
+    s.querySelector('#create').onclick=()=>{const tgt=parseFloat(s.querySelector('#ng-target').value.replace(',','.'));if(!(tgt>0)){toast('Escribe un monto objetivo');return}
+      count=+s.querySelector('#ng-count').value;const amounts=style==='seq'?sequential(Math.min(tgt,20000)):pattern(tgt,count);
+      const g={id:uid(),name:s.querySelector('#ng-name').value.trim()||'Meta de ahorro',theme,motivation:s.querySelector('#ng-mot').value.trim(),amounts,style,target:+amounts.reduce((a,b)=>a+b,0).toFixed(2),deposits:[],deadline:null,created:now()};
+      S.goals.unshift(g);closeSheet();refresh();toast('Meta creada');setTimeout(()=>open(g.id),350)};
+  });
+}
+function depositSheet(g){
+  const today=new Date().toISOString().slice(0,10);
+  sheet(`<header><button data-x>Cancelar</button><b>Registrar depósito</b><button class="strong" id="add">Agregar</button></header><div class="body">
+   <div class="sec"><label for="dp-amt">Monto (${S.settings.currency})</label><div class="field"><input id="dp-amt" inputmode="decimal" placeholder="20"></div></div>
+   <div class="sec"><label for="dp-note">Nota (opcional)</label><div class="field"><input id="dp-note" placeholder="Ej. Ahorro de la semana"></div></div>
+   <div class="sec"><label for="dp-date">Fecha</label><div class="field"><input id="dp-date" type="date" value="${today}" max="${today}"></div></div>
+   <p class="foot">Este monto se suma directo a tu progreso, sin necesidad de marcar una casilla.</p></div>`,s=>{
+    s.querySelector('#add').onclick=()=>{const a=parseFloat(s.querySelector('#dp-amt').value.replace(',','.'));if(!(a>0)){toast('Escribe un monto');return}
+      const dv=s.querySelector('#dp-date').value;const date=dv?new Date(dv+'T'+new Date().toTimeString().slice(0,8)).getTime():now();
+      g.deposits.push({id:uid(),type:'manual',amount:a,note:s.querySelector('#dp-note').value.trim(),date});closeSheet();refresh();toast('+'+fmt(a)+' registrado')}});
+}
+function deadlineSheet(g){
+  const v=g.deadline?new Date(g.deadline).toISOString().slice(0,10):new Date(now()+90*DAY).toISOString().slice(0,10);
+  sheet(`<header><button data-x>Cancelar</button><b>Fecha límite</b><button class="strong" id="ok">Guardar</button></header><div class="body"><div class="sec"><label for="dl">Fecha</label><div class="field"><input id="dl" type="date" value="${v}" min="${new Date().toISOString().slice(0,10)}"></div><p class="foot">Calculamos cuánto necesitas ahorrar cada semana para llegar a tiempo.</p></div>${g.deadline?'<div class="sec"><button id="rm" style="color:var(--danger);padding:12px 14px">Quitar fecha límite</button></div>':''}</div>`,s=>{
+    s.querySelector('#ok').onclick=()=>{g.deadline=new Date(s.querySelector('#dl').value+'T12:00').getTime();closeSheet();refresh()};
+    const rm=s.querySelector('#rm');if(rm)rm.onclick=()=>{g.deadline=null;closeSheet();refresh()}});
+}
+function textSheet(title,label,val,onSave,foot=''){
+  sheet(`<header><button data-x>Cancelar</button><b>${title}</b><button class="strong" id="ok">Guardar</button></header><div class="body"><div class="sec"><label for="tx">${label}</label><div class="field"><input id="tx" value="${esc(val)}"></div>${foot?`<p class="foot">${foot}</p>`:''}</div></div>`,s=>{s.querySelector('#ok').onclick=()=>{onSave(s.querySelector('#tx').value.trim());closeSheet();refresh()}});
+}
+function appearanceSheet(g){
+  let theme=g.theme;
+  sheet(`<header><button data-x>Cancelar</button><b>Personalizar meta</b><button class="strong" id="ok">Guardar</button></header><div class="body"><div class="sec"><span class="lbl">Tema</span><div class="field themes" id="th">${Object.entries(THEMES).map(([k,t])=>`<button data-v="${k}" class="${k===theme?'on':''}" style="background:${t.tint}" aria-label="Tema ${t.t}">${svg(t.icon,2.2)}</button>`).join('')}</div><p class="foot">En el iPhone también puedes usar una foto como portada.</p></div></div>`,s=>{
+    s.querySelector('#th').onclick=e=>{const b=e.target.closest('button');if(!b)return;theme=b.dataset.v;s.querySelectorAll('#th button').forEach(x=>x.classList.toggle('on',x===b))};
+    s.querySelector('#ok').onclick=()=>{g.theme=theme;closeSheet();refresh()}});
+}
+function menuSheet(g){
+  const items=[['rename','Cambiar nombre'],['deadline','Fecha límite'],['target','Recalcular tabla'],['motivation','Motivo de ahorro'],['appearance','Personalizar meta']];
+  sheet(`<header><span></span><b>${esc(g.name)}</b><button data-x>Listo</button></header><div class="body"><div class="field" style="margin-top:14px">${items.map(([k,t])=>`<button class="setrow" style="width:100%" data-m="${k}">${t}<span style="color:var(--muted2)">›</span></button>`).join('')}</div></div>`,s=>{
+    s.querySelector('.body').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;const m=b.dataset.m;closeSheet();setTimeout(()=>{
+      if(m==='rename')textSheet('Editar meta','Nombre',g.name,v=>{if(v)g.name=v});
+      if(m==='deadline')deadlineSheet(g);
+      if(m==='motivation')textSheet('Motivo de ahorro','¿Para qué ahorras?',g.motivation||'',v=>{g.motivation=v},'Lo mostraremos en la portada de esta meta.');
+      if(m==='appearance')appearanceSheet(g);
+      if(m==='target')textSheet('Recalcular tabla','Nueva meta ('+S.settings.currency+')',String(g.target),v=>{const n=parseFloat(v.replace(',','.'));if(!(n>=saved(g))){toast('No puede ser menor que lo ahorrado');return}
+        const done=g.amounts.map((a,i)=>isDone(g,i)?a:0);const doneSum=done.reduce((a,b)=>a+b,0);const rest=n-doneSum;const pend=g.amounts.map((_,i)=>i).filter(i=>!isDone(g,i));
+        const newP=rest>0?(g.style==='seq'?sequential(rest):pattern(rest,Math.max(1,pend.length))):[];const keep=g.amounts.filter((_,i)=>isDone(g,i));
+        const map={};const amounts=[];g.amounts.forEach((a,i)=>{if(isDone(g,i)){map[i]=amounts.length;amounts.push(a)}});newP.forEach(a=>amounts.push(a));
+        g.deposits.forEach(d=>{if(d.type==='cell')d.idx=map[d.idx]});g.amounts=amounts;g.target=n;toast('Tabla recalculada')},'Las casillas marcadas y los depósitos se conservan; solo se redistribuyen las pendientes.');
+    },380)}});
+}
+function settingsSheet(){
+  const st=S.settings;
+  const tg=(k,t,sub)=>`<div class="setrow"><div>${t}${sub?`<div style="font-size:12px;color:var(--muted)">${sub}</div>`:''}</div><button class="toggle ${st[k]?'on':''}" data-t="${k}" role="switch" aria-checked="${!!st[k]}" aria-label="${t}"></button></div>`;
+  sheet(`<header><span></span><b>Ajustes</b><button class="strong" data-x>Listo</button></header><div class="body">
+   <div class="sec"><span class="lbl">Moneda</span><div class="field"><select id="cur">${[['USD','USD — Dólar estadounidense'],['MXN','MXN — Peso mexicano'],['EUR','EUR — Euro']].map(([c,t])=>`<option value="${c}" ${st.currency===c?'selected':''}>${t}</option>`).join('')}</select></div></div>
+   <div class="sec"><span class="lbl">Apariencia</span><div class="seg" id="app">${[['dark','Oscuro'],['light','Claro']].map(([v,t])=>`<button data-v="${v}" class="${st.appearance===v?'on':''}">${t}</button>`).join('')}</div></div>
+   <div class="sec"><span class="lbl">Seguridad y avisos</span><div class="field">${tg('faceID','Bloquear con Face ID','Pide Face ID al abrir la app')}${tg('reminders','Recordatorio inteligente','Te avisa si llevas días sin ahorrar')}<div class="setrow"><div>Sincronizar con iCloud<div style="font-size:12px;color:var(--muted)">Preparado en el código; se activa con una cuenta de Apple Developer</div></div><button class="toggle" id="icloudT" role="switch" aria-checked="false" aria-label="Sincronizar con iCloud"></button></div></div></div>
+   <div class="sec"><span class="lbl">Exportar</span><div class="field"><button class="setrow" style="width:100%" id="pdfAll">Reporte PDF de todas las metas<span style="color:var(--muted2)">›</span></button></div></div>
+   <p class="foot" style="text-align:center;margin-top:24px">Ahorro te ayuda a avanzar una casilla a la vez.<br>Demo web · datos ficticios</p></div>`,s=>{
+    s.querySelector('#cur').onchange=e=>{st.currency=e.target.value;refresh()};
+    s.querySelector('#app').onclick=e=>{const b=e.target.closest('button');if(!b)return;st.appearance=b.dataset.v;s.querySelectorAll('#app button').forEach(x=>x.classList.toggle('on',x===b));applyAppearance();refresh()};
+    s.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{st[b.dataset.t]=!st[b.dataset.t];b.classList.toggle('on',st[b.dataset.t]);b.setAttribute('aria-checked',st[b.dataset.t]);save()});
+    s.querySelector('#icloudT').onclick=()=>toast('En esta versión las metas se guardan en el dispositivo');
+    s.querySelector('#pdfAll').onclick=()=>pdfPreview(S.goals)});
+}
+function pdfPreview(goals){
+  sheet(`<header><span></span><b>Reporte PDF</b><button class="strong" data-x>Listo</button></header><div class="body"><div style="background:#fff;color:#1B1C1D;border-radius:8px;padding:22px;margin-top:10px;font-family:-apple-system,system-ui,sans-serif">
+   <div style="font-size:11px;color:#74777B;letter-spacing:1px">REPORTE DE AHORRO · ${new Date().toLocaleDateString('es',{day:'numeric',month:'long',year:'numeric'})}</div>
+   ${goals.map(g=>`<div style="margin-top:16px;padding-top:14px;border-top:1px solid #ECEFF2"><b style="font-size:16px">${esc(g.name)}</b><div style="display:flex;justify-content:space-between;font-size:13px;margin:6px 0;color:#74777B"><span>Ahorrado <b style="color:#1B1C1D">${fmt(saved(g))}</b></span><span>Meta <b style="color:#1B1C1D">${fmt(g.target)}</b></span></div><div style="height:6px;background:#ECEFF2;border-radius:6px"><div style="height:6px;width:${progress(g)*100}%;background:${THEMES[g.theme].tintL};border-radius:6px"></div></div><div style="font-size:12px;color:#74777B;margin-top:6px">${g.deposits.length} movimientos · ${pending(g)} casillas pendientes</div></div>`).join('')}
+  </div><p class="foot">En el iPhone se genera un PDF real que puedes compartir o guardar.</p></div>`);
+}
+
+// ---------- Eventos ----------
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button,[data-open]'); if(!t)return;
+  if(t.matches('[data-x]'))return closeSheet();
+  if(t.id==='openSettings')return settingsSheet();
+  if(t.id==='back')return close();
+  if(t.id==='fab')return newGoalSheet();
+  if(t.id==='resetDemo'){S=seed();save();close();applyAppearance();renderHome();toast('Demo reiniciada');return}
+  if(t.dataset.open)return open(t.dataset.open);
+  if(t.dataset.widget){const g=S.goals.find(x=>x.id===t.dataset.widget);const nx=active(g).find(i=>!isDone(g,i));if(nx!==undefined){g.deposits.push({id:uid(),type:'cell',idx:nx,amount:g.amounts[nx],date:now()});refresh();toast('Casilla de '+fmt(g.amounts[nx])+' marcada')}return}
+  const g=S.goals.find(x=>x.id===current); if(!g)return;
+  if(t.dataset.cell!==undefined){const i=+t.dataset.cell;const k=g.deposits.findIndex(d=>d.type==='cell'&&d.idx===i);if(k>=0)g.deposits.splice(k,1);else g.deposits.push({id:uid(),type:'cell',idx:i,amount:g.amounts[i],date:now()});if(progress(g)>=1)toast('¡Meta completada! 🎉');refresh();return}
+  if(t.dataset.quick){g.deposits.push({id:uid(),type:'manual',amount:+t.dataset.quick,note:'Depósito rápido',date:now()});refresh();toast('+'+fmt(+t.dataset.quick)+' añadido');return}
+  if(t.dataset.del){g.deposits=g.deposits.filter(d=>d.id!==t.dataset.del);refresh();return}
+  const a=t.dataset.act;
+  if(a==='deposit')depositSheet(g);
+  if(a==='cells'){showAll=!showAll;renderDetail(true)}
+  if(a==='hist'){showHist=!showHist;renderDetail(true)}
+  if(a==='deadline')deadlineSheet(g);
+  if(a==='menu')menuSheet(g);
+  if(a==='pdf')pdfPreview([g]);
+  if(a==='reset'&&confirm('¿Reiniciar progreso?\nSe eliminarán todos los depósitos registrados de esta meta.')){g.deposits=[];refresh()}
+  if(a==='delete'&&confirm('¿Eliminar meta?\nEsta acción no se puede deshacer.')){S.goals=S.goals.filter(x=>x.id!==g.id);save();close()}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+function applyAppearance(){$('#screen').classList.toggle('light',isLight());$('#home').style.colorScheme=isLight()?'light':'dark'}
+$('#fab').innerHTML=svg('plus',2.6);
+const tick=()=>{$('#clock').textContent=new Date().toLocaleTimeString('es',{hour:'numeric',minute:'2-digit',hour12:false})};tick();setInterval(tick,30000);
+document.querySelector('.status span:last-child').textContent='';
+applyAppearance();renderHome();
+})();
+</script>
+</body>
+</html>

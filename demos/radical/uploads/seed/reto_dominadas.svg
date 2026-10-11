@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs><radialGradient id="g" cx="75%" cy="70%" r="75%"><stop offset="0" stop-color="#ff4500" stop-opacity=".55"/><stop offset=".55" stop-color="#151518"/><stop offset="1" stop-color="#070708"/></radialGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="3" height="28" fill="#fff" opacity=".035"/></pattern></defs>
+  <rect width="1080" height="1080" fill="url(#g)"/><rect width="1080" height="1080" fill="url(#p)"/>
+  <path transform="translate(430,263.59999999999997) scale(1.6)" d="M95 0 L10 125 H65 L45 235 L130 100 H75 Z" fill="#ff4500"/><text x="64" y="838" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="84" fill="#fff" letter-spacing="-2">SEMANA DE</text><text x="64" y="930" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="84" fill="#fff" letter-spacing="-2">DOMINADAS</text>
+  <text x="64" y="1010" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="34" fill="#ff4500" letter-spacing="6">PRÓXIMO RETO</text>
+  <text x="1016" y="84" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="38" fill="#fff" opacity=".85" letter-spacing="8">RADICAL</text></svg>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Configuración | Admin</title>
+<link rel="icon" href="../assets/icono.png">
+<link rel="stylesheet" href="../assets/app.css">
+</head>
+<body class="admin">
+<header class="admin-barra">
+<div class="admin-barra-dentro">
+<div class="admin-marca"><span class="brand-mark">MTV</span> Panel del taller</div>
+<nav class="admin-nav" aria-label="Secciones">
+<a href="index.html">Resumen</a>
+<a href="clientes.html">Clientes y facturas</a>
+<a href="sugerencias.html">Reseñas y sugerencias <span class="contador">1</span></a>
+<a href="configuracion.html" aria-current="page">Configuración</a>
+<a href="#" data-demo-off="1">Limpiar base de datos</a>
+<a href="../index.html" target="_blank" rel="noopener">Ver sitio</a>
+<a href="#" data-demo-off="1">Salir</a>
+</nav>
+</div>
+</header>
+<main class="admin-main">
+<h1>Configuración</h1>
+
+<section class="caja" id="general">
+<h2>Contacto y reseñas</h2>
+<form method="post" class="rejilla-form">
+<input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><input type="hidden" name="accion" value="general">
+<div class="campo"><label for="negocio">Nombre del negocio</label><input id="negocio" name="negocio" maxlength="80" required value="Mecánica Toapanta Vélez"></div>
+<div class="campo"><label for="whatsapp">WhatsApp de contacto</label><input id="whatsapp" name="whatsapp" inputmode="tel" maxlength="20" placeholder="0959133066" value="0990 000 000">
+<span class="ayuda">Es el botón verde "¿Dudas? Escríbenos por WhatsApp".</span></div>
+<div class="campo"><label for="google_review_url">Enlace para dejar reseña en Google</label><input id="google_review_url" name="google_review_url" type="url" maxlength="500" placeholder="https://g.page/r/…/review" value="https://www.google.com/maps">
+<span class="ayuda">En tu Perfil de Empresa de Google: "Pedir reseñas" → copiar enlace.</span></div>
+<div class="campo" style="justify-content:flex-end"><button class="boton boton-principal" type="submit">Guardar</button></div>
+</form>
+</section>
+
+<section class="caja" id="sucursales">
+<h2>Sucursales y Google Maps</h2>
+<p class="muted small">Aparecen al pie de la página, con el botón "Cómo llegar".</p>
+<div class="tabla-envoltura"><table>
+<thead><tr><th>Sucursal</th><th>Google Maps</th><th>Teléfono</th><th></th></tr></thead>
+<tbody>
+<tr>
+<td><strong>Matriz</strong><br><span class="small muted">Av. Principal y Calle Demo, Quito</span><br><span class="small muted">Lun a Vie 8:00–18:00 · Sáb 8:00–13:00</span></td>
+<td><a href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir mapa</a></td>
+<td>0990000000</td>
+<td class="acciones">
+<a class="boton boton-claro boton-chico" href="configuracion--editar-3.html#sucursales">Editar</a>
+<form method="post" onsubmit="return confirm('¿Eliminar la sucursal Matriz?');"><input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><input type="hidden" name="accion" value="sucursal_borrar"><input type="hidden" name="id" value="3"><button class="boton boton-claro boton-chico" type="submit">Eliminar</button></form>
+</td>
+</tr>
+<tr>
+<td><strong>Sucursal Norte</strong><br><span class="small muted">Av. Ejemplo N45-12, Quito</span><br><span class="small muted">Lun a Sáb 8:00–17:00</span></td>
+<td><a href="https://www.google.com/maps" target="_blank" rel="noopener">Abrir mapa</a></td>
+<td>0990000001</td>
+<td class="acciones">
+<form method="post"><input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><input type="hidden" name="accion" value="sucursal_subir"><input type="hidden" name="id" value="4"><button class="boton boton-claro boton-chico" type="submit" aria-label="Subir Sucursal Norte">Subir</button></form><a class="boton boton-claro boton-chico" href="configuracion--editar-4.html#sucursales">Editar</a>
+<form method="post" onsubmit="return confirm('¿Eliminar la sucursal Sucursal Norte?');"><input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><input type="hidden" name="accion" value="sucursal_borrar"><input type="hidden" name="id" value="4"><button class="boton boton-claro boton-chico" type="submit">Eliminar</button></form>
+</td>
+</tr>
+</tbody></table></div>
+<form method="post" class="caja" style="background:#fbfcfc">
+<input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><input type="hidden" name="accion" value="sucursal_guardar">
+<input type="hidden" name="id" value="3">
+<h3>Editar sucursal</h3>
+<div class="rejilla-form">
+<div class="campo"><label for="name3">Nombre</label><input id="name3" name="name" maxlength="120" required placeholder="Matriz" value="Matriz"></div>
+<div class="campo"><label for="address3">Dirección</label><input id="address3" name="address" maxlength="255" placeholder="Av. principal y calle 2" value="Av. Principal y Calle Demo, Quito"></div>
+<div class="campo"><label for="maps3">Enlace de Google Maps</label><input id="maps3" name="maps_url" type="url" maxlength="500" placeholder="https://maps.app.goo.gl/…" value="https://www.google.com/maps">
+<span class="ayuda">En Google Maps: busca el taller → Compartir → Copiar vínculo.</span></div>
+<div class="campo"><label for="phone3">Teléfono / WhatsApp (opcional)</label><input id="phone3" name="phone" inputmode="tel" maxlength="20" placeholder="0959133066" value="0990000000"></div>
+<div class="campo"><label for="hours3">Horario (opcional)</label><input id="hours3" name="hours" maxlength="160" placeholder="Lun a Sáb 08:00 – 18:00" value="Lun a Vie 8:00–18:00 · Sáb 8:00–13:00"></div>
+</div>
+<div class="acciones-fila">
+<button class="boton boton-principal" type="submit">Guardar cambios</button>
+<a class="boton boton-claro" href="configuracion.html#sucursales">Cancelar</a></div>
+</form>
+</section>
+
+<section class="caja" id="clave">
+<h2>Contraseña del panel</h2>
+<form method="post" class="rejilla-form">
+<input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><input type="hidden" name="accion" value="clave">
+<div class="campo"><label for="actual">Contraseña actual</label><input id="actual" name="actual" type="password" autocomplete="current-password" required></div>
+<div class="campo"><label for="nueva">Nueva contraseña</label><input id="nueva" name="nueva" type="password" autocomplete="new-password" minlength="10" required></div>
+<div class="campo"><label for="repetir">Repetir nueva</label><input id="repetir" name="repetir" type="password" autocomplete="new-password" minlength="10" required></div>
+<div class="campo" style="justify-content:flex-end"><button class="boton boton-principal" type="submit">Cambiar contraseña</button></div>
+</form>
+</section>
+</main>
+<style>#demo-bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:99999;display:flex;align-items:center;gap:4px;background:#111;color:#fff;font:500 13px -apple-system,Inter,system-ui,sans-serif;padding:5px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:calc(100vw - 24px);overflow-x:auto;white-space:nowrap}#demo-bar span{padding:0 10px;color:#ffb44d;font-weight:600}#demo-bar a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:999px}#demo-bar a:hover{background:#333}@media(max-width:520px){#demo-bar{font-size:12px;bottom:10px}#demo-bar span{padding:0 6px}#demo-bar a{padding:5px 8px}}#demo-toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);z-index:99999;background:#111;color:#fff;font:500 14px -apple-system,Inter,system-ui,sans-serif;padding:10px 16px;border-radius:12px;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw;text-align:center}</style>
+<div id="demo-bar"><span>Demo · datos ficticios</span><a href="../index.html">Inicio</a><a href="../history.html">Portal del cliente</a><a href="../admin/index.html">Panel del taller</a><a href="https://github.com/AnderssonT-var/mecanica-toapanta-facturas" target="_blank" rel="noopener">Código</a></div><div id="demo-toast"></div>
+<script>(function(){var t=document.getElementById('demo-toast'),h;function say(m){t.textContent=m;t.style.opacity=1;clearTimeout(h);h=setTimeout(function(){t.style.opacity=0},2600)}
+document.addEventListener('submit',function(e){e.preventDefault();say('Es una demo: este formulario no envía datos.')},true);
+document.addEventListener('click',function(e){var a=e.target.closest('[data-demo-off]');if(a){e.preventDefault();say('Esta parte no está incluida en la demo.')}},true);})();</script>
+</body>
+</html>

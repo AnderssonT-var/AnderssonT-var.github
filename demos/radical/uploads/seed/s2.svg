@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs><radialGradient id="g" cx="20%" cy="80%" r="75%"><stop offset="0" stop-color="#ff7a2e" stop-opacity=".55"/><stop offset=".55" stop-color="#151518"/><stop offset="1" stop-color="#070708"/></radialGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="3" height="28" fill="#fff" opacity=".035"/></pattern></defs>
+  <rect width="1080" height="1920" fill="url(#g)"/><rect width="1080" height="1920" fill="url(#p)"/>
+  <path transform="translate(410,606.4) scale(1.1)" d="M130 0 C150 70 250 100 230 210 C215 300 45 310 30 210 C20 150 70 130 80 80 C100 110 120 90 130 0Z" fill="#ff7a2e"/><path transform="translate(470,746.4) scale(.6)" d="M130 0 C150 70 250 100 230 210 C215 300 45 310 30 210 C20 150 70 130 80 80 C100 110 120 90 130 0Z" fill="#fff" opacity=".9"/><text x="64" y="1678" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="84" fill="#fff" letter-spacing="-2">WOD</text><text x="64" y="1770" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="84" fill="#fff" letter-spacing="-2">COMPLETADO</text>
+  <text x="64" y="1850" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="34" fill="#ff7a2e" letter-spacing="6">MARÍA</text>
+  <text x="1016" y="84" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="38" fill="#fff" opacity=".85" letter-spacing="8">RADICAL</text></svg>

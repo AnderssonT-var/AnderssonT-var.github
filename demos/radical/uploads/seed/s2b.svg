@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="1080" height="1920">
+  <defs><radialGradient id="g" cx="55%" cy="25%" r="75%"><stop offset="0" stop-color="#ff4500" stop-opacity=".55"/><stop offset=".55" stop-color="#151518"/><stop offset="1" stop-color="#070708"/></radialGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="3" height="28" fill="#fff" opacity=".035"/></pattern></defs>
+  <rect width="1080" height="1920" fill="url(#g)"/><rect width="1080" height="1920" fill="url(#p)"/>
+  <g transform="translate(540,806.4)" fill="none" stroke="#ff4500" stroke-width="14">
+    <circle r="190" opacity=".9"/><circle r="130" stroke="#2f2f35"/><circle r="70" stroke="#ff4500" opacity=".5"/></g><text x="64" y="1678" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="84" fill="#fff" letter-spacing="-2">MOBILITY</text><text x="64" y="1770" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="84" fill="#fff" letter-spacing="-2">TIME</text>
+  <text x="64" y="1850" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="34" fill="#ff4500" letter-spacing="6">MARÍA</text>
+  <text x="1016" y="84" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-weight="900" font-size="38" fill="#fff" opacity=".85" letter-spacing="8">RADICAL</text></svg>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sugerencias | Mecánica Toapanta Vélez</title>
+<meta name="description" content="Mira, descarga o comparte tu factura de forma segura.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mecánica Toapanta Vélez">
+<meta property="og:title" content="Tu factura de Mecánica Toapanta Vélez">
+<meta property="og:description" content="Mírala, descárgala o compártela de forma segura.">
+<meta property="og:image" content="https://mecanicatoapantavelez.com/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#0d5c63">
+<link rel="icon" href="assets/icono.png">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<main class="shell">
+<header class="brand">
+<div class="brand-mark" aria-hidden="true">MTV</div>
+<div><div class="brand-name">Mecánica Toapanta Vélez</div><div class="muted small">Tu opinión nos ayuda a mejorar</div></div>
+</header>
+<section class="panel">
+<h1>Reseñas y sugerencias</h1>
+<p class="texto">¿Cómo te fue con nosotros? ¿Qué podemos mejorar? Te leemos.</p>
+<form method="post" action="sugerencias.html" class="formulario" novalidate>
+<input type="hidden" name="csrf" value="2c3aad901003f550a69fabd76919d26360616cbb41cbae150c633bc770b543e5"><div class="campo-oculto" aria-hidden="true"><label for="sitio_web">No llenar</label><input id="sitio_web" name="sitio_web" tabindex="-1" autocomplete="off"></div>
+<label for="nombre">Nombre</label>
+<input id="nombre" name="nombre" maxlength="120" autocomplete="name" required value="">
+<label for="telefono">Celular</label>
+<input id="telefono" name="telefono" inputmode="tel" maxlength="20" autocomplete="tel" placeholder="0959133066" required value="0990 000 101">
+<label for="mensaje">Tu reseña o sugerencia</label>
+<textarea id="mensaje" name="mensaje" rows="5" maxlength="2000" required></textarea>
+<button type="submit" class="boton boton-principal boton-grande">Enviar</button>
+</form>
+</section>
+<p class="centrado"><a class="enlace-suave" href="history.html">Volver</a></p><section class="sucursales" aria-label="Dónde estamos">
+<h2 class="titulo-seccion">Nuestras sucursales</h2>
+<article class="sucursal">
+<div class="sucursal-datos">
+<strong>Matriz</strong>
+<span>Av. Principal y Calle Demo, Quito</span><span class="muted small">Lun a Vie 8:00–18:00 · Sáb 8:00–13:00</span></div>
+<div class="sucursal-acciones">
+<a class="boton boton-claro" href="https://www.google.com/maps" target="_blank" rel="noopener"><svg class="icono" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Cómo llegar</a><a class="boton boton-claro" href="https://wa.me/593990000000" target="_blank" rel="noopener"><svg class="icono" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>0990 000 000</a></div>
+</article>
+<article class="sucursal">
+<div class="sucursal-datos">
+<strong>Sucursal Norte</strong>
+<span>Av. Ejemplo N45-12, Quito</span><span class="muted small">Lun a Sáb 8:00–17:00</span></div>
+<div class="sucursal-acciones">
+<a class="boton boton-claro" href="https://www.google.com/maps" target="_blank" rel="noopener"><svg class="icono" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Cómo llegar</a><a class="boton boton-claro" href="https://wa.me/593990000001" target="_blank" rel="noopener"><svg class="icono" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>0990 000 001</a></div>
+</article>
+</section>
+<footer class="pie">
+<a href="sugerencias.html"><svg class="icono" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg> Déjanos una sugerencia</a>
+<span>Por privacidad, cada factura se retira 30 días después de emitida.</span>
+</footer>
+</main>
+<style>#demo-bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:99999;display:flex;align-items:center;gap:4px;background:#111;color:#fff;font:500 13px -apple-system,Inter,system-ui,sans-serif;padding:5px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:calc(100vw - 24px);overflow-x:auto;white-space:nowrap}#demo-bar span{padding:0 10px;color:#ffb44d;font-weight:600}#demo-bar a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:999px}#demo-bar a:hover{background:#333}@media(max-width:520px){#demo-bar{font-size:12px;bottom:10px}#demo-bar span{padding:0 6px}#demo-bar a{padding:5px 8px}}#demo-toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);z-index:99999;background:#111;color:#fff;font:500 14px -apple-system,Inter,system-ui,sans-serif;padding:10px 16px;border-radius:12px;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw;text-align:center}</style>
+<div id="demo-bar"><span>Demo · datos ficticios</span><a href="./index.html">Inicio</a><a href="./history.html">Portal del cliente</a><a href="./admin/index.html">Panel del taller</a><a href="https://github.com/AnderssonT-var/mecanica-toapanta-facturas" target="_blank" rel="noopener">Código</a></div><div id="demo-toast"></div>
+<script>(function(){var t=document.getElementById('demo-toast'),h;function say(m){t.textContent=m;t.style.opacity=1;clearTimeout(h);h=setTimeout(function(){t.style.opacity=0},2600)}
+document.addEventListener('submit',function(e){e.preventDefault();say('Es una demo: este formulario no envía datos.')},true);
+document.addEventListener('click',function(e){var a=e.target.closest('[data-demo-off]');if(a){e.preventDefault();say('Esta parte no está incluida en la demo.')}},true);})();</script>
+</body>
+</html>

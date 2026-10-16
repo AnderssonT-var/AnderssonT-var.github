@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>try{var r=sessionStorage.getItem('gestor-demo-rol');if(r)location.replace('../vista/'+r+'.html')}catch(e){}</script><script>window.__LOGIN={"admin": " [{\"0\":\"1\",\"usu_id\":\"1\",\"1\":\"admin\",\"usu_nombre\":\"admin\",\"2\":\"\",\"usu_contrasena\":\"\",\"3\":\"ADMINISTRAOR\",\"rol_nombre\":\"ADMINISTRAOR\",\"4\":\"ACTIVO\",\"usu_estatus\":\"ACTIVO\"}]", "docente": " [{\"0\":\"1\",\"iddocente\":\"1\",\"1\":\"LUC\\u00cdA\",\"nombre\":\"LUC\\u00cdA\",\"2\":\"\",\"contra\":\"\",\"3\":\"DOCENTE\",\"roldocente\":\"DOCENTE\",\"4\":\"ACTIVO\",\"status\":\"ACTIVO\"}]", "alumno": " [{\"0\":\"19\",\"idalumno\":\"19\",\"1\":\"ANA SOF\\u00cdA\",\"alumnonombre\":\"ANA SOF\\u00cdA\",\"2\":\"4\",\"grado\":\"4\",\"3\":\"\",\"contrasena\":\"\",\"4\":\"ALUMNO\",\"rolalumno\":\"ALUMNO\",\"5\":\"ACTIVO\",\"stadoalumno\":\"ACTIVO\"}]"};</script><script src="../demo/gestor-demo.js"></script><style>#demo-bar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:99999;display:flex;align-items:center;gap:4px;background:#111;color:#fff;font:500 13px -apple-system,Inter,system-ui,sans-serif;padding:5px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:calc(100vw - 24px);overflow-x:auto;white-space:nowrap}#demo-bar span{padding:0 10px;color:#05ccc4;font-weight:600}#demo-bar a{color:#fff;text-decoration:none;padding:6px 12px;border-radius:999px}#demo-bar a:hover{background:#333}#demo-bar a.on{background:#05ccc4;color:#062b2a}@media(max-width:520px){#demo-bar{font-size:12px;bottom:10px}#demo-bar span{padding:0 6px}#demo-bar a{padding:5px 8px}}#demo-toast{position:fixed;left:50%;bottom:70px;transform:translateX(-50%);z-index:99999;background:#111;color:#fff;font:500 14px -apple-system,Inter,system-ui,sans-serif;padding:10px 16px;border-radius:12px;opacity:0;transition:opacity .25s;pointer-events:none;max-width:90vw;text-align:center}</style>
+    <meta charset="utf-8">
+    <title>Gestor Académico · Demo</title>
+
+    <link rel="stylesheet" type="text/css" href="css/plantilla.css">
+</style>
+</head>
+<body>
+    
+<div class="contenido">
+     <center>
+      <fieldset>
+        <div class="user-wrapper">
+           <center>
+                    <img src="vendor/images.png" width="80px" height="80px" alt=""></center> 
+                    <div><br>
+    
+             <legend>Iniciar Sesi&oacute;n</legend>
+             <p>sistema de gesti&oacute;n académico</p><p style="font-size:13px;color:#555;margin:8px 0 0">Demo: <b>admin</b>, <b>LUCÍA</b> (docente) o <b>ANA SOFÍA</b> (alumno) · contraseña <b>demo123</b></p>
+         
+                                    <div class="loader" hidden>
+                                    <img src="vendor/abc.gif" alt="" style="width: 50px;height:50px;">
+                                    </div>
+                                    <div id="incorecto" class="alert alert-danger sm" role="alert" hidden>
+                                    contraseña/usurio no coisiden!
+                                     </div>
+                                    <div id="notif" class="alert alert-danger " role="alert" hidden>
+                                    su cuenta esta inactivo!
+                                     </div>
+
+                                    <div id="llenecamp" class="alert alert-danger" role="alert" hidden>
+                                      Llene los campos vacios!
+                                    </div>
+
+                                     <div id="conteoincorecto" class="alert alert-info" role="alert" hidden>
+                                      Contantarse con el administrador!
+                                    </div>
+
+            <input type="text" name="email" placeholder="Usuario" autofocus id="txt_usu" value="admin" autocomplete="null">
+                
+            <input type="password" name="contra" placeholder="password" id="txt_con" value="demo123">
+
+
+            <select class="js-example-basic-single" name="state" id="cbm_rol" >
+
+                        <option value="" style="background-color:#81DAF5;">
+                            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seleccione</b>
+                        </option>
+                        <option value="ADMINISTRADOR" selected>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADMINISTRADOR</option>
+                        <option value="DOCENTE">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOCENTE</option>
+                         <option value="ALUMNO">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ALUMNO</option>
+                    </select>
+              <br>
+              <input type="submit" name="login"  id="idbotonloging" value="INGRESAR" onclick="VerificarUsuario()" >
+
+
+           
+      </fieldset>
+      </center>
+</div> 
+
+ 
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="../Plantilla/plugins/select2/select2.min.js"></script>
+<!--=================================================================-->
+	<script src="../js/usuario.js"></script>
+
+
+
+   <script>
+txt_usu.focus();
+// $('.js-example-basic-single').select2();
+</script>
+
+</body>
+
+</html>

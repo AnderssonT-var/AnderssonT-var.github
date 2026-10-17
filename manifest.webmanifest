@@ -1,0 +1,16 @@
+{
+  "name": "Andersson Toapanta",
+  "short_name": "Andersson",
+  "description": "Portafolio de Andersson Toapanta: software, robótica, electrónica, web y hacking ético.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "lang": "es",
+  "icons": [
+    {"src": "img/marca/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "img/marca/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "img/marca/favicon.svg", "sizes": "any", "type": "image/svg+xml"}
+  ]
+}

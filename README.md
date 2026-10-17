@@ -1,9 +1,17 @@
-# AnderssonT-var.github.io
+# Andersson Toapanta · Portafolio
 
 Página de presentación de **Andersson Toapanta**: desarrollo de software, robótica, electrónica, desarrollo web y hacking ético.
 
-- `index.html` — página principal (HTML + CSS + JS sin dependencias, un solo archivo).
-- `img/certificados/` — certificados (imágenes y PDF originales).
-- `img/sp_photo.jpg` — foto de perfil.
+Sitio: https://anderssont-var.github.io/AnderssonT-var.github/
 
-Secciones: inicio con osciloscopio interactivo, sobre mí, áreas, proyectos (red social, tienda en línea, automatizador de facturas, gestor académico y más, cada uno con demo en `demos/`), stack, formación, certificados con visor y contacto.
+## Contenido
+- `index.html`: página principal (HTML, CSS y JS sin dependencias).
+- `img/marca/`: logo (SVG), favicon, íconos para celular e imagen para compartir en redes.
+- `img/certificados/`: certificados en imagen y PDF.
+- `img/proyectos/` y `demos/`: capturas y demos interactivas de cada proyecto.
+- `manifest.webmanifest`: permite instalar la página como app.
+- `404.html`: página de error con el estilo del sitio.
+- `resume.html`, `portfolio.html`, `contact.html`: redirigen a la sección equivalente de la página principal.
+
+## Secciones
+Inicio, sobre mí, servicios con proceso de trabajo, proyectos con demos, planes, formación, herramientas, certificados y contacto con formulario que abre WhatsApp o el correo con el mensaje listo.

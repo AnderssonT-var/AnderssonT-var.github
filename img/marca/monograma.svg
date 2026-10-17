@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 88 380 316" role="img" aria-label="AT">
+  <g fill="none" stroke="currentColor" stroke-width="44" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 372 L188 118 L276 372"/><path d="M134 282 H242"/><path d="M188 118 H418"/><path d="M380 118 V340"/>
+  </g>
+  <g fill="currentColor"><circle cx="100" cy="372" r="30"/><circle cx="276" cy="372" r="30"/><circle cx="380" cy="372" r="30"/></g>
+</svg>

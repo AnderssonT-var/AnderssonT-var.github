@@ -5,7 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Andersson Toapanta</title>
 <meta name="description" content="Andersson Toapanta, desarrollador full-stack: desarrollo de software, robótica, electrónica, desarrollo web y hacking ético. Quito, Ecuador.">
-<link rel="icon" href="favicon.ico">
+<link rel="icon" href="img/marca/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/marca/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<meta name="author" content="Andersson Toapanta">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Andersson Toapanta · Desarrollador full-stack">
+<meta property="og:description" content="Software, robótica, electrónica, desarrollo web y hacking ético. Proyectos con demos que puedes probar.">
+<meta property="og:image" content="https://anderssont-var.github.io/AnderssonT-var.github/img/marca/og.jpg">
+<meta property="og:url" content="https://anderssont-var.github.io/AnderssonT-var.github/">
+<meta property="og:locale" content="es_EC">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Andersson Toapanta","jobTitle":"Desarrollador full-stack","address":{"@type":"PostalAddress","addressLocality":"Quito","addressCountry":"EC"},"email":"mailto:anderssontoapanta@gmail.com","url":"https://anderssont-var.github.io/AnderssonT-var.github/","sameAs":["https://github.com/AnderssonT-var"],"memberOf":{"@type":"Organization","name":"IEEE Robotics and Automation Society"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
@@ -101,6 +114,67 @@ p{margin:0}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:clamp(72px,10vw,120px);text-align:center}
 .stats .n{font-size:clamp(40px,6vw,72px);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
 .stats .k{margin-top:10px;font-size:15px;color:var(--muted-dark);letter-spacing:-.01em}
+
+/* LOGO */
+.brand{display:inline-flex;align-items:center;gap:9px;color:var(--ink)}
+.brand:hover{text-decoration:none}
+.brand .bm{width:26px;height:26px;border-radius:7px;flex:none;box-shadow:0 2px 6px -2px rgba(123,92,255,.6);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.brand:hover .bm{transform:rotate(-8deg) scale(1.06)}
+.subnav .brand b{font-size:21px}
+
+/* PROCESO */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:clamp(48px,7vw,72px);counter-reset:st}
+.step{position:relative;padding-top:28px;border-top:2px solid var(--line);min-width:0;transition:border-color .4s}
+.step:hover{border-color:var(--ink)}
+.step .no{font-size:14px;font-weight:600;color:var(--muted);font-variant-numeric:tabular-nums}
+.step h3{font-size:24px;font-weight:700;letter-spacing:-.03em;margin-top:6px}
+.step p{margin-top:10px;color:var(--muted);font-size:16px}
+.step .dot{position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--white);border:2px solid var(--line);transition:background .4s,border-color .4s}
+.step.on .dot{background:var(--blue);border-color:var(--blue)}
+.step.on{border-color:var(--blue)}
+
+/* PLANES */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(48px,7vw,72px);align-items:stretch}
+.plan{background:var(--white);border-radius:28px;padding:clamp(28px,3vw,36px);display:flex;flex-direction:column;min-width:0;text-align:left;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.plan:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(0,0,0,.3)}
+.plan .lab{font-size:14px;font-weight:600;color:var(--muted)}
+.plan h3{font-size:30px;font-weight:700;letter-spacing:-.035em;margin-top:6px}
+.plan .for{margin-top:10px;color:var(--muted);font-size:16px}
+.plan .price{margin-top:22px;font-size:15px;color:var(--muted)}
+.plan .price b{display:block;font-size:22px;color:var(--ink);font-weight:700;letter-spacing:-.02em}
+.plan ul{list-style:none;margin:22px 0 0;padding:22px 0 0;border-top:1px solid #e8e8ed;display:grid;gap:10px;font-size:15px}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li svg{flex:none;width:18px;height:18px;margin-top:2px;color:#30d158}
+.plan .pill{margin-top:28px;align-self:stretch}
+.plan.hot{background:var(--black);color:var(--on-black);position:relative}
+.plan.hot .lab,.plan.hot .for,.plan.hot .price{color:var(--muted-dark)}
+.plan.hot .price b{color:var(--on-black)}
+.plan.hot ul{border-color:#2c2c2e}
+.plan.hot .tag{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:980px;background:var(--grad);color:#fff}
+.plan .pill.ghost{background:transparent}
+.plans-note{margin-top:24px;text-align:center;font-size:14px;color:var(--muted)}
+
+/* FORMULARIO */
+.form{margin:clamp(40px,6vw,64px) auto 0;max-width:720px;text-align:left;background:#1d1d1f;border-radius:28px;padding:clamp(24px,4vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form .full{grid-column:1/-1}
+.form label{display:grid;gap:8px;font-size:13px;font-weight:600;color:var(--muted-dark);letter-spacing:-.01em;min-width:0}
+.form input,.form select,.form textarea{width:100%;font:400 17px/1.4 var(--f);letter-spacing:-.02em;color:var(--on-black);background:#2c2c2e;border:1px solid transparent;border-radius:12px;padding:13px 14px;outline:none;transition:border-color .2s,background .2s;color-scheme:dark}
+.form textarea{min-height:130px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--link-dark);background:#333336}
+.form .err{border-color:#ff453a}
+.form .acts{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.form .acts .pill{border:0;cursor:pointer;font-family:var(--f)}
+.form .acts .pill.wa{background:#30d158;border-color:#30d158;color:#000}
+.form .acts .pill.wa:hover{background:#3ae065}
+.form .hint{font-size:13px;color:var(--muted-dark)}
+.form .hint[data-s="ok"]{color:#30d158}
+.form .hint[data-s="err"]{color:#ff6961}
+
+/* VOLVER ARRIBA */
+.top-btn{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:70;width:44px;height:44px;border-radius:50%;border:0;background:rgba(29,29,31,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .3s,transform .3s}
+.top-btn.show{opacity:1;transform:none;pointer-events:auto}
+.top-btn svg{width:18px;height:18px}
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--grad);z-index:80}
 
 /* SECCIONES */
 .sec{padding-block:clamp(80px,12vw,140px)}
@@ -219,7 +293,7 @@ p{margin:0}
 /* CARRUSEL DE FORMACIÓN */
 .rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(380px,82%);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:clamp(40px,6vw,64px) max(var(--gutter),calc((100vw - 1200px)/2 + var(--gutter))) 24px;scrollbar-width:none;scroll-padding-inline:max(var(--gutter),calc((100vw - 1200px)/2 + var(--gutter)))}
 .rail::-webkit-scrollbar{display:none}
-.ed{scroll-snap-align:start;background:var(--white);border-radius:28px;padding:32px;min-height:400px;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.ed{scroll-snap-align:start;background:var(--gray);border-radius:28px;padding:32px;min-height:400px;display:flex;flex-direction:column;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
 .ed:hover{transform:scale(1.015)}
 .ed .yr{font-size:14px;font-weight:600;color:var(--muted)}
 .ed h3{font-size:28px;font-weight:700;letter-spacing:-.035em;margin-top:8px}
@@ -245,11 +319,11 @@ p{margin:0}
 .seg button{border:0;background:transparent;padding:8px 18px;border-radius:980px;font:500 14px var(--f);letter-spacing:-.01em;color:var(--ink);cursor:pointer;transition:background .25s,box-shadow .25s}
 .seg button.on{background:var(--white);box-shadow:0 1px 4px rgba(0,0,0,.12)}
 .certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin-top:32px}
-.cert{display:flex;flex-direction:column;text-align:left;padding:0;border:0;font:inherit;color:inherit;background:var(--white);border-radius:24px;overflow:hidden;cursor:pointer;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.cert{display:flex;flex-direction:column;text-align:left;padding:0;border:0;font:inherit;color:inherit;background:var(--gray);border-radius:24px;overflow:hidden;cursor:pointer;transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
 .cert:hover{transform:scale(1.02);box-shadow:0 24px 50px -30px rgba(0,0,0,.35)}
-.cert .th{aspect-ratio:16/10;background:#fff;overflow:hidden;padding:14px 14px 0}
+.cert .th{aspect-ratio:16/10;background:var(--gray);overflow:hidden;padding:14px 14px 0}
 .cert .th img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:10px 10px 0 0;box-shadow:0 0 0 1px #e8e8ed}
-.cert .info{padding:18px 22px 22px;display:grid;gap:3px;border-top:1px solid #f0f0f2}
+.cert .info{padding:18px 22px 22px;display:grid;gap:3px}
 .cert .is{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .cert h3{font-size:19px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
 .cert time{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
@@ -267,9 +341,15 @@ p{margin:0}
 .cc button{border:0;background:none;padding:0;font:inherit;color:var(--link-dark);cursor:pointer}
 .cc button:hover{text-decoration:underline}
 
-footer{background:var(--gray);padding-block:28px;font-size:12px;color:var(--muted);letter-spacing:-.01em}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:18px}
+footer{background:var(--gray);padding-block:48px 28px;font-size:12px;color:var(--muted);letter-spacing:-.01em}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(3,minmax(0,1fr));gap:28px;padding-bottom:28px}
+.fgrid .brand{font-size:15px;font-weight:600}
+.fgrid .brand .bm{width:32px;height:32px;border-radius:9px}
+.fgrid p{margin-top:12px;max-width:30ch;line-height:1.5}
+.fgrid h4{margin:0 0 10px;font-size:12px;font-weight:600;color:var(--ink)}
+.fgrid ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 footer a{color:#424245}
+footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:18px}
 
 /* LIGHTBOX */
 .overlay{position:fixed;inset:0;z-index:90;display:grid;place-items:center;background:rgba(0,0,0,.55);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);padding:calc(env(safe-area-inset-top,0px) + 16px) 16px calc(env(safe-area-inset-bottom,0px) + 16px);opacity:0;pointer-events:none;transition:opacity .3s}
@@ -303,6 +383,10 @@ footer a{color:#424245}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:48px}
   .stack{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
   .cgrid{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fgrid>div:first-child{grid-column:1/-1}
   .more-grid{grid-template-columns:1fr}
   .u-shop{grid-template-columns:repeat(3,1fr)}
   .u-shop .it:nth-child(4){display:none}
@@ -330,6 +414,9 @@ footer a{color:#424245}
   .u-inv .q .row:nth-child(n+3){display:none}
   .u-shop .it span{display:none}
   .ed{min-height:340px}
+  .steps{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .form .acts .pill{flex:1 1 100%;white-space:nowrap}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
@@ -343,11 +430,12 @@ footer a{color:#424245}
 
 <header class="gnav" id="gnav">
   <div class="wrap">
-    <a class="logo" href="#inicio">Andersson Toapanta</a>
+    <a class="logo brand" href="#inicio" aria-label="Andersson Toapanta, inicio"><svg class="bm" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="LG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2997ff"/><stop offset=".55" stop-color="#7b5cff"/><stop offset="1" stop-color="#ff6a3d"/></linearGradient></defs><rect width="512" height="512" rx="116" fill="url(#LG)"/><g fill="none" stroke="#fff" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"><path d="M100 372 L188 118 L276 372M134 282 H242M188 118 H418M380 118 V340"/></g><g fill="#fff"><circle cx="100" cy="372" r="34"/><circle cx="276" cy="372" r="34"/><circle cx="380" cy="372" r="34"/></g></svg>Andersson Toapanta</a>
     <nav aria-label="Principal">
       <ul id="menu">
         <li><a href="#sobre-mi">Sobre mí</a></li>
         <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#planes">Planes</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#formacion">Formación</a></li>
         <li><a href="#certificados">Certificados</a></li>
@@ -360,7 +448,7 @@ footer a{color:#424245}
 <div class="subnav">
   <div class="wrap">
     <b>Portafolio</b>
-    <div class="r"><a class="t" href="#proyectos">Proyectos</a><a class="t" href="#certificados">Certificados</a><a class="pill sm" href="#contacto">Contactar</a></div>
+    <div class="r"><a class="t" href="#proyectos">Proyectos</a><a class="t" href="#planes">Planes</a><a class="t" href="#certificados">Certificados</a><a class="pill sm" href="#contacto">Contactar</a></div>
   </div>
 </div>
 
@@ -379,7 +467,7 @@ footer a{color:#424245}
           <a class="more" href="#contacto">Hablemos</a>
         </div>
         <p class="where"><i></i>Quito, Ecuador · disponible para proyectos</p>
-        <p class="ieee"><b>IEEE</b>Integrante de IEEE Robótica en la UDLA desde 2021</p>
+        <p class="ieee"><b>IEEE</b>Integrante de IEEE Robotics and Automation Society desde 2021</p>
       </div>
     </div>
   </div>
@@ -397,10 +485,10 @@ footer a{color:#424245}
   <div class="wrap">
     <p class="big" id="manifesto">Soy un apasionado por la tecnología. La robótica, la programación, la electrónica y el hacking ético son mi forma de entender el mundo y de construir lo que imagino.</p>
     <div class="stats">
-      <div><div class="n"><span class="count" data-to="7">7</span></div><div class="k">proyectos publicados</div></div>
+      <div><div class="n"><span class="count" data-to="8">8</span></div><div class="k">proyectos con demo</div></div>
       <div><div class="n"><span class="count" data-to="7">7</span></div><div class="k">certificaciones</div></div>
-      <div><div class="n"><span class="count" data-to="5">5</span></div><div class="k">áreas de especialidad</div></div>
-      <div><div class="n"><span class="count" data-to="2020">2020</span></div><div class="k">inicio en el desarrollo</div></div>
+      <div><div class="n"><span class="count" data-to="1">1</span></div><div class="k">sistema en producción</div></div>
+      <div><div class="n"><span class="count" id="yrsN" data-to="6">6</span></div><div class="k">años programando</div></div>
     </div>
   </div>
 </section>
@@ -453,6 +541,12 @@ footer a{color:#424245}
         <p>Entender cómo se ataca un sistema para protegerlo: redes, Linux y pentesting.</p>
         <div class="tags"><span>Redes</span><span>Linux</span><span>Pentesting</span></div>
       </article>
+    </div>
+    <div class="steps" id="steps">
+      <div class="step reveal"><span class="dot"></span><span class="no">Paso 1</span><h3>Planificación</h3><p>Entiendo qué necesitas y elijo la mejor opción para tu presupuesto.</p></div>
+      <div class="step reveal" style="--d:.06s"><span class="dot"></span><span class="no">Paso 2</span><h3>Diseño</h3><p>Una interfaz simple, actual e intuitiva antes de escribir código.</p></div>
+      <div class="step reveal" style="--d:.12s"><span class="dot"></span><span class="no">Paso 3</span><h3>Desarrollo</h3><p>Construyo y te muestro avances para ajustar a tiempo.</p></div>
+      <div class="step reveal" style="--d:.18s"><span class="dot"></span><span class="no">Paso 4</span><h3>Pruebas y entrega</h3><p>Todo probado, publicado y con soporte después de la entrega.</p></div>
     </div>
   </div>
 </section>
@@ -575,8 +669,22 @@ footer a{color:#424245}
 </section>
 </div>
 
+<!-- PLANES -->
+<section class="sec gray center" id="planes">
+  <div class="wide">
+    <h2 class="sec-title reveal">Planes.</h2>
+    <p class="sec-sub reveal">Elige por dónde empezar. Cada proyecto se cotiza según lo que necesitas.</p>
+    <div class="plans">
+      <article class="plan  reveal"><span class="lab">Para empezar</span><h3>Sitio web</h3><p class="for">Negocios y profesionales que necesitan presencia en internet.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Diseño a medida y adaptable al celular</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Hasta 5 secciones</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Botón de WhatsApp y formulario</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Dominio y publicación</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Optimizado para Google</li></ul><a class="pill ghost" href="#contacto" data-plan="Sitio web">Cotizar sitio web</a></article>
+      <article class="plan hot reveal"><span class="tag">Recomendado</span><span class="lab">El más completo</span><h3>Sistema a medida</h3><p class="for">Empresas que quieren automatizar su trabajo diario.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Panel de administración</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Usuarios, roles y login seguro</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Base de datos y reportes</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Automatizaciones (correo, WhatsApp, PDF)</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Capacitación y soporte</li></ul><a class="pill" href="#contacto" data-plan="Sistema a medida">Cotizar sistema</a></article>
+      <article class="plan  reveal"><span class="lab">Hardware</span><h3>Prototipo electrónico</h3><p class="for">Ideas de robótica, IoT o domótica que quieres ver funcionando.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Diseño del circuito</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Programación del microcontrolador</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Piezas impresas en 3D</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Conexión con app o web</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Pruebas y documentación</li></ul><a class="pill ghost" href="#contacto" data-plan="Prototipo electrónico">Cotizar prototipo</a></article>
+    </div>
+    <p class="plans-note reveal">La primera reunión y la cotización no tienen costo.</p>
+  </div>
+</section>
+
 <!-- FORMACIÓN -->
-<section class="sec gray" id="formacion" style="padding-bottom:clamp(64px,9vw,104px)">
+<section class="sec" id="formacion" style="padding-bottom:clamp(64px,9vw,104px)">
   <div class="wide">
     <h2 class="sec-title reveal">Formación.</h2>
     <p class="sec-sub reveal">Estudios, cursos y aprendizaje constante.</p>
@@ -585,7 +693,7 @@ footer a{color:#424245}
     <article class="ed blk"><span class="yr">2020</span><h3>Tecnólogo en Desarrollo de Software</h3><p class="org">Instituto Tecnológico Universitario ISMAC</p><p>Programación, bases de datos, desarrollo web y aplicaciones móviles.</p><div class="mark grad">ISMAC</div></article>
     <article class="ed"><span class="yr">2021 – 2022</span><h3>Redes, IT Essentials y Linux</h3><p class="org">Cisco Networking Academy</p><p>Get Connected, IT Essentials, NDG Linux e Introducción a Redes (CCNA v7).</p><div class="mark">Cisco</div></article>
     <article class="ed"><span class="yr">2022</span><h3>Diseño de piezas e impresión 3D</h3><p class="org">Universidad de las Américas</p><p>Modelado en Autodesk Inventor y fabricación con impresión 3D.</p><div class="mark">UDLA</div></article>
-    <article class="ed blk"><span class="yr">2021 – actualidad</span><h3>Integrante de IEEE Robótica</h3><p class="org">Robotics and Automation Society · UDLA</p><p>Miembro del capítulo de robótica de la IEEE en la Universidad de las Américas: proyectos, talleres y eventos de robótica y automatización.</p><div class="mark grad">IEEE</div></article>
+    <article class="ed blk"><span class="yr">2021 – actualidad</span><h3>Integrante de IEEE</h3><p class="org">IEEE Robotics and Automation Society</p><p>Miembro de la sociedad de robótica y automatización de la IEEE: proyectos, talleres y eventos con la comunidad.</p><div class="mark grad">IEEE</div></article>
     <article class="ed"><span class="yr">2022</span><h3>Prótesis biomecánicas 3D</h3><p class="org">Prosthetics for Humanity</p><p>Electrónica y robótica aplicadas a la salud.</p><div class="mark">P4H</div></article>
     <article class="ed blk"><span class="yr">Continuo</span><h3>Ciberseguridad y hacking ético</h3><p class="org">Autoformación</p><p>Seguridad en redes y Linux, pruebas de penetración y hardening.</p><div class="mark grad">Sec</div></article>
   </div>
@@ -596,7 +704,7 @@ footer a{color:#424245}
 </section>
 
 <!-- STACK -->
-<section class="sec" id="stack">
+<section class="sec gray" id="stack">
   <div class="wrap">
     <h2 class="sec-title reveal">Herramientas.</h2>
     <div class="stack">
@@ -609,7 +717,7 @@ footer a{color:#424245}
 </section>
 
 <!-- CERTIFICADOS -->
-<section class="sec gray center" id="certificados">
+<section class="sec center" id="certificados">
   <div class="wide">
     <h2 class="sec-title reveal">Certificaciones.</h2>
     <p class="sec-sub reveal">Toca una para verla completa o abrir el PDF original.</p>
@@ -633,12 +741,32 @@ footer a{color:#424245}
       <div class="cc reveal" style="--d:.08s"><small>WhatsApp</small><span class="v">+593 959 133 066</span><div class="row"><a href="https://wa.me/593959133066" target="_blank" rel="noopener">Abrir chat</a><button type="button" data-copy="+593959133066">Copiar</button></div></div>
       <div class="cc reveal" style="--d:.16s"><small>GitHub · Quito, Ecuador</small><span class="v">AnderssonT-var</span><div class="row"><a href="https://github.com/AnderssonT-var" target="_blank" rel="noopener">Ver perfil</a></div></div>
     </div>
+    <form class="form reveal" id="cform" novalidate>
+      <label>Tu nombre<input id="fName" name="nombre" autocomplete="name" placeholder="Nombre y apellido" required></label>
+      <label>Tu correo<input id="fMail" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"></label>
+      <label class="full">¿Qué necesitas?<select id="fPlan" name="plan">
+        <option>Sitio web</option><option>Sistema a medida</option><option>Prototipo electrónico</option><option>Otro proyecto</option></select></label>
+      <label class="full">Cuéntame tu idea<textarea id="fMsg" name="mensaje" placeholder="Qué quieres construir, para cuándo y cualquier detalle útil." required></textarea></label>
+      <div class="full acts">
+        <button class="pill wa" type="submit" data-via="wa">Enviar por WhatsApp</button>
+        <button class="pill ghost" type="submit" data-via="mail">Enviar por correo</button>
+      </div>
+      <p class="full hint" id="fHint" aria-live="polite">Se abrirá WhatsApp o tu app de correo con el mensaje listo para enviar.</p>
+    </form>
   </div>
 </section>
 </main>
 
 <footer>
-  <div class="wrap"><span>Copyright © <span id="yr">2026</span> Andersson Toapanta. Hecho en Quito, Ecuador.</span><a href="#inicio">Volver arriba</a></div>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><a class="brand" href="#inicio"><svg class="bm" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="LG3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2997ff"/><stop offset=".55" stop-color="#7b5cff"/><stop offset="1" stop-color="#ff6a3d"/></linearGradient></defs><rect width="512" height="512" rx="116" fill="url(#LG3)"/><g fill="none" stroke="#fff" stroke-width="52" stroke-linecap="round" stroke-linejoin="round"><path d="M100 372 L188 118 L276 372M134 282 H242M188 118 H418M380 118 V340"/></g><g fill="#fff"><circle cx="100" cy="372" r="34"/><circle cx="276" cy="372" r="34"/><circle cx="380" cy="372" r="34"/></g></svg>Andersson Toapanta</a><p>Desarrollador full-stack. Software, robótica, electrónica, web y hacking ético desde Quito, Ecuador.</p></div>
+      <div><h4>Explorar</h4><ul><li><a href="#servicios">Servicios</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#planes">Planes</a></li><li><a href="#formacion">Formación</a></li></ul></div>
+      <div><h4>Demos</h4><ul><li><a href="demos/radical/" target="_blank" rel="noopener">RADICAL</a></li><li><a href="demos/clickshop/" target="_blank" rel="noopener">ClickShop</a></li><li><a href="demos/fitcoach/" target="_blank" rel="noopener">FitCoach Pro</a></li><li><a href="demos/gestor/" target="_blank" rel="noopener">Gestor Académico</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="https://wa.me/593959133066" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="mailto:anderssontoapanta@gmail.com">Correo</a></li><li><a href="https://github.com/AnderssonT-var" target="_blank" rel="noopener">GitHub</a></li></ul></div>
+    </div>
+    <div class="legal"><span>Copyright © <span id="yr">2026</span> Andersson Toapanta. Hecho en Quito, Ecuador.</span><a href="#inicio">Volver arriba</a></div>
+  </div>
 </footer>
 
 <div class="overlay" id="lb" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
@@ -656,12 +784,16 @@ footer a{color:#424245}
   </div>
 </div>
 <div class="toast" id="toast">Copiado</div>
+<div id="prog" aria-hidden="true"></div>
+<button class="top-btn" id="topBtn" type="button" aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 
 <script>
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-  $('#yr').textContent = new Date().getFullYear();
+  const Y = new Date().getFullYear();
+  $('#yr').textContent = Y;
+  const yrs = $('#yrsN'); if(yrs){ yrs.dataset.to = Y - 2020; yrs.textContent = Y - 2020; }
 
   /* Menú móvil */
   const nav = $('#gnav'), mb = $('#mb');
@@ -685,9 +817,41 @@ footer a{color:#424245}
     words.forEach((w,i) => w.classList.toggle('lit', i < lit));
     // dispositivos suben suavemente
     devs.forEach(d => { const b = d.getBoundingClientRect(); const q = Math.min(Math.max((vh - b.top) / vh, 0), 1); d.style.setProperty('--y', (60 - 60 * q).toFixed(1) + 'px'); });
+    // pasos del proceso se encienden en orden
+    const sr = steps.getBoundingClientRect(); const sp = Math.min(Math.max((vh * .9 - sr.top) / (vh * .5), 0), 1);
+    stepEls.forEach((s,i) => s.classList.toggle('on', sp * stepEls.length > i + .2));
   }
+  const steps = $('#steps'), stepEls = $$('#steps .step');
   if(!reduce){ let tk = false; addEventListener('scroll', () => { if(!tk){ tk = true; requestAnimationFrame(() => { frame(); tk = false; }); } }, {passive:true}); addEventListener('resize', frame); frame(); }
-  else words.forEach(w => w.classList.add('lit'));
+  else { words.forEach(w => w.classList.add('lit')); stepEls.forEach(s => s.classList.add('on')); }
+
+  /* Barra de progreso y botón volver arriba */
+  const prog = $('#prog'), topBtn = $('#topBtn');
+  function chrome(){ const h = document.documentElement.scrollHeight - innerHeight; prog.style.width = (h > 0 ? scrollY / h * 100 : 0) + '%'; topBtn.classList.toggle('show', scrollY > innerHeight * 1.2); }
+  addEventListener('scroll', chrome, {passive:true}); chrome();
+  topBtn.onclick = () => scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
+
+  /* Planes: preseleccionan el formulario */
+  $$('[data-plan]').forEach(a => a.addEventListener('click', () => { $('#fPlan').value = a.dataset.plan; setTimeout(() => $('#fName').focus({preventScroll:true}), 600); }));
+
+  /* Formulario: arma el mensaje y lo abre en WhatsApp o en el correo */
+  const form = $('#cform'), hint = $('#fHint');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const via = (e.submitter && e.submitter.dataset.via) || 'wa';
+    const n = $('#fName'), m = $('#fMsg'), mail = $('#fMail');
+    [n,m,mail].forEach(x => x.classList.remove('err'));
+    const bad = [];
+    if(!n.value.trim()) bad.push(n);
+    if(!m.value.trim()) bad.push(m);
+    if(mail.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())) bad.push(mail);
+    if(bad.length){ bad.forEach(x => x.classList.add('err')); bad[0].focus(); hint.dataset.s = 'err'; hint.textContent = bad[0] === mail ? 'Revisa tu correo: parece incompleto.' : 'Escribe tu nombre y tu idea para poder responderte.'; return; }
+    const txt = `Hola Andersson, soy ${n.value.trim()}.` + (mail.value.trim() ? ` Mi correo: ${mail.value.trim()}.` : '') + `\nMe interesa: ${$('#fPlan').value}.\n\n${m.value.trim()}`;
+    const url = via === 'wa' ? 'https://wa.me/593959133066?text=' + encodeURIComponent(txt)
+      : 'mailto:anderssontoapanta@gmail.com?subject=' + encodeURIComponent('Proyecto: ' + $('#fPlan').value) + '&body=' + encodeURIComponent(txt);
+    if(via === 'wa') window.open(url, '_blank', 'noopener'); else location.href = url;
+    hint.dataset.s = 'ok'; hint.textContent = via === 'wa' ? 'Abriendo WhatsApp con tu mensaje. Solo toca enviar.' : 'Abriendo tu correo con el mensaje listo. Solo toca enviar.';
+  });
 
   /* Aparición y contadores */
   if(!reduce && 'IntersectionObserver' in window){

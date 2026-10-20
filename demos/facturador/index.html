@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facturador · recorrido</title>
+<meta name="description" content="Recorrido por Facturador, el programa de facturación electrónica para Ecuador (SRI).">
+<link rel="icon" href="../../favicon.ico">
+<style>
+  :root{--ink:#1d1d1f;--muted:#6e6e73;--gray:#f5f5f7;--line:#d2d2d7;--blue:#0071e3;--grad:linear-gradient(90deg,#2997ff 0%,#a259ff 50%,#ff6a3d 100%);
+    --f:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Helvetica Neue",Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--f);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+  header{max-width:1100px;margin:0 auto;padding:48px 20px 8px;text-align:center}
+  header a.volver{display:inline-block;margin-bottom:22px;color:var(--blue);text-decoration:none;font-size:15px}
+  h1{font-size:clamp(30px,5vw,52px);letter-spacing:-.03em;margin:0 0 10px;line-height:1.05}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:clamp(16px,2vw,20px);max-width:720px;margin:0 auto;line-height:1.45}
+  nav.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px auto 6px;max-width:900px;padding:0 20px}
+  nav.chips a{font-size:13px;padding:7px 14px;border-radius:99px;background:var(--gray);color:var(--ink);text-decoration:none}
+  nav.chips a:hover{background:#e8e8ed}
+  main{max-width:1100px;margin:0 auto;padding:10px 20px 60px}
+  figure{margin:56px 0 0}
+  figure h2{font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;margin:0 0 6px}
+  figure p{color:var(--muted);margin:0 0 16px;font-size:16px;line-height:1.5;max-width:760px}
+  .marco{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -24px rgba(0,0,0,.35);background:var(--gray)}
+  .marco img{display:block;width:100%;height:auto}
+  .cta{text-align:center;padding:64px 20px 80px;background:var(--gray)}
+  .cta h2{font-size:clamp(24px,4vw,40px);letter-spacing:-.02em;margin:0 0 10px}
+  .cta p{color:var(--muted);margin:0 0 22px}
+  .pill{display:inline-block;background:var(--blue);color:#fff;border-radius:980px;padding:12px 24px;text-decoration:none;font-size:17px}
+  .nota{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}
+</style>
+</head>
+<body>
+<header>
+  <a class="volver" href="../../#inicio">← Volver al portafolio</a>
+  <h1>Facturador. <span class="grad">Facturación electrónica sin complicaciones.</span></h1>
+  <p class="sub">Programa de escritorio para Ecuador que emite, firma y autoriza comprobantes electrónicos ante el SRI. Datos de demostración ficticios.</p>
+</header>
+<nav class="chips" aria-label="Secciones">
+  <a href="#inicio">Inicio</a><a href="#factura">Facturar</a><a href="#ride">RIDE</a><a href="#autorrelleno">Autorrelleno SRI</a><a href="#anulacion">Anulación</a>
+  <a href="#guia">Guías</a><a href="#retencion">Retenciones</a><a href="#autorizaciones">Autorizaciones</a><a href="#reportes">Reportes</a>
+  <a href="#produccion">Producción</a><a href="#usuarios">Usuarios</a><a href="#respaldos">Respaldos</a>
+</nav>
+<main>
+  <figure id="inicio"><h2>Todo el negocio de un vistazo</h2><p>Ventas del mes, siguiente número de factura, accesos rápidos y el semáforo del SRI siempre visible.</p><div class="marco"><img src="img/inicio.jpg" alt="Pantalla de inicio con ventas del mes y accesos rápidos" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="factura"><h2>Facturar en segundos</h2><p>Busca productos por código o código de barras, aplica descuentos y tarifas de IVA editables. El total se calcula al instante.</p><div class="marco"><img src="img/factura.jpg" alt="Pantalla de nueva factura" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="ride"><h2>Autorizada y lista para entregar</h2><p>Al emitir se firma con XAdES-BES, se valida contra el esquema oficial, se envía al SRI y aparece la vista previa del RIDE para imprimir, guardar o enviar por correo.</p><div class="marco"><img src="img/ride.jpg" alt="Vista previa del RIDE de una factura autorizada" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="autorrelleno"><h2>Clientes que se llenan solos</h2><p>Al escribir un RUC o una cédula, el programa consulta el catastro público del SRI y completa nombre y dirección.</p><div class="marco"><img src="img/autorrelleno.jpg" alt="Datos del cliente completados desde el SRI" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="anulacion"><h2>Anulaciones y devoluciones</h2><p>Anula una factura con su nota de crédito automática o registra devoluciones parciales con control de saldo.</p><div class="marco"><img src="img/anulacion.jpg" alt="Anulación de factura" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="guia"><h2>Guías de remisión</h2><p>Desde una factura o a mano, con transportistas guardados.</p><div class="marco"><img src="img/guia.jpg" alt="Guía de remisión" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="retencion"><h2>Retenciones 2.0</h2><p>Comprobantes de retención con sustento tributario y tabla de códigos editable.</p><div class="marco"><img src="img/retencion.jpg" alt="Comprobante de retención" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="autorizaciones"><h2>Aunque el SRI se caiga</h2><p>Si no hay conexión, sigues facturando: los pendientes se autorizan solos en segundo plano y te avisa con una notificación.</p><div class="marco"><img src="img/autorizaciones.jpg" alt="Revisión de autorizaciones pendientes" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="reportes"><h2>Reportes listos para el contador</h2><p>Ventas por documento, cliente o vendedor, movimientos de ítems, notas, retenciones y resumen de IVA, en PDF o Excel.</p><div class="marco"><img src="img/reportes.jpg" alt="Reporte de ventas por vendedor" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="produccion"><h2>Paso a producción guiado</h2><p>Una lista de verificación impide facturar en producción sin la firma correcta, los datos completos y una prueba autorizada.</p><div class="marco"><img src="img/produccion.jpg" alt="Lista de verificación de paso a producción" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="usuarios"><h2>Usuarios y permisos</h2><p>Administrador, supervisor, vendedor, cajero o contador: cada uno ve solo lo que le corresponde.</p><div class="marco"><img src="img/usuarios.jpg" alt="Gestión de usuarios" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="respaldos"><h2>Respaldo diario automático</h2><p>Cada día se guarda una copia de cada empresa y se restaura con un clic.</p><div class="marco"><img src="img/respaldos.jpg" alt="Respaldos automáticos" loading="lazy" width="1440" height="900"></div></figure>
+</main>
+<section class="cta">
+  <h2>¿Quieres probarlo en tu negocio?</h2>
+  <p>Planes Local, Web y Full. Te ayudo con la firma electrónica y la habilitación en el SRI.</p>
+  <a class="pill" href="../../#contacto">Solicitar una demo</a>
+  <p class="nota">Las capturas usan datos ficticios de demostración.</p>
+</section>
+</body>
+</html>

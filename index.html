@@ -553,6 +553,25 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px
 
 <!-- PROYECTOS -->
 <div id="proyectos">
+<section class="proj gray">
+  <div class="wrap reveal">
+    <span class="live">Nuevo · SaaS</span>
+    <p class="lab">Facturador · facturación electrónica SRI</p>
+    <h2>Factura en segundos. <span class="grad">Aunque el SRI se caiga.</span></h2>
+    <p class="sub">Programa para Ecuador que firma, envía y autoriza tus comprobantes electrónicos. Licencias en línea, respaldo diario y soporte directo.</p>
+    <ul class="feat"><li>Facturas, notas de crédito y débito</li><li>Retenciones y guías de remisión</li><li>Clientes autocompletados desde el SRI</li><li>Autorización en segundo plano</li><li>Usuarios y permisos</li><li>Reportes y Excel</li></ul>
+    <p class="feat" style="margin-top:14px">Electron · Node.js · SQLite · XAdES-BES · PHP · MySQL</p>
+    <div class="ctas"><a class="pill" href="demos/facturador/" target="_blank" rel="noopener">Ver recorrido</a><a class="more" href="#contacto" data-plan="Facturador SRI">Solicitar demo</a></div>
+  </div>
+  <div class="device parallax">
+    <div class="screen"><div class="ui">
+      <div class="top"><i></i><i></i><i></i><span>facturador · vista previa del RIDE</span></div>
+      <a class="shotlink" href="demos/facturador/" target="_blank" rel="noopener" aria-label="Ver el recorrido"><img class="shot" src="img/proyectos/facturador.jpg" alt="Facturador: factura autorizada por el SRI con su RIDE" loading="lazy" width="1440" height="900"></a>
+    </div></div>
+    <div class="base"></div>
+  </div>
+</section>
+
 <section class="proj">
   <div class="wrap reveal">
     <p class="lab">RADICAL · red social para gimnasios</p>
@@ -745,7 +764,7 @@ footer .legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px
       <label>Tu nombre<input id="fName" name="nombre" autocomplete="name" placeholder="Nombre y apellido" required></label>
       <label>Tu correo<input id="fMail" name="correo" type="email" autocomplete="email" placeholder="tucorreo@ejemplo.com"></label>
       <label class="full">¿Qué necesitas?<select id="fPlan" name="plan">
-        <option>Sitio web</option><option>Sistema a medida</option><option>Prototipo electrónico</option><option>Otro proyecto</option></select></label>
+        <option>Sitio web</option><option>Sistema a medida</option><option>Prototipo electrónico</option><option>Facturador SRI</option><option>Otro proyecto</option></select></label>
       <label class="full">Cuéntame tu idea<textarea id="fMsg" name="mensaje" placeholder="Qué quieres construir, para cuándo y cualquier detalle útil." required></textarea></label>
       <div class="full acts">
         <button class="pill wa" type="submit" data-via="wa">Enviar por WhatsApp</button>

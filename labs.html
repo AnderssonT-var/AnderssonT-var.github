@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Labs · Tovel</title>
+<meta name="description" content="Tovel Labs: domótica, electrónica, robótica, inteligencia artificial e impresión 3D. Una consola interactiva para tocar nuestros prototipos.">
+<meta name="view-transition" content="same-origin">
+<link rel="icon" href="img/tovel/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/tovel/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B0C0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Labs · Tovel">
+<meta property="og:description" content="Tovel Labs: domótica, electrónica, robótica, inteligencia artificial e impresión 3D. Una consola interactiva para tocar nuestros prototipos.">
+<meta property="og:image" content="https://anderssont-var.github.io/AnderssonT-var.github/img/tovel/og.jpg">
+<meta property="og:url" content="https://anderssont-var.github.io/AnderssonT-var.github/labs.html">
+<meta property="og:locale" content="es_EC">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/tovel.css">
+<link rel="stylesheet" href="assets/labs.css">
+</head>
+<body>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="home" href="index.html" aria-label="Tovel, inicio"><img src="img/tovel/tovel-logo-inverse.svg" alt="Tovel" width="96" height="32"></a>
+    <nav aria-label="Principal"><ul class="tabs"><span class="ind" aria-hidden="true"></span><li><a href="index.html">Inicio</a></li><li><a href="servicios.html">Servicios</a></li><li><a href="productos.html">Productos</a></li><li><a href="labs.html" aria-current="page">Labs</a></li><li><a href="contacto.html">Contacto</a></li></ul></nav>
+    <div class="right"><a class="dev" href="desarrollador/">El desarrollador</a><a class="btn sm cta mag" href="contacto.html">Cotizar <span class="ar">→</span></a></div>
+  </div>
+</header>
+<nav class="tabbar" aria-label="Pestañas"><ul><li><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7v8a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/></svg>Inicio</a></li><li><a href="servicios.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M9 9l-2 2 2 2M15 9l2 2-2 2"/></svg>Servicios</a></li><li><a href="productos.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16v12H4zM8 7V5h8v2"/></svg>Productos</a></li><li><a href="labs.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>Labs</a></li><li><a href="contacto.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>Contacto</a></li></ul></nav>
+<main>
+<section class="phead"><div class="gridbg"></div><div class="orb"></div><div class="wrap"><p class="no">03 / LABS</p><h1 data-split>Toca. Gira. <em>Enciende.</em></h1><p class="lead rv">Robótica, electrónica e inteligencia artificial. Esta consola recrea en pequeño los prototipos que construimos: pruébala.</p></div></section>
+<section class="labs">
+  <div class="wrap">
+    <nav class="labs-nav" aria-label="Módulos"><a href="#domo"><i>01</i>Domótica</a><a href="#alarma"><i>02</i>Seguridad</a><a href="#elec"><i>03</i>Electrónica y robótica</a><a href="#ai"><i>04</i>Red Neuronal Junior</a><a href="#printer"><i>05</i>Impresión 3D</a></nav>
+    <div class="console">
+      <div class="neu m-domo rv" id="domo"><div class="mod-h"><div><p class="k">01 · DOMÓTICA</p><h3>Casa inteligente</h3></div><span class="led on"></span></div>
+        <p class="d">Cuatro dispositivos controlados por voz o desde el celular. Desliza o toca las pestañas.</p>
+        <div class="car"><div class="car-tabs" role="tablist"><span class="pill" aria-hidden="true"></span><button type="button" role="tab"><small>01</small>Luz</button><button type="button" role="tab"><small>02</small>Ventilador</button><button type="button" role="tab"><small>03</small>Cortinas</button><button type="button" role="tab"><small>04</small>Cerradura</button></div><div class="car-view"><div class="car-track"><div class="slide" role="tabpanel"><div class="scene s-light"><div class="bulb"></div><div class="sofa"></div><div class="floor"></div></div>
+<div class="ctrls"><button class="sw" id="lightSw" role="switch" aria-checked="false" aria-label="Encender la luz"></button><span class="lab">BRILLO</span><input class="rng" id="lightDim" type="range" min="15" max="100" value="100" aria-label="Brillo"></div></div><div class="slide" role="tabpanel"><div class="scene s-fan"><svg viewBox="0 0 200 200" aria-hidden="true"><g class="wind"><path d="M150 60c20 0 30 10 40 10"/><path d="M155 100c20 0 30-6 40-6"/><path d="M150 140c20 0 30-10 40-10"/></g><circle cx="100" cy="100" r="86" fill="none" stroke="#3A3D44" stroke-width="4"/><g class="blades"><path d="M100 100c-8-30 0-62 12-70 14 10 10 44-12 70z" fill="#F2542D"/><path d="M100 100c-8-30 0-62 12-70 14 10 10 44-12 70z" fill="#F2542D" transform="rotate(120 100 100)"/><path d="M100 100c-8-30 0-62 12-70 14 10 10 44-12 70z" fill="#F2542D" transform="rotate(240 100 100)"/></g><circle cx="100" cy="100" r="13" fill="#FFB627"/></svg></div>
+<div class="ctrls"><span class="lab">VELOCIDAD</span><div class="seg"><button type="button" data-fan="0" aria-pressed="true">0</button><button type="button" data-fan="1" aria-pressed="false">1</button><button type="button" data-fan="2" aria-pressed="false">2</button><button type="button" data-fan="3" aria-pressed="false">3</button></div></div></div><div class="slide" role="tabpanel"><div class="scene s-curt"><div class="win"><div class="sun"></div><div class="hill"></div><div class="cl l"></div><div class="cl r"></div></div><div class="rod"></div><div class="shine"></div></div>
+<div class="ctrls"><span class="lab">APERTURA</span><input class="rng" id="curtR" type="range" min="0" max="100" value="20" aria-label="Apertura de cortinas"></div></div><div class="slide" role="tabpanel"><div class="scene s-lock"><div class="frame"><div class="door"></div></div><svg class="padlock" viewBox="0 0 60 70" aria-hidden="true"><path class="shk" d="M18 32V20a12 12 0 0 1 24 0v12" fill="none" stroke="#F4EEE4" stroke-width="6" stroke-linecap="round"/><rect x="10" y="30" width="40" height="34" rx="8" fill="#FFB627"/><circle cx="30" cy="46" r="4" fill="#14161A"/></svg><p class="state"><i></i><span>Asegurada</span></p></div>
+<div class="ctrls"><button class="press" id="lockBtn" type="button">Abrir puerta</button></div></div></div></div>
+<div class="car-ctl"><div class="dots"></div><div class="arrows"><button class="rbtn prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><button class="rbtn next" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div></div></div>
+        <div class="voice idle" style="margin-top:14px"><i></i><i></i><i></i><span>Esperando una orden…</span></div>
+      </div>
+      <div class="neu m-alarm rv" id="alarma"><div class="mod-h"><div><p class="k">02 · SEGURIDAD</p><h3>Alarma con HMI</h3></div><span class="led on" id="aled"></span></div>
+        <p class="d">Acerca al intruso: el sensor mide la distancia y la pantalla HMI reacciona.</p>
+        <div class="radar" id="radar"><span class="core"></span><span class="blip"></span></div>
+        <input class="rng" id="dist" type="range" min="10" max="300" value="220" aria-label="Distancia del intruso" style="width:100%;margin-top:18px">
+        <div class="status"><span>Sensor: <b id="distV">220 cm</b></span><span id="aState">Zona segura</span></div>
+        <div class="hmi" id="hmi"></div>
+      </div>
+      <div class="neu m-elec rv" id="elec"><div class="mod-h"><div><p class="k">03 · ELECTRÓNICA Y ROBÓTICA</p><h3>Del circuito al movimiento</h3></div><span class="led on"></span></div>
+        <div class="car"><div class="car-tabs" role="tablist"><span class="pill" aria-hidden="true"></span><button type="button" role="tab"><small>Electrónica</small>LED y PWM</button><button type="button" role="tab"><small>Electrónica</small>Sensor y LCD</button><button type="button" role="tab"><small>Robótica</small>Brazo con servo</button><button type="button" role="tab"><small>Robótica</small>Seguidor de línea</button></div><div class="car-view"><div class="car-track"><div class="slide" role="tabpanel"><div class="er"><div class="vis dark"><svg viewBox="0 0 400 300" style="position:absolute;inset:0;width:100%;height:58%" aria-hidden="true"><defs><radialGradient id="lg"><stop offset="0" stop-color="#FFB627" stop-opacity=".9"/><stop offset="1" stop-color="#F2542D" stop-opacity="0"/></radialGradient></defs><circle id="ledGlow" cx="200" cy="110" r="90" fill="url(#lg)" opacity=".45"/><path d="M182 160v40M218 160v52" stroke="#A39D93" stroke-width="5" stroke-linecap="round"/><path id="ledCore" d="M178 160v-40a22 22 0 0 1 44 0v40z" fill="#C8471F"/><rect x="172" y="156" width="56" height="8" rx="3" fill="#C8471F"/></svg><canvas class="scope" id="scope" style="position:absolute;left:0;right:0;bottom:0;height:42%"></canvas></div>
+<div><p class="kind">Electrónica</p><h4 style="margin-top:8px">LED con potenciómetro</h4><p>Un microcontrolador lee el potenciómetro y regula el brillo del LED con PWM. El osciloscopio muestra el ciclo de trabajo.</p><div class="ctrls"><div class="knob nodrag" id="potKnob" role="slider" tabindex="0" aria-label="Potenciómetro" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><div class="ticks"></div><div class="rot"><div class="cap"></div><div class="dot"></div></div></div><p class="readout">Ciclo de trabajo<b id="dutyV">50 %</b></p></div></div></div></div><div class="slide" role="tabpanel"><div class="er"><div class="vis dark"><div class="lcd"><pre id="lcd"></pre></div><div class="thermo"><i></i></div><svg class="minifan" viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="20" fill="none" stroke="currentColor" stroke-width="3"/><g class="bl" style="transform-origin:22px 22px"><path d="M22 22c-2-8 0-14 4-15 3 3 1 10-4 15zM22 22c8-2 14 0 15 4-3 3-10 1-15-4zM22 22c2 8 0 14-4 15-3-3-1-10 4-15zM22 22c-8 2-14 0-15-4 3-3 10-1 15 4z" fill="currentColor"/></g></svg></div>
+<div><p class="kind">Electrónica</p><h4 style="margin-top:8px">Sensor de temperatura</h4><p>Un sensor envía la temperatura a una pantalla LCD. Si pasa de 30 °C, enciende un ventilador y avisa.</p><div class="ctrls"><span class="lab">CALOR</span><input class="rng" id="tempR" type="range" min="120" max="420" value="245" aria-label="Temperatura"></div></div></div></div><div class="slide" role="tabpanel"><div class="er"><div class="vis in-set" style="box-shadow:inset 7px 7px 16px var(--nm-lo),inset -7px -7px 16px var(--nm-hi)"><svg class="arm" viewBox="0 0 360 260" aria-hidden="true"><rect x="40" y="226" width="120" height="14" rx="7" fill="#14161A"/><g id="arm1" style="transform-origin:100px 220px"><line class="seg" x1="100" y1="220" x2="100" y2="130"/><g id="arm2" style="transform-origin:100px 130px"><line class="seg" x1="100" y1="130" x2="200" y2="130" style="stroke:#F2542D"/><g id="arm3" style="transform-origin:200px 130px"><path class="grip" d="M200 130l28-14M200 130l28 14"/></g><circle class="j" cx="200" cy="130" r="11"/></g><circle class="j" cx="100" cy="130" r="13"/></g><circle class="j" cx="100" cy="220" r="14"/></svg></div>
+<div><p class="kind">Robótica</p><h4 style="margin-top:8px">Brazo con servomotor</h4><p>Gira la perilla: el microcontrolador traduce el ángulo a pulsos para el servo y el brazo se mueve con suavidad.</p><div class="ctrls"><div class="knob nodrag" id="armKnob" role="slider" tabindex="0" aria-label="Ángulo del servo" aria-valuemin="-90" aria-valuemax="90" aria-valuenow="0"><div class="ticks"></div><div class="rot"><div class="cap"></div><div class="dot"></div></div></div><p class="readout">Servo<b id="degV">0°</b></p></div></div></div></div><div class="slide" role="tabpanel"><div class="er"><div class="vis dark"><svg viewBox="0 0 400 300" style="width:100%;height:100%" aria-hidden="true"><path id="track" d="M80 150c0-70 60-100 120-80s70 70 120 40 60 40 20 80-100 50-160 30-100-10-100-70z" fill="none" stroke="#F4EEE4" stroke-width="12" stroke-linecap="round"/><g id="bot"><rect x="-16" y="-12" width="32" height="24" rx="6" fill="#F2542D"/><rect x="-12" y="-17" width="10" height="5" rx="2" fill="#14161A"/><rect x="-12" y="12" width="10" height="5" rx="2" fill="#14161A"/><circle id="sL" cx="14" cy="-6" r="3.5" fill="#3A3D44"/><circle id="sR" cx="14" cy="6" r="3.5" fill="#3A3D44"/><circle cx="2" cy="0" r="4" fill="#FFB627"/></g></svg></div>
+<div><p class="kind">Robótica</p><h4 style="margin-top:8px">Robot seguidor de línea</h4><p>Dos sensores infrarrojos leen la línea y corrigen la dirección de los motores en cada curva. Los sensores se encienden al girar.</p><div class="ctrls"><button class="press" id="botGo" type="button">Iniciar robot</button><span class="lab">VELOCIDAD</span><input class="rng" id="botSpd" type="range" min="40" max="260" value="140" aria-label="Velocidad"></div></div></div></div></div></div>
+<div class="car-ctl"><div class="dots"></div><div class="arrows"><button class="rbtn prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button><button class="rbtn next" type="button" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div></div></div>
+      </div>
+      <div class="neu m-ai rv" id="ai"><div class="mod-h"><div><p class="k">04 · INTELIGENCIA ARTIFICIAL</p><h3>Red Neuronal Junior</h3></div><span class="led" id="nled"></span></div>
+        <p class="d">Una mini red neuronal que ve con cámara y escucha con micrófono. Despiértala: sus neuronas se reorganizan en un rostro y te habla.</p>
+        <div class="ai-stage"><canvas id="aiCanvas" aria-label="Red neuronal animada"></canvas><p class="bubble" id="aiBubble" aria-live="polite"></p></div>
+        <div class="ai-ctrls"><button class="press" id="aiBtn" type="button">Despertar a Junior</button><button class="press" id="aiMute" type="button" aria-pressed="false" style="flex:0 0 auto">Voz: sí</button></div>
+      </div>
+      <div class="neu m-print rv" id="printer"><div class="mod-h"><div><p class="k">05 · FABRICACIÓN</p><h3>Impresión 3D</h3></div><span class="led" id="pled"></span></div>
+        <p class="d">Calienta, imprime capa por capa y enfría. Hoy imprime la T de Tovel.</p>
+        <div class="pr-stage"><canvas id="prCanvas" aria-label="Impresora 3D animada"></canvas></div>
+        <div class="pr-hud"><div>Estado<b id="prPhase">En espera</b></div><div>Boquilla / cama<b id="prTemp">24° / 24°</b></div><div>Capa<b id="prLayer">0 / 26</b></div></div>
+        <div class="pr-bar"><i id="prBar"></i></div>
+        <div class="pr-ctrls"><button class="press hot" id="prGo" type="button">Imprimir pieza</button></div>
+      </div>
+    </div>
+    <div class="labs-foot rv"><span>Prototipos reales:</span><a href="https://github.com/AnderssonT-var/Domotica-alexa" target="_blank" rel="noopener">Domótica con Alexa ↗</a><a href="https://github.com/AnderssonT-var/Sistema_De_Alarmas_Con_HMI" target="_blank" rel="noopener">Alarmas con HMI ↗</a><span>Prótesis biomecánicas 3D con P4H · Impresión 3D con UDLA · IEEE Robotics and Automation Society</span></div>
+  </div>
+</section>
+</main>
+<div class="wrap"><a class="nextpage" href="contacto.html"><span><small>Siguiente</small><b>Contacto</b></span><span class="arrow">→</span></a></div>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><img src="img/tovel/tovel-logo-inverse.svg" alt="Tovel" width="84" height="28"><p>Software que enciende tu negocio. Sistemas web, SaaS, hosting y prototipos desde Quito, Ecuador.</p></div>
+      <div><h4>Tovel</h4><ul><li><a href="servicios.html">Servicios</a></li><li><a href="productos.html">Productos</a></li><li><a href="labs.html">Labs</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
+      <div><h4>Productos</h4><ul><li><a href="demos/facmit/">Facmit</a></li><li><a href="https://vytra.fit">VYTRAFIT</a></li><li><a href="https://radicalapparel.club">RADICAL</a></li></ul></div>
+      <div><h4>El desarrollador</h4><ul><li><a href="desarrollador/">Perfil</a></li><li><a href="desarrollador/#formacion">Formación</a></li><li><a href="desarrollador/#certificados">Certificados</a></li></ul></div>
+    </div>
+    <div class="legal"><span>© <span class="yr">2026</span> Tovel · Quito, Ecuador</span><span class="by">Desarrollado por <a href="desarrollador/">A.T.</a></span></div>
+  </div>
+</footer>
+<script src="assets/tovel.js"></script>
+<script src="assets/labs.js"></script>
+</body>
+</html>

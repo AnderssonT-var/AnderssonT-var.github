@@ -1,0 +1,35 @@
+/* Tovel — portada 3D */
+.hero{position:relative;height:300vh}
+.hero .stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(43,164,147,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(43,164,147,.10) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 70% 60% at 60% 50%,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 60% 50%,#000 30%,transparent 80%);opacity:var(--gridO,1)}
+.hero .glow{position:absolute;width:70vmax;height:70vmax;left:55%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(242,84,45,.30),rgba(255,182,39,.08) 40%,transparent 65%);opacity:var(--glowO,0);pointer-events:none}
+.hero .copy{position:absolute;left:0;right:0;bottom:clamp(40px,9vh,96px);z-index:2;pointer-events:none;opacity:var(--copyO,1);transform:translateY(calc((1 - var(--copyO,1)) * -40px))}
+.hero .copy .wrap{pointer-events:auto}
+.hero h1{font-size:clamp(46px,8.6vw,124px);font-weight:700;letter-spacing:-.05em;line-height:.92;max-width:11ch;margin-top:22px}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+.hero h1 .w>span{display:inline-block;transform:translateY(105%);transition:transform 1s var(--ease)}
+.ready .hero h1 .w>span{transform:none}
+.hero h1 .w:nth-child(2)>span{transition-delay:.06s}.hero h1 .w:nth-child(3)>span{transition-delay:.12s}.hero h1 .w:nth-child(4)>span{transition-delay:.18s}.hero h1 .w:nth-child(5)>span{transition-delay:.24s}
+.hero h1 em{font-style:normal;color:var(--brand-hi)}
+.hero .lead{margin-top:22px;max-width:46ch;font-size:clamp(16px,1.5vw,19px);color:var(--ash);opacity:0;transform:translateY(16px);transition:opacity .9s .55s var(--ease),transform .9s .55s var(--ease)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;opacity:0;transform:translateY(16px);transition:opacity .9s .7s var(--ease),transform .9s .7s var(--ease)}
+.ready .hero .lead,.ready .hero .ctas{opacity:1;transform:none}
+.phases{position:absolute;top:50%;left:var(--gutter);transform:translateY(-50%);z-index:2;display:grid;gap:18px;opacity:var(--phO,0);pointer-events:none}
+.phase{display:flex;align-items:center;gap:14px;font:500 13px/1 var(--mono);color:#4A4D55;letter-spacing:.06em;transition:color .4s}
+.phase b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid #33363D;font-weight:500;transition:all .4s}
+.phase.on{color:var(--bone)}
+.phase.on b{border-color:var(--spark);background:var(--spark);color:var(--ink)}
+.caption{position:absolute;left:var(--gutter);bottom:clamp(40px,9vh,96px);z-index:2;max-width:min(520px,80vw);opacity:var(--phO,0);pointer-events:none}
+.caption h2{font-size:clamp(34px,5vw,64px);font-weight:700}
+.caption p{margin-top:14px;color:var(--ash);font-size:clamp(15px,1.4vw,18px)}
+.hud{position:absolute;right:var(--gutter);top:96px;z-index:2;font:500 11px/1.8 var(--mono);color:#5C6069;text-align:right;letter-spacing:.06em}
+.hud b{color:var(--teal-hi);font-weight:500}
+.scrollhint{position:absolute;right:var(--gutter);bottom:clamp(40px,9vh,96px);z-index:2;display:flex;align-items:center;gap:10px;font:500 11px/1 var(--mono);letter-spacing:.14em;color:var(--ash);text-transform:uppercase;opacity:var(--copyO,1)}
+.scrollhint i{width:1px;height:44px;background:linear-gradient(var(--spark),transparent);animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.fallback{display:none;position:absolute;right:6%;top:50%;transform:translateY(-55%);width:min(42vw,440px)}
+.no-gl .fallback{display:block}
+.fallback path{stroke-dasharray:140;stroke-dashoffset:calc(140 * (1 - var(--p,0)))}
+@media (max-width:980px){.phases{display:none}}
+@media (max-width:860px){.hud,.scrollhint{display:none}.hero .copy,.caption{bottom:calc(var(--tabbar) + 24px)}}

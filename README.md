@@ -1,17 +1,17 @@
-# Andersson Toapanta · Portafolio
+# Tovel · Software que enciende tu negocio
 
-Página de presentación de **Andersson Toapanta**: desarrollo de software, robótica, electrónica, desarrollo web y hacking ético.
+Sitio de **Tovel**, empresa de software de Quito, Ecuador, fundada por Andersson Efraín Toapanta Vélez (el nombre une **TO**apanta + **VEL**ez). Cada sistema lleva la firma *Desarrollado por A.T.*
 
 Sitio: https://anderssont-var.github.io/AnderssonT-var.github/
 
-## Contenido
-- `index.html`: página principal (HTML, CSS y JS sin dependencias).
-- `img/marca/`: logo (SVG), favicon, íconos para celular e imagen para compartir en redes.
-- `img/certificados/`: certificados en imagen y PDF.
-- `img/proyectos/` y `demos/`: capturas y demos interactivas de cada proyecto.
-- `manifest.webmanifest`: permite instalar la página como app.
-- `404.html`: página de error con el estilo del sitio.
-- `resume.html`, `portfolio.html`, `contact.html`: redirigen a la sección equivalente de la página principal.
+## Estructura
+- `index.html`: página de la empresa (servicios, productos, trabajos, Tovel Labs, proceso, planes, fundador y contacto). HTML, CSS y JS sin dependencias.
+- `desarrollador/`: página de presentación personal del desarrollador (sobre mí, proyectos, formación, certificados).
+- `img/tovel/`: logo, símbolo, favicon, íconos e imagen para redes de Tovel.
+- `img/marca/`: marca personal anterior (la usa la página del desarrollador).
+- `img/certificados/`, `img/proyectos/` y `demos/`: certificados, capturas y demos interactivas.
+- `manifest.webmanifest`: permite instalar el sitio como app.
+- `resume.html`, `portfolio.html`, `contact.html`: redirigen a la sección equivalente de la página del desarrollador.
 
-## Secciones
-Inicio, sobre mí, servicios con proceso de trabajo, proyectos con demos, planes, formación, herramientas, certificados y contacto con formulario que abre WhatsApp o el correo con el mensaje listo.
+## Marca
+Paleta: ascua `#F2542D`, chispa `#FFB627`, carbón `#14161A`, crema `#FBF6EE`, teal `#0E6E62`. Tipografías: Space Grotesk (titulares), Inter (texto), JetBrains Mono (detalles). Tema claro y oscuro automático.

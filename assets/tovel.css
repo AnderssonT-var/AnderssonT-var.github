@@ -241,11 +241,11 @@ button{font:inherit}
 .peek img{width:100%;height:100%;object-fit:cover;object-position:top}
 
 /* fundador */
-.founder{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,80px);align-items:center}
-.ph{position:relative;aspect-ratio:4/5;border-radius:28px;overflow:hidden;background:var(--coal)}
-.ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05);transition:filter .8s var(--ease),transform 1.2s var(--ease)}
-.ph:hover img{filter:none;transform:scale(1.04)}
-.ph .badge{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:rgba(11,12,14,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font:500 12px/1 var(--mono);color:var(--bone)}
+.founder{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.ph{position:relative;width:clamp(160px,20vw,240px);aspect-ratio:1;border-radius:28px;overflow:hidden;background:var(--coal);box-shadow:0 0 0 1px var(--line),0 24px 50px -28px rgba(242,84,45,.55)}
+.ph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;transition:transform 1.2s var(--ease)}
+.ph:hover img{transform:scale(1.05)}
+.ph .badge{position:absolute;left:10px;bottom:10px;display:flex;align-items:center;gap:7px;padding:6px 10px;font-size:10px!important;border-radius:999px;background:rgba(11,12,14,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);font:500 12px/1 var(--mono);color:var(--bone)}
 .ph .badge i{width:8px;height:8px;border-radius:50%;background:var(--spark)}
 .founder .big{font:700 clamp(36px,4.8vw,64px)/1 var(--display);letter-spacing:-.045em}
 .founder .big b{color:var(--brand-hi);font-weight:700}
@@ -311,7 +311,8 @@ footer a:hover{color:var(--bone)}
   .process::before,.process::after{display:none}
   .plans{grid-template-columns:1fr;max-width:540px}
   .founder,.crow{grid-template-columns:1fr}
-  .ph{max-width:420px}
+  .ph{width:150px;border-radius:22px}
+  .founder{grid-template-columns:1fr;gap:24px}
   .work{grid-template-columns:48px minmax(0,1fr) auto}
   .work p{display:none}
   .fgrid{grid-template-columns:1fr 1fr}.fgrid>div:first-child{grid-column:1/-1}

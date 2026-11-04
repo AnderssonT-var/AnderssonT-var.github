@@ -145,9 +145,9 @@ if(form){
     if(!m.value.trim()) bad.push(m);
     if(mail.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())) bad.push(mail);
     if(bad.length){ bad.forEach(x => x.classList.add('err')); bad[0].focus(); hint.dataset.s = 'err'; hint.textContent = bad[0] === mail ? 'Revisa tu correo: parece incompleto.' : 'Escribe tu nombre y tu idea para poder responderte.'; return; }
-    const txt = `Hola Tovel, soy ${n.value.trim()}.` + (mail.value.trim() ? ` Mi correo: ${mail.value.trim()}.` : '') + `\nMe interesa: ${plan.value}.\n\n${m.value.trim()}`;
+    const txt = `${form.dataset.greet || "Hola Tovel"}, soy ${n.value.trim()}.` + (mail.value.trim() ? ` Mi correo: ${mail.value.trim()}.` : '') + `\nMe interesa: ${plan.value}.\n\n${m.value.trim()}`;
     if(via === 'wa') window.open('https://wa.me/593959133066?text=' + encodeURIComponent(txt), '_blank', 'noopener');
-    else location.href = 'mailto:anderssontoapanta@gmail.com?subject=' + encodeURIComponent('Proyecto Tovel: ' + plan.value) + '&body=' + encodeURIComponent(txt);
+    else location.href = 'mailto:anderssontoapanta@gmail.com?subject=' + encodeURIComponent((form.dataset.subject || 'Proyecto Tovel') + ': ' + plan.value) + '&body=' + encodeURIComponent(txt);
     hint.dataset.s = 'ok'; hint.textContent = via === 'wa' ? 'Abriendo WhatsApp con tu mensaje. Solo toca enviar.' : 'Abriendo tu correo con el mensaje listo.';
   });
 }

@@ -47,7 +47,7 @@ if(sub){
 const tl = $('.tl');
 if(tl){ const evs = $$('.ev', tl);
   T.onFrame(() => { const r = tl.getBoundingClientRect(); const p = reduce ? 1 : clamp((innerHeight*.7 - r.top)/r.height, 0, 1);
-    tl.style.setProperty('--tp', p.toFixed(3)); evs.forEach(e => e.classList.toggle('on', reduce || e.getBoundingClientRect().top < innerHeight*.7)); }); }
+    T.setVar(tl, '--tp', p.toFixed(3)); evs.forEach(e => e.classList.toggle('on', reduce || e.getBoundingClientRect().top < innerHeight*.7)); }); }
 
 /* cintas de herramientas: duplicar para bucle continuo */
 $$('.tape .track').forEach(t => t.innerHTML += t.innerHTML);

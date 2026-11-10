@@ -8,7 +8,7 @@
 .hero .copy .wrap{pointer-events:auto}
 .hero h1{font-size:clamp(46px,8.6vw,124px);font-weight:700;letter-spacing:-.05em;line-height:.92;max-width:11ch;margin-top:22px}
 .hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
-.hero h1 .w>span{display:inline-block;transform:translateY(105%);transition:transform 1s var(--ease)}
+.hero h1 .w>span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease-out)}
 .ready .hero h1 .w>span{transform:none}
 .hero h1 .w:nth-child(2)>span{transition-delay:.06s}.hero h1 .w:nth-child(3)>span{transition-delay:.12s}.hero h1 .w:nth-child(4)>span{transition-delay:.18s}.hero h1 .w:nth-child(5)>span{transition-delay:.24s}
 .hero h1 em{font-style:normal;color:var(--brand-hi)}
@@ -16,8 +16,8 @@
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;opacity:0;transform:translateY(16px);transition:opacity .9s .7s var(--ease),transform .9s .7s var(--ease)}
 .ready .hero .lead,.ready .hero .ctas{opacity:1;transform:none}
 .phases{position:absolute;top:50%;left:var(--gutter);transform:translateY(-50%);z-index:2;display:grid;gap:18px;opacity:var(--phO,0);pointer-events:none}
-.phase{display:flex;align-items:center;gap:14px;font:500 13px/1 var(--mono);color:#4A4D55;letter-spacing:.06em;transition:color .4s}
-.phase b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid #33363D;font-weight:500;transition:all .4s}
+.phase{display:flex;align-items:center;gap:14px;font:500 13px/1 var(--mono);color:#4A4D55;letter-spacing:.06em;transition:color .3s ease}
+.phase b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1px solid #33363D;font-weight:500;transition:background-color .3s ease,border-color .3s ease,color .3s ease}
 .phase.on{color:var(--bone)}
 .phase.on b{border-color:var(--spark);background:var(--spark);color:var(--ink)}
 .caption{position:absolute;left:var(--gutter);bottom:clamp(40px,9vh,96px);z-index:2;max-width:min(520px,80vw);opacity:var(--phO,0);pointer-events:none}

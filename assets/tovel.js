@@ -8,6 +8,9 @@ const clamp = (v,a,b) => Math.min(Math.max(v,a),b);
 const lerp = (a,b,t) => a + (b-a)*t;
 const T = window.Tovel = {reduce, fine, $, $$, clamp, lerp, mouse:{x:innerWidth/2,y:innerHeight/2}, frames:[]};
 T.onFrame = fn => T.frames.push(fn);
+/* actualiza una variable CSS solo si cambió: cambiarla en un padre recalcula estilos de todos sus hijos */
+const varCache = new WeakMap();
+T.setVar = (el, name, val) => { let c = varCache.get(el); if(!c){ c = {}; varCache.set(el, c); } if(c[name] !== val){ c[name] = val; el.style.setProperty(name, val); } };
 
 const Y = new Date().getFullYear();
 $$('.yr').forEach(e => e.textContent = Y);
@@ -80,8 +83,9 @@ $$('[data-split]').forEach(h => {
 
 /* ---------- aparición y contadores ---------- */
 if('IntersectionObserver' in window && !reduce){
-  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
-  $$('.rv').forEach((el,i) => { el.style.transitionDelay = (i%3)*80 + 'ms'; io.observe(el); });
+  /* un elemento revelado con clip-path empieza invisible para IntersectionObserver: se observa su contenedor */
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ (e.target._rv || e.target).classList.add('in'); io.unobserve(e.target); } }), {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  $$('.rv').forEach((el,i) => { el.style.transitionDelay = (i%3)*80 + 'ms'; if(el.classList.contains('ph')){ const w = el.parentElement; w._rv = el; io.observe(w); } else io.observe(el); });
   const co = new IntersectionObserver(es => es.forEach(e => { if(!e.isIntersecting) return; co.unobserve(e.target);
     const el = e.target, to = +el.dataset.to, t0 = performance.now();
     (function st(t){ const p = clamp((t-t0)/1500,0,1); el.textContent = Math.round(to*(1-Math.pow(1-p,4))); if(p<1) requestAnimationFrame(st); })(t0); }), {threshold:.6});
@@ -101,20 +105,20 @@ if(man){
 /* ---------- proceso ---------- */
 const proc = $('#process');
 if(proc){ const ps = $$('.pstep', proc);
-  T.onFrame(() => { const r = proc.getBoundingClientRect(); const p = reduce ? 1 : clamp((innerHeight*.85 - r.top)/(innerHeight*.5), 0, 1); proc.style.setProperty('--pp', p.toFixed(3)); ps.forEach((s,i) => s.classList.toggle('on', p*ps.length > i + .15)); }); }
+  T.onFrame(() => { const r = proc.getBoundingClientRect(); const p = reduce ? 1 : clamp((innerHeight*.85 - r.top)/(innerHeight*.5), 0, 1); T.setVar(proc, '--pp', p.toFixed(2)); ps.forEach((s,i) => s.classList.toggle('on', p*ps.length > i + .15)); }); }
 
 /* ---------- productos en horizontal ---------- */
 const hz = $('.hz'), rail = $('#rail');
 if(hz && rail){
-  const bar = $('.bar', hz), cnt = $('#hzN'), cards = $$('.pc', rail);
+  const bar = $('.bar', hz), cnt = $('#hzN'), cards = $$('.pc', rail), imgs = cards.map(c => $('.im img', c));
   const size = () => { if(reduce) return; hz.style.height = (innerHeight + Math.max(rail.scrollWidth - innerWidth + 40, 0)) + 'px'; };
   size(); addEventListener('resize', size); addEventListener('load', size);
   if(reduce){ const st = $('.stick', hz); st.style.position = 'relative'; st.style.height = 'auto'; rail.style.overflowX = 'auto'; hz.style.paddingBlock = '40px'; }
   else { let hx = 0, last = performance.now();
     T.onFrame(t => { const dt = Math.min((t-last)/1000,.05); last = t; const r = hz.getBoundingClientRect(); const max = Math.max(rail.scrollWidth - innerWidth + 40, 0);
       const p = clamp(-r.top/(r.height - innerHeight), 0, 1); hx = lerp(hx, p, 1 - Math.pow(.0005, dt));
-      rail.style.transform = `translate3d(${(-hx*max).toFixed(1)}px,0,0)`; bar.style.setProperty('--hp', hx.toFixed(3));
-      cards.forEach((c,i) => { const im = $('.im img', c); if(im) im.style.setProperty('--px', ((hx*(cards.length-1) - i)*-30).toFixed(1) + 'px'); });
+      rail.style.transform = `translate3d(${(-hx*max).toFixed(1)}px,0,0)`; T.setVar(bar, '--hp', hx.toFixed(3));
+      imgs.forEach((im,i) => { if(im) im.style.transform = `translate3d(${((hx*(cards.length-1) - i)*-30).toFixed(1)}px,0,0)`; });
       if(cnt) cnt.textContent = String(Math.min(cards.length, Math.round(hx*(cards.length-1)) + 1)).padStart(2,'0'); }); }
 }
 

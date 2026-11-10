@@ -67,7 +67,7 @@ if(domo){
     say(+b.dataset.fan ? `ventilador a velocidad ${b.dataset.fan}` : 'apaga el ventilador', +b.dataset.fan ? `Ventilador en velocidad ${b.dataset.fan}.` : 'Ventilador apagado.'); }));
   let lt = performance.now();
   T.onFrame(t => { const dt = Math.min((t-lt)/1000,.05); lt = t; fan.v = lerp(fan.v, fan.target, 1 - Math.pow(.25, dt)); fan.a = (fan.a + fan.v*dt) % 360;
-    blades.style.transform = `rotate(${fan.a.toFixed(1)}deg)`; fanScene.style.setProperty('--w', clamp(fan.v/1620,0,1).toFixed(2)); });
+    blades.style.transform = `rotate(${fan.a.toFixed(1)}deg)`; T.setVar(fanScene, '--w', clamp(fan.v/1620,0,1).toFixed(2)); });
   // cortinas
   const curt = $('.s-curt', domo), cr = $('#curtR');
   const setC = () => curt.style.setProperty('--o', cr.value/100); setC();
@@ -98,7 +98,7 @@ function knob(el, onAngle, init=0){
   el.addEventListener('pointerdown', e => { el.setPointerCapture(e.pointerId); st.target = ang(e); e.stopPropagation(); });
   el.addEventListener('pointermove', e => { if(el.hasPointerCapture(e.pointerId)) st.target = ang(e); });
   el.addEventListener('keydown', e => { if(['ArrowRight','ArrowUp'].includes(e.key)){ st.target = clamp(st.target + 10,-135,135); e.preventDefault(); } if(['ArrowLeft','ArrowDown'].includes(e.key)){ st.target = clamp(st.target - 10,-135,135); e.preventDefault(); } });
-  T.onFrame(() => { st.v += (st.target - st.a)*.12; st.v *= .72; st.a += st.v; el.style.setProperty('--a', st.a.toFixed(2) + 'deg'); onAngle(st.a); });
+  T.onFrame(() => { st.v += (st.target - st.a)*.12; st.v *= .72; st.a += st.v; T.setVar(el, '--a', st.a.toFixed(1) + 'deg'); onAngle(st.a); });
 }
 if(elec){
   Carousel(elec);
@@ -259,7 +259,7 @@ if(pr){
     hudPhase.textContent = PH[st.phase] + (st.paused && st.phase === 'print' ? ' (pausa)' : '');
     hudTemp.textContent = Math.round(st.temp) + '° / ' + Math.round(st.bed) + '°';
     hudLayer.textContent = Math.min(st.layer + (st.phase === 'print' ? 1 : 0), LAYERS) + ' / ' + LAYERS;
-    const total = st.phase === 'done' || st.phase === 'cool' ? 1 : (st.layer + st.prog)/LAYERS; bar.style.setProperty('--pp', total.toFixed(3));
+    const total = st.phase === 'done' || st.phase === 'cool' ? 1 : (st.layer + st.prog)/LAYERS; T.setVar(bar, '--pp', total.toFixed(3));
     // dibujo
     ctx.clearRect(0,0,W,H);
     const bedY = H*.84, lh = H*.021, ox = W*.06, iw = W*.88;

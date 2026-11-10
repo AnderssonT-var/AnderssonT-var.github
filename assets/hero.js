@@ -13,7 +13,7 @@ if(reduce || sessionStorage.getItem('tovel-seen')) ready(); else addEventListene
 try{ sessionStorage.setItem('tovel-seen','1'); }catch(e){}
 setTimeout(ready, 3500);
 
-const phaseEls = $$('.phase');
+const phaseEls = $$('.phase'), hudP = $('#hudP');
 const caps = [
   ['Todo empieza en un plano.','Antes de escribir código dibujamos cada pieza: qué hace, cómo se conecta y cómo crece.'],
   ['El plano toma forma.','Arquitectura, base de datos y pantallas, aprobadas contigo antes de construir.'],
@@ -82,15 +82,15 @@ T.onFrame(t => {
   const target = clamp(-hr.top/(hr.height - vh), 0, 1);
   st.p = reduce ? 1 : lerp(st.p, target, 1 - Math.pow(.0009, dt));
   const p = st.p;
-  stage.style.setProperty('--copyO', clamp(1 - p*5, 0, 1).toFixed(3));
-  stage.style.setProperty('--phO', (reduce ? 0 : clamp((p - .12)*6, 0, 1)).toFixed(3));
-  stage.style.setProperty('--gridO', (1 - clamp((p - .55)*2.4, 0, 1)).toFixed(3));
-  stage.style.setProperty('--glowO', clamp((p - .6)*2.5, 0, 1).toFixed(3));
-  stage.style.setProperty('--p', clamp(p*1.6, 0, 1).toFixed(3));
+  T.setVar(stage, '--copyO', clamp(1 - p*5, 0, 1).toFixed(2));
+  T.setVar(stage, '--phO', (reduce ? 0 : clamp((p - .12)*6, 0, 1)).toFixed(2));
+  T.setVar(stage, '--gridO', (1 - clamp((p - .55)*2.4, 0, 1)).toFixed(2));
+  T.setVar(stage, '--glowO', clamp((p - .6)*2.5, 0, 1).toFixed(2));
+  T.setVar(stage, '--p', clamp(p*1.6, 0, 1).toFixed(2));
   const phase = p < .3 ? 0 : p < .52 ? 1 : p < .74 ? 2 : 3;
   phaseEls.forEach((el,i) => el.classList.toggle('on', i <= phase && p > .12));
   if(ph !== phase){ ph = phase; $('#capH').textContent = caps[phase][0]; $('#capP').textContent = caps[phase][1]; }
-  $('#hudP').textContent = Math.round(p*100) + '%';
+  const hp = Math.round(p*100) + '%'; if(hudP.textContent !== hp) hudP.textContent = hp;
   if(!gl) return;
   const mx = T.mouse.x/innerWidth - .5, my = T.mouse.y/innerHeight - .5;
   st.rx = lerp(st.rx, my*.35, 1 - Math.pow(.02, dt)); st.ry = lerp(st.ry, mx*.6, 1 - Math.pow(.02, dt));

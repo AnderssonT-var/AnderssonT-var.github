@@ -37,7 +37,7 @@
 <section class="phead"><div class="gridbg"></div><div class="orb"></div><div class="wrap"><p class="no">03 / LABS</p><h1 data-split>Toca. Gira. <em>Enciende.</em></h1><p class="lead rv">Robótica, electrónica e inteligencia artificial. Esta consola recrea en pequeño los prototipos que construimos: pruébala.</p></div></section>
 <section class="labs">
   <div class="wrap">
-    <nav class="labs-nav" aria-label="Módulos"><a href="#domo"><i>01</i>Domótica</a><a href="#alarma"><i>02</i>Seguridad</a><a href="#elec"><i>03</i>Electrónica y robótica</a><a href="#ai"><i>04</i>Red Neuronal Junior</a><a href="#printer"><i>05</i>Impresión 3D</a></nav>
+    <nav class="labs-nav" aria-label="Módulos"><a href="#domo"><i>01</i>Domótica</a><a href="#alarma"><i>02</i>Seguridad</a><a href="#elec"><i>03</i>Electrónica y robótica</a><a href="#ai"><i>04</i>Red Neuronal Junior</a><a href="#printer"><i>05</i>Impresión 3D</a><a href="#hand"><i>06</i>Prótesis de mano</a></nav>
     <div class="console">
       <div class="neu m-domo rv" id="domo"><div class="mod-h"><div><p class="k">01 · DOMÓTICA</p><h3>Casa inteligente</h3></div><span class="led on"></span></div>
         <p class="d">Cuatro dispositivos controlados por voz o desde el celular. Desliza o toca las pestañas.</p>
@@ -76,8 +76,19 @@
         <div class="pr-bar"><i id="prBar"></i></div>
         <div class="pr-ctrls"><button class="press hot" id="prGo" type="button">Imprimir pieza</button></div>
       </div>
+      <div class="neu m-hand rv" id="hand"><div class="mod-h"><div><p class="k">06 · BIOINGENIERÍA · EN DESARROLLO</p><h3>Prótesis de mano articulada</h3></div><span class="led on"></span></div>
+        <p class="d">No solo abre y cierra: cada dedo y cada falange se mueven por separado. Elige un gesto o controla cada dedo con su deslizador.</p>
+        <div class="hand">
+          <div class="hand-stage"><canvas id="handCanvas" aria-label="Mano protésica animada"></canvas><span class="hand-badge">15 ARTICULACIONES · 5 DEDOS</span></div>
+          <div>
+            <div class="gestures" role="group" aria-label="Gestos"><button type="button" data-g="abrir" aria-pressed="true">Abrir</button><button type="button" data-g="puno" aria-pressed="false">Puño</button><button type="button" data-g="pinza" aria-pressed="false">Pinza</button><button type="button" data-g="senalar" aria-pressed="false">Señalar</button><button type="button" data-g="paz" aria-pressed="false">Paz</button><button type="button" data-g="taza" aria-pressed="false">Sujetar taza</button><button type="button" data-g="rock" aria-pressed="false">Rock</button></div>
+            <div class="fingers"><label class="finger"><span>Pulgar</span><input class="rng" type="range" min="0" max="100" value="0" aria-label="Flexión del pulgar"><b>0°</b></label><label class="finger"><span>Índice</span><input class="rng" type="range" min="0" max="100" value="0" aria-label="Flexión del índice"><b>0°</b></label><label class="finger"><span>Medio</span><input class="rng" type="range" min="0" max="100" value="0" aria-label="Flexión del medio"><b>0°</b></label><label class="finger"><span>Anular</span><input class="rng" type="range" min="0" max="100" value="0" aria-label="Flexión del anular"><b>0°</b></label><label class="finger"><span>Meñique</span><input class="rng" type="range" min="0" max="100" value="0" aria-label="Flexión del meñique"><b>0°</b></label></div>
+            <div class="ctrls"><button class="press" id="handDemo" type="button">Demostración</button><span class="lab">SIGUE A: PRÓTESIS BIOMECÁNICAS 3D CON P4H</span></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="labs-foot rv"><span>Prototipos reales:</span><a href="https://github.com/AnderssonT-var/Domotica-alexa" target="_blank" rel="noopener">Domótica con Alexa ↗</a><a href="https://github.com/AnderssonT-var/Sistema_De_Alarmas_Con_HMI" target="_blank" rel="noopener">Alarmas con HMI ↗</a><span>Prótesis biomecánicas 3D con P4H · Impresión 3D con UDLA · IEEE Robotics and Automation Society</span></div>
+    <div class="labs-foot rv"><span>Prototipos reales:</span><a href="https://github.com/AnderssonT-var/Domotica-alexa" target="_blank" rel="noopener">Domótica con Alexa ↗</a><a href="https://github.com/AnderssonT-var/Sistema_De_Alarmas_Con_HMI" target="_blank" rel="noopener">Alarmas con HMI ↗</a><span>Prótesis de mano articulada (en desarrollo) · Prótesis biomecánicas 3D con P4H · Impresión 3D con UDLA · IEEE Robotics and Automation Society</span></div>
   </div>
 </section>
 </main>

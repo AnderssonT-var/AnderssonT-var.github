@@ -177,3 +177,19 @@
   .knob{width:110px;height:110px}
   .knob .ticks{mask:radial-gradient(circle,transparent 60px,#000 61px,#000 66px,transparent 67px);-webkit-mask:radial-gradient(circle,transparent 60px,#000 61px,#000 66px,transparent 67px)}
 }
+
+/* prótesis de mano articulada */
+.m-hand{grid-column:span 12}
+.hand{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:center;margin-top:18px}
+.hand-stage{position:relative;height:380px;border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 40%,#22252A,#141619)}
+.hand-stage canvas{width:100%;height:100%;display:block}
+.hand-badge{position:absolute;left:14px;top:14px;font:500 11px/1 var(--mono);letter-spacing:.1em;color:#A39D93;background:rgba(20,22,26,.7);padding:7px 10px;border-radius:999px}
+.gestures{display:flex;flex-wrap:wrap;gap:8px}
+.gestures button{border:0;padding:10px 14px;border-radius:12px;background:var(--sand);box-shadow:4px 4px 9px var(--nm-lo),-4px -4px 9px var(--nm-hi);font:600 13px/1 var(--sans);color:var(--ink);cursor:pointer;transition:box-shadow .15s ease,transform .12s var(--ease-out)}
+.gestures button:active{transform:scale(.97)}
+.gestures button[aria-pressed="true"]{box-shadow:inset 4px 4px 9px var(--nm-lo),inset -4px -4px 9px var(--nm-hi);color:var(--brand-700)}
+.fingers{display:grid;gap:12px;margin-top:20px}
+.finger{display:grid;grid-template-columns:72px minmax(0,1fr) 52px;gap:12px;align-items:center;font:500 12px/1 var(--mono);color:var(--ash-2)}
+.finger b{color:var(--ink);font-weight:600;text-align:right}
+.finger .rng{width:100%}
+@media (max-width:980px){.hand{grid-template-columns:1fr}.hand-stage{height:320px}}

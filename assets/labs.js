@@ -310,3 +310,77 @@ if(pr){
   });
 }
 })();
+
+/* ---------- 6. Prótesis de mano articulada: cada dedo y cada falange por separado ---------- */
+(function(){
+const T = window.Tovel, {$, $$, clamp, lerp, reduce} = T;
+const box = $('#hand'); if(!box) return;
+const cv = $('#handCanvas'), ctx = cv.getContext('2d');
+let W = 0, H = 0, S = 1;
+const size = () => { const r = cv.getBoundingClientRect(); S = devicePixelRatio || 1; W = cv.width = r.width*S; H = cv.height = r.height*S; };
+size(); addEventListener('resize', size);
+const NAMES = ['Pulgar','Índice','Medio','Anular','Meñique'];
+const GEST = {abrir:[0,0,0,0,0], puno:[1,1,1,1,1], pinza:[.62,.6,0,0,0], senalar:[.85,0,1,1,1], paz:[.85,0,0,1,1], taza:[.45,.55,.6,.62,.66], rock:[.7,0,1,1,0]};
+const tgt = [0,0,0,0,0], cur = [0,0,0,0,0], vel = [0,0,0,0,0];
+const sliders = $$('.finger input', box), outs = $$('.finger b', box), gBtns = $$('.gestures [data-g]', box);
+const setT = (arr, from) => { arr.forEach((v,i) => { tgt[i] = v; if(from !== 'slider') sliders[i].value = Math.round(v*100); }); };
+sliders.forEach((s,i) => s.addEventListener('input', () => { tgt[i] = s.value/100; gBtns.forEach(b => b.setAttribute('aria-pressed', false)); stopDemo(); }));
+gBtns.forEach(b => b.addEventListener('click', () => { gBtns.forEach(x => x.setAttribute('aria-pressed', x === b)); stopDemo(); setT(GEST[b.dataset.g]); }));
+let demo = null; const demoBtn = $('#handDemo');
+function stopDemo(){ if(demo){ clearInterval(demo); demo = null; demoBtn.textContent = 'Demostración'; demoBtn.classList.remove('hot'); } }
+demoBtn.addEventListener('click', () => { if(demo){ stopDemo(); return; } const seq = ['puno','abrir','senalar','paz','rock','pinza','taza','abrir']; let k = 0;
+  demoBtn.textContent = 'Detener'; demoBtn.classList.add('hot'); const step = () => { const g = seq[k++ % seq.length]; gBtns.forEach(x => x.setAttribute('aria-pressed', x.dataset.g === g)); setT(GEST[g]); }; step(); demo = setInterval(step, 1300); });
+// geometría (unidades relativas al alto del lienzo)
+const F = [ null,
+  {x:-.105, len:[.135,.085,.065]}, {x:-.035, len:[.15,.095,.07]}, {x:.035, len:[.14,.09,.068]}, {x:.1, len:[.11,.072,.058]} ];
+const JMAX = [[0,0],[80,95,70],[80,95,70],[80,95,70],[80,95,70]].map(a => a.map(d => d*Math.PI/180));
+function shade(c, k){ return `rgb(${Math.round(c[0]*k)},${Math.round(c[1]*k)},${Math.round(c[2]*k)})`; }
+const ORANGE = [242,84,45], DARK = [60,63,70];
+let tp = performance.now();
+T.onFrame(t => {
+  if(!cv.offsetParent) return;
+  const dt = Math.min((t - tp)/1000, .05); tp = t;
+  for(let i=0;i<5;i++){ if(reduce){ cur[i] = tgt[i]; } else { vel[i] += (tgt[i] - cur[i])*.16; vel[i] *= .7; cur[i] += vel[i]; } }
+  outs.forEach((o,i) => { const d = Math.round(cur[i]*(i ? 245 : 120)) + '°'; if(o.textContent !== d) o.textContent = d; });
+  ctx.clearRect(0,0,W,H);
+  const U = H*1.18, cx = W*.5, palmTop = H*.5, palmW = U*.29, palmH = U*.3;
+  // antebrazo y muñeca (encaje)
+  ctx.fillStyle = '#2C2F35'; roundRect(cx - palmW*.36, palmTop + palmH*.92, palmW*.72, H, 18*S); ctx.fill();
+  ctx.fillStyle = '#3A3D44'; roundRect(cx - palmW*.42, palmTop + palmH*.86, palmW*.84, U*.05, 10*S); ctx.fill();
+  // palma
+  const pg = ctx.createLinearGradient(0, palmTop, 0, palmTop + palmH); pg.addColorStop(0, '#3E4148'); pg.addColorStop(1, '#2E3137');
+  ctx.fillStyle = pg; roundRect(cx - palmW/2, palmTop, palmW, palmH, 26*S); ctx.fill();
+  // circuito en la palma
+  ctx.strokeStyle = 'rgba(111,227,210,.35)'; ctx.lineWidth = 1.5*S; ctx.beginPath();
+  for(let i=1;i<5;i++){ const bx = cx + F[i].x*U; ctx.moveTo(bx, palmTop + 6*S); ctx.lineTo(bx, palmTop + palmH*.45); ctx.lineTo(cx, palmTop + palmH*.62); } ctx.stroke();
+  ctx.fillStyle = '#FFB627'; ctx.beginPath(); ctx.arc(cx, palmTop + palmH*.62, 6*S, 0, 7); ctx.fill();
+  // dedos
+  const drawFinger = (i) => {
+    const f = F[i], w = (i === 4 ? .042 : .05)*U; let x = cx + f.x*U, y = palmTop + 4*S, th = 0;
+    for(let j=0;j<3;j++){
+      th += cur[i]*JMAX[i][j];
+      const L = f.len[j]*U, dy = -L*Math.cos(th), k = .75 + .45*Math.max(0, Math.cos(th));
+      const back = Math.cos(th) < 0;
+      ctx.fillStyle = back ? shade(DARK, 1.15) : shade(ORANGE, k);
+      roundRect(x - w/2, Math.min(y, y + dy) - w*.05, w, Math.abs(dy) + w*.1, w*.42); ctx.fill();
+      // articulación (servo)
+      ctx.fillStyle = '#14161A'; ctx.beginPath(); ctx.arc(x, y, w*.2, 0, 7); ctx.fill();
+      y += dy;
+    }
+    ctx.fillStyle = cur[i] > .85 ? '#6FE3D2' : '#FFB627'; ctx.beginPath(); ctx.arc(x, y, w*.16, 0, 7); ctx.fill(); // sensor de presión en la yema
+  };
+  for(let i=1;i<5;i++) drawFinger(i);
+  // pulgar: gira hacia la palma y se acorta al flexionar
+  const c = cur[0], bx = cx - palmW*.5 + 6*S, by = palmTop + palmH*.72; let ang = (-40 + c*80)*Math.PI/180, x = bx, y = by;
+  const tl = [.1, .078, .06];
+  for(let j=0;j<3;j++){
+    const L = tl[j]*U*(1 - c*.25*j), nx = x + Math.sin(ang)*L, ny = y - Math.cos(ang)*L, w = .055*U;
+    ctx.strokeStyle = shade(ORANGE, .95 - j*.06 - c*.15); ctx.lineWidth = w; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(nx, ny); ctx.stroke();
+    ctx.fillStyle = '#14161A'; ctx.beginPath(); ctx.arc(x, y, w*.2, 0, 7); ctx.fill();
+    x = nx; y = ny; ang += c*.5;
+  }
+  ctx.fillStyle = c > .55 ? '#6FE3D2' : '#FFB627'; ctx.beginPath(); ctx.arc(x, y, .055*U*.16, 0, 7); ctx.fill();
+});
+function roundRect(x, y, w, h, r){ ctx.beginPath(); if(ctx.roundRect) ctx.roundRect(x, y, w, h, Math.min(r, w/2, h/2)); else ctx.rect(x, y, w, h); }
+})();

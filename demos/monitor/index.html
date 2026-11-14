@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monitor de facturas · Tovel</title>
+<meta name="description" content="Monitor de facturas de Tovel: cada factura llega sola al WhatsApp del cliente con un enlace a su portal, y el negocio lo controla todo desde un panel. En producción.">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="icon" href="../../img/tovel/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  :root{--brand:#F2542D;--brand-hi:#FF6A45;--spark:#FFB627;--teal:#2BA493;--wa:#25D366;--wa-d:#0B6B57;--night:#0B0C0E;--coal:#14161A;--coal-2:#1C1E22;--line:#2C2F35;--bone:#F4EEE4;--ash:#A39D93;--ash-2:#6B6760;
+    --display:"Space Grotesk",system-ui,sans-serif;--sans:"Inter",system-ui,-apple-system,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+    --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);--gutter:clamp(16px,4vw,40px);color-scheme:dark}
+  *{box-sizing:border-box}
+  html{background:var(--night)}
+  body{margin:0;background:var(--night);color:var(--bone);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+  p{margin:0}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 var(--gutter)}
+  .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--spark)}
+  .top{position:sticky;top:0;z-index:20;background:rgba(11,12,14,.84);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--line)}
+  .top .wrap{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .back{font-size:14px;color:var(--ash);transition:color .2s ease}
+  .back:hover{color:var(--bone)}
+  .top img{height:26px;width:auto}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--brand);color:#14161A;font:600 14px/1 var(--sans);transition:transform .16s var(--ease-out),filter .2s ease}
+  .btn:active{transform:scale(.97)}
+  .btn.ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 1.5px rgba(244,238,228,.28)}
+  @media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.08)}}
+  .hero{padding:clamp(56px,9vw,112px) 0 clamp(32px,5vw,56px)}
+  .live{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.35);font:500 12px/1 var(--mono);letter-spacing:.06em;color:#7BE495}
+  .live i{width:8px;height:8px;border-radius:50%;background:#30D158;box-shadow:0 0 0 4px rgba(48,209,88,.2)}
+  .hero h1{font-size:clamp(46px,8vw,104px);font-weight:700;letter-spacing:-.05em;line-height:.92;margin-top:22px}
+  .hero h1 em{font-style:normal;color:var(--brand-hi)}
+  .hero .lead{margin-top:20px;max-width:58ch;font-size:clamp(17px,1.6vw,20px);color:var(--ash)}
+  .hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(40px,6vw,64px)}
+  .fact{padding:20px;border-radius:18px;background:var(--coal);border:1px solid var(--line)}
+  .fact b{display:block;font:700 clamp(28px,3.4vw,40px)/1 var(--display);letter-spacing:-.04em}
+  .fact span{display:block;margin-top:8px;font-size:13px;color:var(--ash)}
+  .sec{padding:clamp(64px,9vw,112px) 0 0}
+  .head h2{font-size:clamp(34px,5vw,64px);font-weight:700;margin-top:14px;letter-spacing:-.045em}
+  .head h2 em{font-style:normal;color:var(--brand-hi)}
+  .head p{margin-top:14px;color:var(--ash);max-width:62ch;font-size:17px}
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+  .rv.in{opacity:1;transform:none}
+
+  /* el reto */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:clamp(32px,5vw,48px)}
+  .vs article{padding:28px;border-radius:22px;background:var(--coal);border:1px solid var(--line)}
+  .vs h3{font-size:24px;font-weight:600}
+  .vs .tag{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--ash-2)}
+  .vs ul{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px;color:var(--ash);font-size:15px}
+  .vs li{display:flex;gap:12px}
+  .vs li::before{content:"✕";flex:none;color:#6B6760;font-weight:700}
+  .vs .now{background:#15201A;border-color:rgba(48,209,88,.3)}
+  .vs .now .tag{color:#7BE495}
+  .vs .now li{color:#CFE9D5}
+  .vs .now li::before{content:"✓";color:#30D158}
+
+  /* animación del funcionamiento */
+  .flow{position:relative;margin-top:clamp(32px,5vw,48px);padding:clamp(18px,3vw,32px);border-radius:28px;background:radial-gradient(120% 120% at 50% 0%,#1A1C21,#101215);border:1px solid var(--line)}
+  .stage{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr 34px 1fr;align-items:center}
+  .pn{position:relative;min-height:300px;padding:16px;border-radius:20px;background:#17191D;border:1px solid var(--line);display:flex;flex-direction:column;gap:12px;opacity:.5;transform:scale(.97);transition:opacity .35s var(--ease-out),transform .35s var(--ease-out),border-color .35s ease}
+  .pn.on{opacity:1;transform:none;border-color:rgba(242,84,45,.5)}
+  .pn h4{margin:0;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ash-2)}
+  .pn .ttl{font:600 16px/1.2 var(--display);letter-spacing:-.02em}
+  .wire{height:2px;background:#2C2F35;position:relative;overflow:hidden;border-radius:2px}
+  .wire em{position:absolute;inset:0;background:linear-gradient(90deg,var(--brand),var(--spark));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-in-out)}
+  .wire.on em{transform:none}
+  /* 1. carpeta */
+  .folder{flex:1;border-radius:14px;background:#0F1013;border:1px dashed #33363D;padding:12px;display:grid;align-content:start;gap:8px}
+  .folder .path{font:500 11px/1 var(--mono);color:var(--ash)}
+  .file{display:flex;align-items:center;gap:10px;padding:10px;border-radius:10px;background:#1F2227;opacity:0;transform:translateY(-14px) scale(.9);transition:opacity .35s var(--ease-out),transform .45s var(--ease-out)}
+  .file.on{opacity:1;transform:none}
+  .file.old{opacity:.45;transform:none}
+  .pdf{flex:none;width:28px;height:34px;border-radius:5px;background:#E5484D;display:grid;place-items:center;font:700 8px/1 var(--sans);color:#fff}
+  .file b{display:block;font:500 12px/1.2 var(--mono)}
+  .file small{display:block;font-size:11px;color:var(--ash-2)}
+  /* 2. monitor */
+  .mon{flex:1;display:grid;align-content:start;gap:10px}
+  .st{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ash)}
+  .st i{width:8px;height:8px;border-radius:50%;background:#30D158;box-shadow:0 0 0 4px rgba(48,209,88,.15)}
+  .row{padding:10px 12px;border-radius:12px;background:#1F2227;font-size:12.5px;opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease-out),transform .3s var(--ease-out)}
+  .row.on{opacity:1;transform:none}
+  .row b{display:block;font:500 11px/1 var(--mono);color:var(--spark);margin-bottom:6px;letter-spacing:.06em}
+  .bar{height:6px;border-radius:3px;background:#2C2F35;overflow:hidden;margin-top:8px}
+  .bar em{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--spark));transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease-in-out)}
+  .bar.on em{transform:none}
+  /* 3. nube */
+  .cloud{flex:1;display:grid;place-items:center;text-align:center;gap:10px}
+  .cl-ico{width:74px;height:74px;border-radius:22px;display:grid;place-items:center;background:#1F2227;transition:background-color .35s ease,box-shadow .35s ease}
+  .pn.on .cl-ico{background:rgba(242,84,45,.14);box-shadow:0 0 40px -6px rgba(242,84,45,.45)}
+  .link{font:500 11.5px/1.3 var(--mono);color:var(--spark);padding:8px 10px;border-radius:10px;background:#1F2227;opacity:0;transform:scale(.92);transition:opacity .3s var(--ease-out),transform .3s var(--ease-out)}
+  .link.on{opacity:1;transform:none}
+  .cl-note{font-size:12px;color:var(--ash-2)}
+  /* 4. teléfono */
+  .phone{flex:1;align-self:center;width:100%;max-width:200px;border-radius:26px;padding:7px;background:#000;border:1px solid #2C2F35;position:relative;overflow:hidden}
+  .scr{position:relative;height:250px;border-radius:20px;overflow:hidden;background:#0B141A}
+  .wa-top{display:flex;align-items:center;gap:8px;padding:10px;background:#1F2C33;font-size:11px}
+  .wa-top i{width:22px;height:22px;border-radius:50%;background:var(--brand);display:grid;place-items:center;font:700 10px/1 var(--display);color:#14161A;font-style:normal}
+  .wa-body{padding:10px;display:grid;gap:8px}
+  .bub{max-width:92%;padding:8px 9px 6px;border-radius:10px 10px 10px 3px;background:#202C33;font-size:10.5px;line-height:1.4;color:#E9EDEF;opacity:0;transform:translateY(10px) scale(.95);transform-origin:left bottom;transition:opacity .3s var(--ease-out),transform .4s var(--ease-out)}
+  .bub.on{opacity:1;transform:none}
+  .bub .doc{display:flex;align-items:center;gap:6px;padding:6px;border-radius:7px;background:#111B21;margin-bottom:6px;font-size:10px}
+  .bub .doc .pdf{width:18px;height:22px;font-size:6px}
+  .bub u{color:#53BDEB;text-decoration:none}
+  .bub time{display:block;text-align:right;font-size:8.5px;color:#8696A0;margin-top:2px}
+  .portal{position:absolute;inset:0;background:#F4EEE4;color:#14161A;padding:14px 12px;display:grid;align-content:start;gap:8px;transform:translateY(100%);transition:transform .55s var(--ease-out)}
+  .portal.on{transform:none}
+  .portal .hi{font:700 15px/1.1 var(--display);letter-spacing:-.02em}
+  .portal .sub{font-size:10px;color:#6B6760}
+  .inv{display:flex;align-items:center;gap:8px;padding:8px;border-radius:10px;background:#fff;font-size:10px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+  .inv b{display:block;font-size:10.5px}
+  .inv span{color:#6B6760}
+  .inv .dl{margin-left:auto;padding:4px 7px;border-radius:999px;background:#14161A;color:#F4EEE4;font-weight:600;font-size:9px}
+  .inv.new{outline:2px solid var(--brand)}
+  .tap{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.55);left:50%;top:150px;transform:translate(-50%,-50%) scale(0);opacity:0;pointer-events:none}
+  .tap.on{animation:tap .6s var(--ease-out)}
+  @keyframes tap{0%{opacity:.9;transform:translate(-50%,-50%) scale(.3)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.6)}}
+  /* pasos */
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:22px}
+  .step{padding-top:14px;border-top:2px solid #2C2F35;transition:border-color .35s ease}
+  .step b{font:500 11px/1 var(--mono);color:var(--ash-2);letter-spacing:.1em;transition:color .35s ease}
+  .step h3{font-size:18px;font-weight:600;margin-top:8px}
+  .step p{margin-top:6px;font-size:14px;color:var(--ash)}
+  .step.on{border-color:var(--brand)}
+  .step.on b{color:var(--spark)}
+  .flow-ctl{display:flex;justify-content:flex-end;margin-top:16px}
+  .flow-ctl button{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--ash);background:#1F2227;border:1px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer;transition:color .2s ease,transform .16s var(--ease-out)}
+  .flow-ctl button:active{transform:scale(.97)}
+  @media (hover:hover) and (pointer:fine){.flow-ctl button:hover{color:var(--bone)}}
+
+  /* recorrido */
+  .chips{position:sticky;top:60px;z-index:15;margin-top:clamp(28px,4vw,40px);background:rgba(11,12,14,.84);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-block:1px solid var(--line)}
+  .chips .in{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+  .chips .in::-webkit-scrollbar{display:none}
+  .chips a{flex:none;font-size:13px;padding:7px 14px;border-radius:999px;background:var(--coal);border:1px solid var(--line);color:var(--ash);transition:color .2s ease,border-color .2s ease}
+  .chips a:hover{color:var(--bone);border-color:#3A3D44}
+  .tour{display:grid;gap:clamp(56px,8vw,96px);margin-top:clamp(40px,6vw,64px)}
+  .stop{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center;scroll-margin-top:140px}
+  .stop:nth-child(even){grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}.stop:nth-child(even) .txt{order:2}
+  .stop .k{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--ash-2);text-transform:uppercase}
+  .stop h3{font-size:clamp(26px,3vw,38px);font-weight:600;margin-top:12px}
+  .stop p{margin-top:12px;color:var(--ash)}
+  .stop ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;color:var(--ash)}
+  .stop li{display:flex;gap:10px}
+  .stop li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;border-radius:50%;background:var(--brand)}
+  .mock{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#16181C;box-shadow:0 30px 60px -30px rgba(0,0,0,.75)}
+  .win-top{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#1E2025;border-bottom:1px solid var(--line);font-size:12px;color:var(--ash)}
+  .win-top .lg{width:18px;height:18px;border-radius:5px;background:var(--brand);display:grid;place-items:center;color:#14161A;font:700 10px/1 var(--display)}
+  .win-top .x{margin-left:auto;letter-spacing:10px;color:#6B6F78}
+  .tabs{display:flex;gap:4px;padding:10px 14px 0;border-bottom:1px solid var(--line)}
+  .tabs span{font-size:12.5px;padding:8px 12px;border-radius:9px 9px 0 0;color:var(--ash)}
+  .tabs span.on{background:#20232A;color:var(--bone)}
+  .wb{padding:16px;display:grid;gap:12px}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .kpi{padding:12px;border-radius:12px;background:#1F2227}
+  .kpi b{display:block;font:700 22px/1 var(--display)}
+  .kpi span{font-size:11.5px;color:var(--ash)}
+  .tbl{width:100%;border-collapse:collapse;font-size:12px}
+  .tbl th{text-align:left;font:500 10px/1 var(--mono);letter-spacing:.08em;color:var(--ash-2);text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--line)}
+  .tbl td{padding:9px 10px;border-bottom:1px solid #22252B;color:#D9D3C9;white-space:nowrap}
+  .pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:10.5px;font-weight:600}
+  .ok{background:rgba(48,209,88,.15);color:#7BE495}
+  .warn{background:rgba(255,182,39,.15);color:var(--spark)}
+  .bad{background:rgba(229,72,77,.15);color:#FF8A8E}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  .mb{font-size:12px;font-weight:600;padding:8px 12px;border-radius:9px;background:#262930;color:var(--bone)}
+  .mb.pri{background:var(--brand);color:#14161A}
+  .field{display:grid;gap:6px}
+  .field label{font-size:11.5px;color:var(--ash)}
+  .field .in{padding:9px 11px;border-radius:9px;background:#0F1013;border:1px solid var(--line);font:500 12px/1.4 var(--mono);color:var(--bone)}
+  .chk{display:flex;align-items:center;gap:8px;font-size:12.5px}
+  .chk i{width:16px;height:16px;border-radius:4px;background:var(--brand);display:grid;place-items:center;color:#14161A;font-style:normal;font-size:11px;font-weight:700}
+  .seg{display:inline-flex;padding:3px;border-radius:9px;background:#0F1013;border:1px solid var(--line);font-size:11.5px}
+  .seg span{padding:5px 10px;border-radius:6px;color:var(--ash)}
+  .seg span.on{background:#262930;color:var(--bone)}
+  /* mock teléfono grande */
+  .mock-phone{display:flex;justify-content:center;gap:18px;padding:28px 16px;background:radial-gradient(90% 90% at 50% 10%,#1D2026,#121417)}
+  .ph{width:min(250px,44%);border-radius:34px;padding:8px;background:#000;border:1px solid #2C2F35}
+  .ph .scr{height:440px}
+  .ph .wa-body{gap:10px}
+  .ph .bub{font-size:12px;opacity:1;transform:none}
+  .ph .bub .doc{font-size:11px}
+  .ph .portal{transform:none;position:static;height:100%;gap:10px;padding:18px 14px}
+  .ph .portal .hi{font-size:19px}
+  .ph .inv{font-size:11px;padding:10px}
+  .ph .inv b{font-size:12px}
+  .sug{margin-top:4px;padding:10px;border-radius:12px;border:1.5px dashed #D3C7B4;font-size:11px;color:#6B6760;text-align:center}
+  /* admin */
+  .adm{display:grid;grid-template-columns:150px 1fr;min-height:330px}
+  .side{padding:14px 10px;background:#121417;border-right:1px solid var(--line);display:grid;align-content:start;gap:4px;font-size:12.5px}
+  .side .brand{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:10px;padding:0 6px}
+  .side span{padding:8px 10px;border-radius:9px;color:var(--ash)}
+  .side span.on{background:#20232A;color:var(--bone)}
+  .side em{float:right;font-style:normal;font-size:10px;padding:1px 6px;border-radius:999px;background:var(--brand);color:#14161A;font-weight:700}
+  .search{padding:9px 12px;border-radius:9px;background:#0F1013;border:1px solid var(--line);font-size:12px;color:#6B6F78}
+
+  .feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(32px,5vw,48px)}
+  .feat{padding:22px;border-radius:20px;background:var(--coal);border:1px solid var(--line)}
+  .feat h3{font-size:19px;font-weight:600}
+  .feat p{margin-top:8px;font-size:14.5px;color:var(--ash)}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .stack span{font:500 12px/1 var(--mono);padding:9px 12px;border-radius:999px;background:var(--coal);border:1px solid var(--line);color:var(--ash)}
+  .cta{margin-top:clamp(72px,10vw,120px);padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--line);text-align:center}
+  .cta h2{font-size:clamp(34px,5vw,64px);font-weight:700}
+  .cta p{margin:14px auto 0;color:var(--ash);max-width:54ch}
+  .cta .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+  footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:13px;color:var(--ash)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+  footer a{color:var(--spark);font-weight:600}
+
+  @media (max-width:980px){
+    .stage{grid-template-columns:1fr 1fr;gap:12px}.wire{display:none}.pn{min-height:280px}
+    .steps{grid-template-columns:1fr 1fr}
+    .stop,.stop:nth-child(even){grid-template-columns:1fr}.stop:nth-child(even) .txt{order:0}
+    .feats{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .vs,.feats{grid-template-columns:1fr}.top .btn{display:none}
+    .stage{grid-template-columns:1fr}.pn{min-height:0}.phone{max-width:220px}
+    .adm{grid-template-columns:1fr}.side{display:none}
+    .kpis{grid-template-columns:1fr 1fr 1fr}.kpi b{font-size:18px}
+    .tbl .hide{display:none}
+    .ph{width:min(230px,80%)}.mock-phone .ph:nth-child(2){display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="back" href="../../productos.html">← Productos de Tovel</a>
+  <img src="../../img/tovel/tovel-logo-inverse.svg" alt="Tovel" width="78" height="26">
+  <a class="btn" href="../../contacto.html?plan=Automatizaci%C3%B3n%20o%20integraci%C3%B3n">Lo quiero →</a>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <span class="live"><i></i>EN PRODUCCIÓN · AUTOMATIZACIÓN</span>
+  <h1>Monitor de facturas. <em>Cada factura llega sola.</em></h1>
+  <p class="lead">Un programa para Windows que vigila la carpeta de facturas y, apenas aparece una nueva, la envía al WhatsApp del cliente con un enlace a su portal personal. El negocio lo controla todo desde un panel web.</p>
+  <div class="acts"><a class="btn" href="#como">Ver cómo funciona ↓</a><a class="btn ghost" href="#recorrido">Recorrido por la app</a></div>
+  <div class="facts">
+    <div class="fact"><b>0</b><span>clics para enviar una factura</span></div>
+    <div class="fact"><b>~40 s</b><span>desde que se guarda el PDF hasta el WhatsApp</span></div>
+    <div class="fact"><b>24/7</b><span>trabajando en segundo plano</span></div>
+    <div class="fact"><b>3</b><span>piezas: programa, portal y panel</span></div>
+  </div>
+</div></section>
+
+<section class="sec" id="reto"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">El reto</p><h2>El cliente necesitaba que <em>las facturas se enviaran solas.</em></h2>
+  <p>Un negocio con mucho movimiento diario emitía sus facturas en un programa que no las mandaba a nadie. Cada envío era trabajo manual, y los clientes llamaban para pedir copias. Necesitaba que cada factura llegara al WhatsApp del cliente en el momento, sin cambiar su forma de facturar.</p></div>
+  <div class="vs">
+    <article class="rv"><p class="tag">ANTES</p><h3>Todo a mano</h3><ul><li>Guardar el PDF, buscar el número del cliente y abrir WhatsApp</li><li>Adjuntar el archivo y escribir el saludo, una factura a la vez</li><li>Facturas que se quedaban sin enviar en los días de más trabajo</li><li>Clientes pidiendo copias de facturas de meses anteriores</li></ul></article>
+    <article class="rv now"><p class="tag">AHORA</p><h3>Guardar y listo</h3><ul><li>La factura se guarda con el celular del cliente como nombre y se envía sola</li><li>El mensaje sale con saludo según la hora y el PDF adjunto</li><li>Si un envío falla, lo reintenta y queda registrado en el historial</li><li>Cada cliente tiene un portal con todas sus facturas, siempre disponible</li></ul></article>
+  </div>
+</div></section>
+
+<section class="sec" id="como"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">Cómo funciona</p><h2>De la carpeta al WhatsApp, <em>sin tocar nada.</em></h2><p>Así viaja una factura, en vivo.</p></div>
+  <div class="flow rv" id="flow" aria-label="Animación del funcionamiento del Monitor de facturas">
+    <div class="stage">
+      <div class="pn" data-p="0"><h4>01 · La PC del negocio</h4><p class="ttl">Se guarda la factura</p>
+        <div class="folder"><span class="path">C:\Facturas</span>
+          <div class="file old"><span class="pdf">PDF</span><div><b>0990000871.pdf</b><small>enviada · 9:12</small></div></div>
+          <div class="file" id="fNew"><span class="pdf">PDF</span><div><b>0990000123.pdf</b><small>nueva · ahora</small></div></div>
+        </div></div>
+      <i class="wire"><em></em></i>
+      <div class="pn" data-p="1"><h4>02 · Monitor de facturas</h4><p class="ttl">La detecta y la sube</p>
+        <div class="mon"><span class="st"><i></i>Vigilando la carpeta</span>
+          <div class="row" id="r1"><b>FACTURA DETECTADA</b>Cliente 0990000123</div>
+          <div class="row" id="r2"><b>SUBIENDO AL PORTAL</b>0990000123.pdf · 184 KB<div class="bar" id="bar"><em></em></div></div>
+        </div></div>
+      <i class="wire"><em></em></i>
+      <div class="pn" data-p="2"><h4>03 · Portal en la nube</h4><p class="ttl">Crea el enlace del cliente</p>
+        <div class="cloud"><div class="cl-ico"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#FF6A45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5H7z"/><path d="M9.5 13.5l2 2 3.5-4"/></svg></div>
+          <span class="link" id="lnk">portal/c/8kq2…</span><span class="cl-note">Enlace seguro y personal</span></div></div>
+      <i class="wire"><em></em></i>
+      <div class="pn" data-p="3"><h4>04 · El celular del cliente</h4><p class="ttl">Le llega y la abre</p>
+        <div class="phone"><div class="scr">
+          <div class="wa-top"><i>T</i><div><b>Tu negocio</b><br><span style="color:#8696A0">en línea</span></div></div>
+          <div class="wa-body"><div class="bub" id="bub"><div class="doc"><span class="pdf">PDF</span>Factura 001-001-000123</div>Buenas tardes 👋 de parte de <b>Tu negocio</b>, puede ver su factura aquí: <u>portal/c/8kq2…</u><time>15:42 ✓✓</time></div></div>
+          <span class="tap" id="tap"></span>
+          <div class="portal" id="portal"><p class="hi">Hola, Carlos</p><p class="sub">Tus facturas de Tu negocio</p>
+            <div class="inv new"><span class="pdf" style="width:18px;height:22px;font-size:6px">PDF</span><div><b>001-001-000123</b><span>Hoy · $48,30</span></div><span class="dl">Ver</span></div>
+            <div class="inv"><span class="pdf" style="width:18px;height:22px;font-size:6px">PDF</span><div><b>001-001-000097</b><span>12 oct · $125,00</span></div><span class="dl">Ver</span></div>
+            <div class="inv"><span class="pdf" style="width:18px;height:22px;font-size:6px">PDF</span><div><b>001-001-000064</b><span>3 sep · $32,90</span></div><span class="dl">Ver</span></div>
+          </div>
+        </div></div></div>
+    </div>
+    <div class="steps">
+      <div class="step" data-s="0"><b>PASO 01</b><h3>Guardar el PDF</h3><p>El programa de facturación lo guarda con el celular del cliente como nombre.</p></div>
+      <div class="step" data-s="1"><b>PASO 02</b><h3>Detectar y subir</h3><p>El monitor lo ve al instante, espera a que termine de guardarse y lo sube.</p></div>
+      <div class="step" data-s="2"><b>PASO 03</b><h3>Enlace personal</h3><p>El portal guarda la factura en el historial del cliente y genera su enlace.</p></div>
+      <div class="step" data-s="3"><b>PASO 04</b><h3>WhatsApp y portal</h3><p>Llega el mensaje con el PDF; al tocar el enlace ve todas sus facturas.</p></div>
+    </div>
+    <div class="flow-ctl"><button type="button" id="replay">↻ Repetir</button></div>
+  </div>
+</div></section>
+
+<section class="sec" id="recorrido">
+  <div class="wrap"><div class="head rv"><p class="eyebrow">Recorrido</p><h2>Un recorrido <em>por la app.</em></h2><p>Las tres piezas del sistema, con datos de demostración.</p></div></div>
+  <nav class="chips" aria-label="Pantallas"><div class="wrap"><div class="in">
+    <a href="#t-programa">Programa</a><a href="#t-mensaje">Mensaje</a><a href="#t-portal">Portal del cliente</a><a href="#t-admin">Panel del admin</a><a href="#t-historial">Historial</a><a href="#t-config">Configuración</a>
+  </div></div></nav>
+  <div class="wrap"><div class="tour">
+
+    <article class="stop" id="t-programa">
+      <div class="txt rv"><p class="k">01 · Programa para Windows</p><h3>Trabaja solo, junto al reloj.</h3><p>Una ventana sencilla muestra qué está pasando. Al cerrarla sigue trabajando con un ícono junto al reloj de Windows.</p>
+        <ul><li>Se abre solo al encender la computadora</li><li>Si alguien está usando la PC, espera a que termine</li><li>Funciona incluso en computadoras antiguas</li></ul></div>
+      <div class="mock rv"><div class="win-top"><span class="lg">M</span>Monitor de facturas<span class="x">— ▢ ✕</span></div>
+        <div class="tabs"><span class="on">Inicio</span><span>Historial</span><span>Configuración</span></div>
+        <div class="wb">
+          <div class="st"><i></i>Vigilando C:\Facturas · conectado al portal</div>
+          <div class="kpis"><div class="kpi"><b>14</b><span>enviadas hoy</span></div><div class="kpi"><b>1</b><span>en cola</span></div><div class="kpi"><b>0</b><span>con error</span></div></div>
+          <table class="tbl"><thead><tr><th>Hora</th><th>Cliente</th><th class="hide">Archivo</th><th>Estado</th></tr></thead><tbody>
+            <tr><td>15:42</td><td>0990000123</td><td class="hide">0990000123.pdf</td><td><span class="pill warn">Enviando…</span></td></tr>
+            <tr><td>15:20</td><td>0990000871</td><td class="hide">0990000871.pdf</td><td><span class="pill ok">Enviada</span></td></tr>
+            <tr><td>14:58</td><td>0990000455</td><td class="hide">0990000455.pdf</td><td><span class="pill ok">Enviada</span></td></tr>
+            <tr><td>14:31</td><td>0990000302</td><td class="hide">0990000302.pdf</td><td><span class="pill ok">Enviada</span></td></tr>
+          </tbody></table>
+          <div class="btns"><span class="mb pri">Probar el envío</span><span class="mb">Abrir carpeta</span></div>
+        </div></div>
+    </article>
+
+    <article class="stop" id="t-mensaje">
+      <div class="txt rv"><p class="k">02 · El mensaje</p><h3>Personal, a la hora correcta.</h3><p>El cliente recibe la factura en el chat de siempre con el negocio: el PDF adjunto y un enlace a su portal.</p>
+        <ul><li>Saludo automático: buenos días, buenas tardes o buenas noches</li><li>Texto editable con el nombre del negocio</li><li>Acepta el número con o sin código de país</li></ul></div>
+      <div class="mock mock-phone rv">
+        <div class="ph"><div class="scr"><div class="wa-top"><i>T</i><div><b>Tu negocio</b><br><span style="color:#8696A0">en línea</span></div></div>
+          <div class="wa-body">
+            <div class="bub"><div class="doc"><span class="pdf">PDF</span>Factura 001-001-000097</div>Buenos días 👋 de parte de <b>Tu negocio</b>, puede ver su factura aquí: <u>portal/c/8kq2…</u><time>9:05 ✓✓</time></div>
+            <div class="bub"><div class="doc"><span class="pdf">PDF</span>Factura 001-001-000123</div>Buenas tardes 👋 de parte de <b>Tu negocio</b>, puede ver su factura aquí: <u>portal/c/8kq2…</u><time>15:42 ✓✓</time></div>
+          </div></div></div>
+      </div>
+    </article>
+
+    <article class="stop" id="t-portal">
+      <div class="txt rv"><p class="k">03 · Portal del cliente</p><h3>Todas sus facturas, en su bolsillo.</h3><p>Con su enlace personal, el cliente entra sin contraseñas y encuentra su historial completo.</p>
+        <ul><li>Ver y descargar cualquier factura</li><li>Historial ordenado por fecha</li><li>Buzón de sugerencias para el negocio</li></ul></div>
+      <div class="mock mock-phone rv">
+        <div class="ph"><div class="scr"><div class="portal"><p class="hi">Hola, Carlos</p><p class="sub">Tus facturas de Tu negocio</p>
+          <div class="inv new"><span class="pdf" style="width:20px;height:24px;font-size:6px">PDF</span><div><b>001-001-000123</b><span>Hoy · $48,30</span></div><span class="dl">Ver</span></div>
+          <div class="inv"><span class="pdf" style="width:20px;height:24px;font-size:6px">PDF</span><div><b>001-001-000097</b><span>12 oct · $125,00</span></div><span class="dl">Ver</span></div>
+          <div class="inv"><span class="pdf" style="width:20px;height:24px;font-size:6px">PDF</span><div><b>001-001-000064</b><span>3 sep · $32,90</span></div><span class="dl">Ver</span></div>
+          <div class="inv"><span class="pdf" style="width:20px;height:24px;font-size:6px">PDF</span><div><b>001-001-000031</b><span>18 ago · $76,40</span></div><span class="dl">Ver</span></div>
+          <div class="sug">💬 Déjanos una sugerencia</div></div></div></div>
+        <div class="ph"><div class="scr"><div class="portal"><p class="hi">Factura 001-001-000123</p><p class="sub">Emitida hoy · 15:40</p>
+          <div style="flex:1;border-radius:12px;background:#fff;padding:12px;display:grid;gap:7px;font-size:10px;color:#6B6760;min-height:250px">
+            <b style="color:#14161A;font-size:12px">Tu negocio</b><span>RUC 17XXXXXXXX001</span>
+            <span style="height:1px;background:#EEE;margin:4px 0"></span>
+            <span>Servicio general ............ $30,00</span><span>Repuesto ...................... $13,13</span><span>IVA 15% ....................... $5,17</span>
+            <b style="color:#14161A;font-size:13px;margin-top:6px">Total $48,30</b></div>
+          <div class="btns"><span class="mb pri" style="flex:1;text-align:center">Descargar PDF</span></div></div></div></div>
+      </div>
+    </article>
+
+    <article class="stop" id="t-admin">
+      <div class="txt rv"><p class="k">04 · Panel del administrador</p><h3>El negocio, bajo control.</h3><p>Un panel web privado para ver clientes y facturas, administrar sucursales y leer lo que opinan los clientes.</p>
+        <ul><li>Clientes con su historial y su enlace del portal</li><li>Facturas por fecha, cliente o sucursal</li><li>Sugerencias de los clientes y configuración</li><li>Limpieza automática de facturas antiguas</li></ul></div>
+      <div class="mock rv"><div class="win-top"><span class="lg">T</span>Panel del administrador<span class="x">— ▢ ✕</span></div>
+        <div class="adm"><div class="side"><span class="brand"><span class="lg" style="width:20px;height:20px;border-radius:6px;background:var(--brand);display:grid;place-items:center;color:#14161A;font:700 10px/1 var(--display)">T</span>Tu negocio</span>
+          <span class="on">Clientes</span><span>Facturas</span><span>Sucursales</span><span>Sugerencias <em>3</em></span><span>Configuración</span></div>
+          <div class="wb">
+            <div class="kpis"><div class="kpi"><b>1.284</b><span>clientes</span></div><div class="kpi"><b>3.917</b><span>facturas</span></div><div class="kpi"><b>2</b><span>sucursales</span></div></div>
+            <div class="search">Buscar por nombre, celular o número de factura…</div>
+            <table class="tbl"><thead><tr><th>Cliente</th><th>Celular</th><th class="hide">Facturas</th><th>Última</th></tr></thead><tbody>
+              <tr><td>Carlos A.</td><td>0990000123</td><td class="hide">7</td><td>Hoy</td></tr>
+              <tr><td>María P.</td><td>0990000871</td><td class="hide">12</td><td>Hoy</td></tr>
+              <tr><td>Luis G.</td><td>0990000455</td><td class="hide">3</td><td>Hoy</td></tr>
+              <tr><td>Ana R.</td><td>0990000302</td><td class="hide">21</td><td>Ayer</td></tr>
+            </tbody></table>
+          </div></div></div>
+    </article>
+
+    <article class="stop" id="t-historial">
+      <div class="txt rv"><p class="k">05 · Historial y reintentos</p><h3>Nada se pierde.</h3><p>Cada envío queda registrado. Si WhatsApp o internet fallan, el monitor reintenta solo y avisa si algo necesita atención.</p>
+        <ul><li>Hasta 5 reintentos automáticos por factura</li><li>Las que no salen van a una carpeta aparte para revisarlas</li><li>Historial que se abre en Excel</li></ul></div>
+      <div class="mock rv"><div class="win-top"><span class="lg">M</span>Monitor de facturas<span class="x">— ▢ ✕</span></div>
+        <div class="tabs"><span>Inicio</span><span class="on">Historial</span><span>Configuración</span></div>
+        <div class="wb">
+          <table class="tbl"><thead><tr><th>Fecha</th><th>Cliente</th><th>Estado</th><th class="hide">Detalle</th></tr></thead><tbody>
+            <tr><td>14 nov 15:42</td><td>0990000123</td><td><span class="pill ok">Enviada</span></td><td class="hide">PDF + enlace</td></tr>
+            <tr><td>14 nov 11:03</td><td>0990000610</td><td><span class="pill warn">Reintento 2/5</span></td><td class="hide">Sin internet</td></tr>
+            <tr><td>14 nov 11:05</td><td>0990000610</td><td><span class="pill ok">Enviada</span></td><td class="hide">Al volver la conexión</td></tr>
+            <tr><td>13 nov 17:48</td><td>09900001</td><td><span class="pill bad">Revisar</span></td><td class="hide">Número incompleto</td></tr>
+            <tr><td>13 nov 16:20</td><td>0990000302</td><td><span class="pill ok">Enviada</span></td><td class="hide">PDF + enlace</td></tr>
+          </tbody></table>
+          <div class="btns"><span class="mb">Exportar a Excel</span><span class="mb">Abrir “con error”</span></div>
+        </div></div>
+    </article>
+
+    <article class="stop" id="t-config">
+      <div class="txt rv"><p class="k">06 · Configuración</p><h3>Se ajusta a cada negocio.</h3><p>Todo se configura desde la ventana, sin tocar archivos: carpetas, mensaje, velocidad de la PC y arranque automático.</p>
+        <ul><li>Vista previa del mensaje tal como lo verá el cliente</li><li>Modo para computadoras lentas</li><li>Clave de subida segura para el portal</li></ul></div>
+      <div class="mock rv"><div class="win-top"><span class="lg">M</span>Monitor de facturas<span class="x">— ▢ ✕</span></div>
+        <div class="tabs"><span>Inicio</span><span>Historial</span><span class="on">Configuración</span></div>
+        <div class="wb">
+          <div class="field"><label>Carpeta de facturas</label><div class="in">C:\Facturas</div></div>
+          <div class="field"><label>Mensaje</label><div class="in">{saludo} 👋 de parte de {negocio}, puede ver su factura aquí: {link}</div></div>
+          <div class="field"><label>Velocidad de la PC</label><div><span class="seg"><span class="on">Normal</span><span>Lenta</span><span>Muy lenta</span></span></div></div>
+          <span class="chk"><i>✓</i>Abrir este programa al encender la computadora</span>
+          <div class="btns"><span class="mb pri">Guardar</span><span class="mb">Generar clave nueva…</span></div>
+        </div></div>
+    </article>
+
+  </div></div>
+</section>
+
+<section class="sec"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">Detalles</p><h2>Pensado para el día a día.</h2></div>
+  <div class="feats">
+    <article class="feat rv"><h3>Sin cambiar de programa</h3><p>Se conecta al programa de facturación que el negocio ya usa: solo vigila la carpeta donde guarda los PDF.</p></article>
+    <article class="feat rv"><h3>Detecta al cliente por el nombre</h3><p>El archivo lleva el celular del cliente; el monitor lo reconoce con o sin código de país.</p></article>
+    <article class="feat rv"><h3>Espera su turno</h3><p>Comprueba que el PDF terminó de guardarse y que nadie está usando la PC antes de enviar.</p></article>
+    <article class="feat rv"><h3>Portal sin contraseñas</h3><p>Cada cliente entra con un enlace seguro y personal; el negocio puede renovarlo cuando quiera.</p></article>
+    <article class="feat rv"><h3>Limpieza automática</h3><p>Una tarea programada en el servidor borra las facturas vencidas para mantener el portal liviano.</p></article>
+    <article class="feat rv"><h3>Instalación de un clic</h3><p>Se entrega como programa instalable: la PC del negocio no necesita nada técnico.</p></article>
+  </div>
+  <div class="stack rv"><span>Python</span><span>Tkinter</span><span>WhatsApp</span><span>PHP 8</span><span>MySQL</span><span>Cron</span><span>Hostinger</span></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>¿Tu sistema no envía tus facturas?</h2>
+  <p>Lo conectamos con el que ya usas. Analizamos tu proceso y te mostramos cómo quedaría en tu negocio.</p>
+  <div class="acts"><a class="btn" href="../../contacto.html?plan=Automatizaci%C3%B3n%20o%20integraci%C3%B3n">Hablar con Tovel →</a><a class="btn ghost" href="../../productos.html">Ver más productos</a></div>
+</div></section>
+</main>
+<footer><div class="wrap"><span>Monitor de facturas · un sistema de Tovel · Quito, Ecuador. Datos de demostración.</span><span>Desarrollado por <a href="../../desarrollador/">A.T.</a></span></div></footer>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* revelado */
+  if(reduce || !('IntersectionObserver' in window)) document.querySelectorAll('.rv').forEach(e => e.classList.add('in'));
+  else { const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.08, rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach((el,i) => { el.style.transitionDelay = (i%3)*70 + 'ms'; io.observe(el); }); }
+
+  /* animación: la factura viaja de la carpeta al WhatsApp */
+  const flow = document.getElementById('flow'), $ = id => document.getElementById(id);
+  const pns = [...flow.querySelectorAll('.pn')], wires = [...flow.querySelectorAll('.wire')], steps = [...flow.querySelectorAll('.step')];
+  const parts = {fNew:$('fNew'), r1:$('r1'), r2:$('r2'), bar:$('bar'), lnk:$('lnk'), bub:$('bub'), tap:$('tap'), portal:$('portal')};
+  let timers = [], running = false, seen = false;
+  const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+  const panel = i => { pns.forEach((p,j) => p.classList.toggle('on', j === i)); steps.forEach((s,j) => s.classList.toggle('on', j === i)); };
+  function reset(){ timers.forEach(clearTimeout); timers = []; Object.values(parts).forEach(e => e.classList.remove('on')); wires.forEach(w => w.classList.remove('on')); panel(-1); }
+  function finalState(){ reset(); Object.entries(parts).forEach(([k,e]) => { if(k !== 'tap') e.classList.add('on'); }); wires.forEach(w => w.classList.add('on')); pns.forEach(p => p.classList.add('on')); steps.forEach(s => s.classList.add('on')); }
+  function play(){
+    if(reduce){ finalState(); return; }
+    reset(); running = true;
+    at(300,  () => panel(0));
+    at(700,  () => parts.fNew.classList.add('on'));
+    at(1700, () => wires[0].classList.add('on'));
+    at(2100, () => { panel(1); parts.r1.classList.add('on'); });
+    at(2700, () => parts.r2.classList.add('on'));
+    at(2900, () => parts.bar.classList.add('on'));
+    at(4100, () => wires[1].classList.add('on'));
+    at(4500, () => panel(2));
+    at(4900, () => parts.lnk.classList.add('on'));
+    at(5800, () => wires[2].classList.add('on'));
+    at(6200, () => panel(3));
+    at(6600, () => parts.bub.classList.add('on'));
+    at(8000, () => { parts.tap.classList.remove('on'); void parts.tap.offsetWidth; parts.tap.classList.add('on'); });
+    at(8300, () => parts.portal.classList.add('on'));
+    at(11500, () => { if(seen) play(); else running = false; });
+  }
+  $('replay').addEventListener('click', play);
+  new IntersectionObserver(es => es.forEach(e => { seen = e.isIntersecting; if(seen && !running) play(); if(!seen){ reset(); running = false; } }), {threshold:.3}).observe(flow);
+})();
+</script>
+</body>
+</html>

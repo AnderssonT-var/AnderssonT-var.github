@@ -414,3 +414,4 @@ footer a:hover{color:var(--bone)}
 .au-dots button[aria-selected="true"]::before{width:22px;margin-left:-11px;background:var(--spark)}
 @media (max-width:900px){.au-grid{grid-template-columns:1fr;gap:28px}.au-copy{display:contents}.au .head{order:1}.au-demo{position:relative;top:0;order:2}.au-steps{order:3;margin-top:8px}.au .acts{order:4;margin-top:0}}
 @media (prefers-reduced-motion:reduce){.au-caret,.au-wire.on::after{animation:none}.au-node,.au-res,.au-wire em{transition:opacity .2s ease}}
+.au .acts{display:flex;flex-wrap:wrap;gap:12px}

@@ -159,3 +159,44 @@ if(form){
 /* ---------- bucle único ---------- */
 (function loop(t){ T.frames.forEach(f => f(t)); requestAnimationFrame(loop); })(performance.now());
 })();
+
+/* Automatización: ejemplos que se escriben y se conectan solos */
+(function(){
+  const demo = document.getElementById('auDemo'); if(!demo) return;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const X = [
+    {ask:'Mi sistema no envía las facturas por WhatsApp.', n:[['F','Tu sistema','factura emitida'],['T','Conector Tovel','API + plantilla'],['W','WhatsApp','PDF al cliente']], res:['Cada factura llega sola al cliente','Sin descargar, adjuntar ni reenviar']},
+    {ask:'Cada noche paso los pedidos a Excel a mano.', n:[['P','Pedidos','tienda y caja'],['T','Tarea programada','todos los días'],['X','Excel / Drive','reporte listo']], res:['Reporte en tu correo a las 6:00','Unas 20 horas al mes de vuelta']},
+    {ask:'No me avisa cuando se está acabando el stock.', n:[['I','Inventario','kardex en vivo'],['T','Regla Tovel','mínimo por producto'],['!','Aviso','correo o WhatsApp']], res:['Te avisa antes de quedarte sin producto','Y arma el pedido al proveedor']},
+    {ask:'Mi programa no se conecta con el SRI ni con mi tienda.', n:[['A','Tu programa','el de siempre'],['T','Integración','a la medida'],['S','SRI + tienda','todo sincronizado']], res:['Un solo lugar para todo','Sin migrar ni volver a capacitar']}
+  ];
+  const ask = document.getElementById('auAsk'), nodes = [...demo.querySelectorAll('.au-node')], wires = [...demo.querySelectorAll('.au-wire')];
+  const res = document.getElementById('auRes'), dotsBox = document.getElementById('auDots');
+  nodes[1].classList.add('mid');
+  const dots = X.map((x,i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role','tab'); b.setAttribute('aria-label','Ejemplo ' + (i + 1)); b.onclick = () => run(i); dotsBox.appendChild(b); return b; });
+  let idx = 0, timers = [], visible = false, token = 0;
+  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  const clear = () => { timers.forEach(clearTimeout); timers = []; };
+  function fill(x){
+    x.n.forEach((d,i) => { const el = nodes[i]; el.querySelector('b').textContent = d[0]; el.querySelector('span').textContent = d[1]; el.querySelector('small').textContent = d[2]; });
+    res.querySelector('b').textContent = x.res[0]; res.querySelector('span').textContent = x.res[1];
+  }
+  function run(i){
+    clear(); const my = ++token; idx = i; const x = X[i];
+    dots.forEach((d,j) => d.setAttribute('aria-selected', j === i));
+    nodes.forEach(n => n.classList.remove('on')); wires.forEach(w => w.classList.remove('on')); res.classList.remove('on');
+    fill(x);
+    if(reduce){ ask.textContent = x.ask; nodes.forEach(n => n.classList.add('on')); wires.forEach(w => w.classList.add('on')); res.classList.add('on'); later(next, 6000); return; }
+    ask.textContent = ''; let c = 0;
+    const type = () => { if(my !== token) return; ask.textContent = x.ask.slice(0, ++c); if(c < x.ask.length) later(type, 24 + Math.random()*30); else steps(); };
+    later(type, 260);
+    const steps = () => {
+      const seq = [() => nodes[0].classList.add('on'), () => wires[0].classList.add('on'), () => nodes[1].classList.add('on'), () => wires[1].classList.add('on'), () => nodes[2].classList.add('on'), () => res.classList.add('on')];
+      seq.forEach((f,k) => later(f, 380 + k*420));
+      later(next, 380 + seq.length*420 + 2800);
+    };
+  }
+  const next = () => { if(visible) run((idx + 1) % X.length); };
+  const io = new IntersectionObserver(es => es.forEach(e => { const was = visible; visible = e.isIntersecting; if(visible && !was) run(idx); if(!visible){ clear(); token++; } }), {threshold:.25});
+  fill(X[0]); dots[0].setAttribute('aria-selected', true); io.observe(demo);
+})();

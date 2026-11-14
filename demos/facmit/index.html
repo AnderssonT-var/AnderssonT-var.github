@@ -2,67 +2,177 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Facmit · recorrido</title>
-<meta name="description" content="Recorrido por Facmit, el programa de facturación electrónica para Ecuador (SRI).">
-<link rel="icon" href="../../favicon.ico">
+<meta name="description" content="Recorrido por Facmit, la facturación electrónica SRI de Tovel para Ecuador: programa para Windows, app web y nube. En producción en facmit.com.">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="icon" href="../../img/tovel/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-  :root{--ink:#1d1d1f;--muted:#6e6e73;--gray:#f5f5f7;--line:#d2d2d7;--blue:#0071e3;--grad:linear-gradient(90deg,#2997ff 0%,#a259ff 50%,#ff6a3d 100%);
-    --f:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Helvetica Neue",Helvetica,Arial,sans-serif}
+  :root{--brand:#F2542D;--brand-hi:#FF6A45;--spark:#FFB627;--teal:#2BA493;--night:#0B0C0E;--coal:#14161A;--coal-2:#1C1E22;--line:#2C2F35;--bone:#F4EEE4;--ash:#A39D93;--ash-2:#6B6760;
+    --display:"Space Grotesk",system-ui,sans-serif;--sans:"Inter",system-ui,-apple-system,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+    --ease-out:cubic-bezier(.23,1,.32,1);--gutter:clamp(16px,4vw,40px);color-scheme:dark}
   *{box-sizing:border-box}
-  body{margin:0;font-family:var(--f);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
-  header{max-width:1100px;margin:0 auto;padding:48px 20px 8px;text-align:center}
-  header a.volver{display:inline-block;margin-bottom:22px;color:var(--blue);text-decoration:none;font-size:15px}
-  h1{font-size:clamp(30px,5vw,52px);letter-spacing:-.03em;margin:0 0 10px;line-height:1.05}
-  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--muted);font-size:clamp(16px,2vw,20px);max-width:720px;margin:0 auto;line-height:1.45}
-  nav.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px auto 6px;max-width:900px;padding:0 20px}
-  nav.chips a{font-size:13px;padding:7px 14px;border-radius:99px;background:var(--gray);color:var(--ink);text-decoration:none}
-  nav.chips a:hover{background:#e8e8ed}
-  main{max-width:1100px;margin:0 auto;padding:10px 20px 60px}
-  figure{margin:56px 0 0}
-  figure h2{font-size:clamp(22px,3vw,30px);letter-spacing:-.02em;margin:0 0 6px}
-  figure p{color:var(--muted);margin:0 0 16px;font-size:16px;line-height:1.5;max-width:760px}
-  .marco{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 50px -24px rgba(0,0,0,.35);background:var(--gray)}
+  html{background:var(--night)}
+  body{margin:0;background:var(--night);color:var(--bone);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.035em;line-height:1.02;text-wrap:balance}
+  p{margin:0}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 var(--gutter)}
+  .eyebrow{font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--spark)}
+  /* barra */
+  .top{position:sticky;top:0;z-index:20;background:rgba(11,12,14,.84);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);border-bottom:1px solid var(--line)}
+  .top .wrap{height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .back{font-size:14px;color:var(--ash);transition:color .2s ease}
+  .back:hover{color:var(--bone)}
+  .top img{height:26px;width:auto}
+  .btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--brand);color:#14161A;font:600 14px/1 var(--sans);transition:transform .16s var(--ease-out),filter .2s ease}
+  .btn:active{transform:scale(.97)}
+  .btn.ghost{background:transparent;color:var(--bone);box-shadow:inset 0 0 0 1.5px rgba(244,238,228,.28)}
+  @media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.08)}}
+  /* portada */
+  .hero{padding:clamp(56px,9vw,112px) 0 clamp(32px,5vw,56px)}
+  .live{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.35);font:500 12px/1 var(--mono);letter-spacing:.06em;color:#7BE495}
+  .live i{width:8px;height:8px;border-radius:50%;background:#30D158;box-shadow:0 0 0 4px rgba(48,209,88,.2)}
+  .hero h1{font-size:clamp(46px,8vw,104px);font-weight:700;letter-spacing:-.05em;line-height:.92;margin-top:22px}
+  .hero h1 em{font-style:normal;color:var(--brand-hi)}
+  .hero .lead{margin-top:20px;max-width:56ch;font-size:clamp(17px,1.6vw,20px);color:var(--ash)}
+  .hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:clamp(40px,6vw,64px)}
+  .fact{padding:20px;border-radius:18px;background:var(--coal);border:1px solid var(--line)}
+  .fact b{display:block;font:700 clamp(28px,3.4vw,40px)/1 var(--display);letter-spacing:-.04em}
+  .fact span{display:block;margin-top:8px;font-size:13px;color:var(--ash)}
+  /* pestañas de secciones */
+  .chips{position:sticky;top:60px;z-index:15;background:rgba(11,12,14,.84);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .chips .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+  .chips .wrap::-webkit-scrollbar{display:none}
+  .chips a{flex:none;font-size:13px;padding:7px 14px;border-radius:999px;background:var(--coal);border:1px solid var(--line);color:var(--ash);transition:color .2s ease,border-color .2s ease}
+  .chips a:hover{color:var(--bone);border-color:#3A3D44}
+  /* secciones */
+  .sec{padding:clamp(64px,9vw,112px) 0 0}
+  .head h2{font-size:clamp(34px,5vw,64px);font-weight:700;margin-top:14px;letter-spacing:-.045em}
+  .head p{margin-top:14px;color:var(--ash);max-width:60ch;font-size:17px}
+  /* novedades */
+  .news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(32px,5vw,48px)}
+  .new{display:flex;flex-direction:column;padding:24px;border-radius:20px;background:var(--coal);border:1px solid var(--line);min-width:0}
+  .new .v{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--spark)}
+  .new h3{font-size:22px;font-weight:600;margin-top:12px}
+  .new ul{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px;font-size:14.5px;color:var(--ash)}
+  .new li{display:flex;gap:10px}
+  .new li::before{content:"";flex:none;width:6px;height:6px;margin-top:8px;border-radius:50%;background:var(--brand)}
+  .new.hot{background:var(--brand);border-color:var(--brand);color:#14161A}
+  .new.hot .v{color:#14161A}
+  .new.hot ul{color:rgba(20,22,26,.78)}
+  .new.hot li::before{background:#14161A}
+  /* planes */
+  .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(32px,5vw,48px)}
+  .plan{padding:26px;border-radius:20px;background:var(--coal);border:1px solid var(--line)}
+  .plan h3{font-size:26px;font-weight:700}
+  .plan p{margin-top:10px;color:var(--ash);font-size:15px}
+  .plan.mid{background:var(--bone);color:#14161A;border-color:var(--bone)}
+  .plan.mid p{color:#6B6760}
+  .note{margin-top:16px;font-size:14px;color:var(--ash)}
+  /* capturas */
+  figure{margin:clamp(48px,7vw,80px) 0 0;scroll-margin-top:130px}
+  figure .k{font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--ash-2);text-transform:uppercase}
+  figure h3{font-size:clamp(24px,3vw,34px);font-weight:600;margin-top:10px}
+  figure p{margin:10px 0 18px;color:var(--ash);max-width:68ch}
+  .marco{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--coal);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
   .marco img{display:block;width:100%;height:auto}
-  .cta{text-align:center;padding:64px 20px 80px;background:var(--gray)}
-  .cta h2{font-size:clamp(24px,4vw,40px);letter-spacing:-.02em;margin:0 0 10px}
-  .cta p{color:var(--muted);margin:0 0 22px}
-  .pill{display:inline-block;background:var(--blue);color:#fff;border-radius:980px;padding:12px 24px;text-decoration:none;font-size:17px}
-  .nota{font-size:13px;color:var(--muted);text-align:center;margin-top:18px}
+  .rv{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+  .rv.in{opacity:1;transform:none}
+  /* cierre */
+  .cta{margin-top:clamp(72px,10vw,120px);padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--line);text-align:center}
+  .cta h2{font-size:clamp(34px,5vw,64px);font-weight:700}
+  .cta p{margin:14px auto 0;color:var(--ash);max-width:52ch}
+  .cta .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+  footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:13px;color:var(--ash)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+  footer a{color:var(--spark);font-weight:600}
+  @media (max-width:900px){.news,.plans{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.news,.plans{grid-template-columns:1fr}.top .btn{display:none}}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
-<header>
-  <a class="volver" href="../../#inicio">← Volver al portafolio</a>
-  <h1>Facmit. <span class="grad">Facturación electrónica sin complicaciones.</span></h1>
-  <p class="sub">Programa de escritorio para Ecuador que emite, firma y autoriza comprobantes electrónicos ante el SRI. Datos de demostración ficticios.</p>
-</header>
-<nav class="chips" aria-label="Secciones">
-  <a href="#inicio">Inicio</a><a href="#factura">Facturar</a><a href="#agregar">Agregar productos</a><a href="#ride">RIDE</a><a href="#autorrelleno">Autorrelleno SRI</a><a href="#anulacion">Anulación</a>
-  <a href="#guia">Guías</a><a href="#retencion">Retenciones</a><a href="#autorizaciones">Autorizaciones</a><a href="#reportes">Reportes</a>
-  <a href="#produccion">Producción</a><a href="#usuarios">Usuarios</a><a href="#respaldos">Respaldos</a>
-</nav>
+<header class="top"><div class="wrap">
+  <a class="back" href="../../productos.html">← Productos de Tovel</a>
+  <img src="../../img/tovel/tovel-logo-inverse.svg" alt="Tovel" width="78" height="26">
+  <a class="btn" href="https://facmit.com" target="_blank" rel="noopener">facmit.com →</a>
+</div></header>
+
 <main>
-  <figure id="inicio"><h2>Todo el negocio de un vistazo</h2><p>Ventas del mes, siguiente número de factura, accesos rápidos y el semáforo del SRI siempre visible. El menú se puede esconder con Ctrl+B para ganar espacio.</p><div class="marco"><img src="img/inicio.jpg" alt="Pantalla de inicio con ventas del mes y accesos rápidos" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="factura"><h2>Facturar en segundos</h2><p>Tus productos más vendidos aparecen en una barra deslizable: un toque y entran a la factura. Las líneas se ven limpias y se editan con solo tocarlas; los datos de pago quedan plegados hasta que los necesites.</p><div class="marco"><img src="img/factura.jpg" alt="Pantalla de nueva factura con la barra de más vendidos" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="agregar"><h2>Varios productos de una vez</h2><p>Con F2 se abre una ventana para buscar por código o nombre, elegir varios productos, ajustar cantidad, precio e IVA y pasarlos todos juntos a la factura.</p><div class="marco"><img src="img/agregar.jpg" alt="Ventana para agregar varios productos a la factura" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="ride"><h2>Autorizada y lista para entregar</h2><p>Al emitir se firma con XAdES-BES, se valida contra el esquema oficial, se envía al SRI y aparece la vista previa del RIDE para imprimir, guardar o enviar por correo.</p><div class="marco"><img src="img/ride.jpg" alt="Vista previa del RIDE de una factura autorizada" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="autorrelleno"><h2>Clientes que se llenan solos</h2><p>Al escribir un RUC o una cédula, el programa consulta el catastro público del SRI y completa nombre y dirección.</p><div class="marco"><img src="img/autorrelleno.jpg" alt="Datos del cliente completados desde el SRI" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="anulacion"><h2>Anulaciones y devoluciones</h2><p>Anula una factura con su nota de crédito automática o registra devoluciones parciales con control de saldo.</p><div class="marco"><img src="img/anulacion.jpg" alt="Anulación de factura" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="guia"><h2>Guías de remisión</h2><p>Desde una factura o a mano, con transportistas guardados.</p><div class="marco"><img src="img/guia.jpg" alt="Guía de remisión" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="retencion"><h2>Retenciones 2.0</h2><p>Comprobantes de retención con sustento tributario y tabla de códigos editable.</p><div class="marco"><img src="img/retencion.jpg" alt="Comprobante de retención" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="autorizaciones"><h2>Aunque el SRI se caiga</h2><p>Si no hay conexión, sigues facturando: los pendientes se autorizan solos en segundo plano y te avisa con una notificación.</p><div class="marco"><img src="img/autorizaciones.jpg" alt="Revisión de autorizaciones pendientes" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="reportes"><h2>Reportes listos para el contador</h2><p>Ventas por documento, cliente o vendedor, movimientos de ítems, notas, retenciones y resumen de IVA, en PDF o Excel.</p><div class="marco"><img src="img/reportes.jpg" alt="Reporte de ventas por vendedor" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="produccion"><h2>Paso a producción guiado</h2><p>Una lista de verificación impide facturar en producción sin la firma correcta, los datos completos y una prueba autorizada.</p><div class="marco"><img src="img/produccion.jpg" alt="Lista de verificación de paso a producción" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="usuarios"><h2>Usuarios y permisos</h2><p>Administrador, supervisor, vendedor, cajero o contador: cada uno ve solo lo que le corresponde.</p><div class="marco"><img src="img/usuarios.jpg" alt="Gestión de usuarios" loading="lazy" width="1440" height="900"></div></figure>
-  <figure id="respaldos"><h2>Respaldo diario automático</h2><p>Cada día se guarda una copia de cada empresa y se restaura con un clic.</p><div class="marco"><img src="img/respaldos.jpg" alt="Respaldos automáticos" loading="lazy" width="1440" height="900"></div></figure>
+<section class="hero"><div class="wrap">
+  <span class="live"><i></i>EN PRODUCCIÓN · VERSIÓN 0.15</span>
+  <h1>Facmit. <em>Tú vendes,</em> Facmit factura.</h1>
+  <p class="lead">Facturación electrónica SRI para Ecuador, de Tovel. Un programa para Windows, una app web y la nube trabajando juntos: emites el mismo día aunque el SRI se caiga o la PC esté apagada.</p>
+  <div class="acts"><a class="btn" href="https://facmit.com" target="_blank" rel="noopener">Ver facmit.com →</a><a class="btn ghost" href="../../contacto.html?plan=Facmit%20SRI">Solicitar una demo</a></div>
+  <div class="facts">
+    <div class="fact"><b>0.15</b><span>versión del programa (portal 1.8)</span></div>
+    <div class="fact"><b>65</b><span>pruebas contra el XSD oficial del SRI</span></div>
+    <div class="fact"><b>3</b><span>planes: Básico, Profesional y Completo</span></div>
+    <div class="fact"><b>24/7</b><span>autorización en segundo plano</span></div>
+  </div>
+</div></section>
+
+<nav class="chips" aria-label="Secciones"><div class="wrap">
+  <a href="#novedades">Novedades</a><a href="#planes">Planes</a><a href="#inicio">Inicio</a><a href="#factura">Facturar</a><a href="#agregar">Productos</a><a href="#ride">RIDE</a><a href="#autorrelleno">Autorrelleno SRI</a><a href="#anulacion">Anulación</a><a href="#guia">Guías</a><a href="#retencion">Retenciones</a><a href="#autorizaciones">Autorizaciones</a><a href="#reportes">Reportes</a><a href="#produccion">Producción</a><a href="#usuarios">Usuarios</a><a href="#respaldos">Respaldos</a>
+</div></nav>
+
+<section class="sec" id="novedades"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">Lo nuevo</p><h2>Todo lo de FactuSYS, y más.</h2><p>Lo que se sumó desde la versión 0.9 hasta la 0.15.</p></div>
+  <div class="news">
+    <article class="new hot rv"><p class="v">0.14</p><h3>Paridad con FactuSYS</h3><ul><li>Copiar facturas, también de reembolso, exportación y socios</li><li>Facturación masiva de servicios desde el directorio o Excel</li><li>Reembolsos de gastos y factura de exportación</li><li>Cuentas por pagar y compañías de transporte</li></ul></article>
+    <article class="new rv"><p class="v">0.12 – 0.13</p><h3>Web con la PC apagada</h3><ul><li>Facturas desde la web aunque la PC esté apagada; se autorizan al encenderla</li><li>Mudanza a facmit.com con página de presentación</li><li>Facturar por WhatsApp y extraer IVA</li></ul></article>
+    <article class="new rv"><p class="v">0.11</p><h3>Compras, cobros y caja</h3><ul><li>Compras y liquidaciones, importando el XML o el reporte del SRI</li><li>Cuentas por cobrar con cartera por antigüedad</li><li>Punto de venta con lector, ticket y cierre de caja</li><li>Bodegas y ATS</li></ul></article>
+    <article class="new rv"><p class="v">0.10</p><h3>Inventario completo</h3><ul><li>Stock por producto calculado con kardex</li><li>Fotos, código de barras, costo promedio y alertas de stock</li><li>Informe de ventas en el formato que pide la contadora</li></ul></article>
+    <article class="new rv"><p class="v">0.9</p><h3>Planes por funciones</h3><ul><li>En el portal se marcan las funciones y el plan se nombra solo</li><li>Extras sueltos, como Básico + Móvil o Profesional + Nube</li><li>El programa muestra solo lo que incluye la licencia</li></ul></article>
+    <article class="new rv"><p class="v">0.15</p><h3>Monitor y antifallos</h3><ul><li>Monitor de equipos en línea y de errores agrupados</li><li>Hora de Ecuador fija, sin depender de Windows</li><li>Avisos de serie repetida, disco lleno y carpetas en la nube</li></ul></article>
+  </div>
+</div></section>
+
+<section class="sec" id="planes"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">Planes</p><h2>Paga solo por lo que usas.</h2></div>
+  <div class="plans">
+    <article class="plan rv"><h3>Básico</h3><p>Facturas, clientes, productos, proformas, RIDE, autorización SRI, anulaciones, correo y reportes de ventas e IVA.</p></article>
+    <article class="plan mid rv"><h3>Profesional</h3><p>Básico más notas de crédito y débito, guías, retenciones, inventario, compras, cobros y punto de venta.</p></article>
+    <article class="plan rv"><h3>Completo</h3><p>Profesional más nube con varios equipos, app web y facturación desde el celular.</p></article>
+  </div>
+  <p class="note rv">Cualquier función se puede sumar suelta. Precios en facmit.com.</p>
+</div></section>
+
+<section class="sec" id="capturas"><div class="wrap">
+  <div class="head rv"><p class="eyebrow">El programa</p><h2>Un recorrido por dentro.</h2><p>Capturas del programa para Windows con datos de demostración ficticios.</p></div>
+  <figure id="inicio" class="rv"><p class="k">Inicio</p><h3>Todo el negocio de un vistazo</h3><p>Ventas del mes, siguiente número de factura, productos con stock bajo, accesos rápidos y el semáforo del SRI siempre visible.</p><div class="marco"><img src="img/inicio.jpg" alt="Pantalla de inicio con ventas del mes y accesos rápidos" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="factura" class="rv"><p class="k">Facturar</p><h3>Facturar en segundos</h3><p>Tus productos más vendidos en una barra deslizable: un toque y entran a la factura. El buscador muestra la foto y el stock, y avisa si vendes más de lo que hay.</p><div class="marco"><img src="img/factura.jpg" alt="Pantalla de nueva factura con la barra de más vendidos" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="agregar" class="rv"><p class="k">Productos</p><h3>Varios productos de una vez</h3><p>Con F2 se busca por código o nombre, se eligen varios productos, se ajusta cantidad, precio e IVA y pasan todos juntos a la factura.</p><div class="marco"><img src="img/agregar.jpg" alt="Ventana para agregar varios productos a la factura" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="ride" class="rv"><p class="k">RIDE</p><h3>Autorizada y lista para entregar</h3><p>Se firma con XAdES-BES, se valida contra el esquema oficial, se envía al SRI y aparece la vista previa del RIDE para imprimir, guardar o enviar por correo.</p><div class="marco"><img src="img/ride.jpg" alt="Vista previa del RIDE de una factura autorizada" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="autorrelleno" class="rv"><p class="k">Autorrelleno SRI</p><h3>Clientes que se llenan solos</h3><p>Al escribir un RUC o una cédula, el programa consulta el catastro público del SRI y completa nombre y dirección.</p><div class="marco"><img src="img/autorrelleno.jpg" alt="Datos del cliente completados desde el SRI" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="anulacion" class="rv"><p class="k">Anulación</p><h3>Anulaciones y devoluciones</h3><p>Anula una factura con su nota de crédito automática o registra devoluciones parciales con control de saldo.</p><div class="marco"><img src="img/anulacion.jpg" alt="Anulación de factura" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="guia" class="rv"><p class="k">Guías</p><h3>Guías de remisión</h3><p>Desde una factura o a mano, con transportistas guardados y puntos de emisión de compañías de transporte.</p><div class="marco"><img src="img/guia.jpg" alt="Guía de remisión" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="retencion" class="rv"><p class="k">Retenciones</p><h3>Retenciones 2.0</h3><p>Comprobantes de retención con sustento tributario y tabla de códigos editable; desde una compra salen con los datos ya llenos.</p><div class="marco"><img src="img/retencion.jpg" alt="Comprobante de retención" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="autorizaciones" class="rv"><p class="k">Autorizaciones</p><h3>Aunque el SRI se caiga</h3><p>Sin conexión sigues facturando: los pendientes se autorizan solos en segundo plano, de todos los perfiles, y te avisa con una notificación.</p><div class="marco"><img src="img/autorizaciones.jpg" alt="Revisión de autorizaciones pendientes" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="reportes" class="rv"><p class="k">Reportes</p><h3>Reportes listos para la contadora</h3><p>Ventas por documento en formato contable, por cliente o vendedor, kardex, existencias, notas, retenciones, resumen de IVA y ATS, en PDF o Excel.</p><div class="marco"><img src="img/reportes.jpg" alt="Reporte de ventas por vendedor" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="produccion" class="rv"><p class="k">Producción</p><h3>Paso a producción guiado</h3><p>Una lista de verificación impide facturar en producción sin la firma correcta, los datos completos y una prueba autorizada.</p><div class="marco"><img src="img/produccion.jpg" alt="Lista de verificación de paso a producción" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="usuarios" class="rv"><p class="k">Usuarios</p><h3>Usuarios y permisos</h3><p>Administrador, supervisor, vendedor, cajero o contador: cada uno ve solo lo que le corresponde, y cada comprobante guarda quién lo emitió.</p><div class="marco"><img src="img/usuarios.jpg" alt="Gestión de usuarios" loading="lazy" width="1440" height="900"></div></figure>
+  <figure id="respaldos" class="rv"><p class="k">Respaldos</p><h3>Respaldo diario automático</h3><p>Cada día se guarda una copia de cada empresa y se restaura con un clic; en el plan Completo también sube a la nube.</p><div class="marco"><img src="img/respaldos.jpg" alt="Respaldos automáticos" loading="lazy" width="1440" height="900"></div></figure>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>¿Lo quieres en tu negocio?</h2>
+  <p>Te ayudamos con la firma electrónica, la habilitación en el SRI y el paso a producción.</p>
+  <div class="acts"><a class="btn" href="https://facmit.com" target="_blank" rel="noopener">Ir a facmit.com →</a><a class="btn ghost" href="../../contacto.html?plan=Facmit%20SRI">Hablar con Tovel</a></div>
+</div></section>
 </main>
-<section class="cta">
-  <h2>¿Quieres probarlo en tu negocio?</h2>
-  <p>Planes Local, Web y Full. Te ayudo con la firma electrónica y la habilitación en el SRI.</p>
-  <a class="pill" href="../../#contacto">Solicitar una demo</a>
-  <p class="nota">Las capturas usan datos ficticios de demostración.</p>
-</section>
+<footer><div class="wrap"><span>Facmit · un producto de Tovel · Quito, Ecuador. Capturas con datos ficticios.</span><span>Desarrollado por <a href="../../desarrollador/">A.T.</a></span></div></footer>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach((el,i) => { el.style.transitionDelay = (i%3)*70 + 'ms'; io.observe(el); });
+})();
+</script>
 </body>
 </html>

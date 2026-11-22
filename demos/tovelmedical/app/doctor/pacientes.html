@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es" data-demo-root="../" data-demo-cita="144">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<script>try{document.querySelector('meta[name="color-scheme"]').content=localStorage.getItem('color-scheme')??'light dark'}catch(e){}</script>
+<meta name="theme-color" content="#EEF3F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1412" media="(prefers-color-scheme: dark)">
+
+<meta name="description" content="Reserva tu cita médica en línea en TovelMedical: elige especialidad, doctor y hora en un minuto.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:500,600,700|instrument-sans:400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="../build/assets/app-DmvEGFLJ.css" /><link rel="modulepreload" href="../build/assets/app-BYjgg4Tf.js" /><link rel="stylesheet" href="../build/assets/app-DmvEGFLJ.css" /><script type="module" src="../build/assets/app-BYjgg4Tf.js"></script>    <title>Mis pacientes · TovelMedical</title>
+<link rel="stylesheet" href="../demo.css">
+<script src="../demo.js"></script>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<a href="#contenido" class="sr-only">Saltar al contenido</a>
+<div class="shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+        <a href="../doctor.html" class="brand">
+            <span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span>TovelMedical<small>Doctor</small></span>
+        </a>
+
+        <nav class="nav">
+                            <span class="nav-title">Consulta</span>
+                                    <a href="../doctor.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+ Hoy</a>
+                                    <a href="agenda.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+ Agenda</a>
+                                    <a href="pacientes.html" aria-current="page"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 19.5c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.6c1.9.6 3.2 2.3 3.5 4.9"/></svg>
+ Mis pacientes</a>
+                                    <a href="horario.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+ Mi horario</a>
+                                    </nav>
+
+        <div class="sidebar-foot">
+            <button type="button" class="me" popovertarget="menu-usuario" style="anchor-name:--me">
+                <span class="avatar"  aria-hidden="true">CM</span>
+                <span style="min-width:0"><span class="me-name">Carlos Mendoza</span><span class="me-role">doctor@tovelmedical.com</span></span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="topbar">
+            <a href="../doctor.html" class="brand" style="padding:0">
+                <span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                <span>TovelMedical</span>
+            </a>
+            <button type="button" popovertarget="menu-usuario" aria-label="Menú de Carlos Mendoza" style="anchor-name:--me-m"><span class="avatar"  aria-hidden="true">CM</span>
+</button>
+        </header>
+
+        <main id="contenido" class="canvas" tabindex="-1">
+            <header class="page-head">
+    <div>
+                <h1>Mis pacientes</h1>
+        <p>Personas que han tenido al menos una cita contigo.</p>    </div>
+    </header>
+    <form class="filters" method="GET" role="search">
+        <div class="field grow"><label for="q" class="sr-only">Buscar</label>
+            <div class="search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+<input id="q" name="q" value="" class="input" placeholder="Nombre o cédula" type="search"></div></div>
+        <button class="btn">Buscar</button>
+    </form>
+        <div class="table-wrap" role="region" aria-label="Mis pacientes" tabindex="0">
+        <table class="table">
+            <thead><tr><th>Paciente</th><th>Edad</th><th>Consultas contigo</th><th>Última cita</th></tr></thead>
+            <tbody>
+                            <tr>
+                    <td><a href="pacientes/5.html" class="person"><span class="avatar"  aria-hidden="true">MD</span>
+<span><b>María Dolores Magaña</b><span>1551735663</span></span></a></td>
+                    <td data-label="Edad">51 años</td>
+                    <td data-label="Consultas" class="num">3</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/9.html" class="person"><span class="avatar"  aria-hidden="true">AL</span>
+<span><b>Ariadna Leal</b><span>0840943963</span></span></a></td>
+                    <td data-label="Edad">12 años</td>
+                    <td data-label="Consultas" class="num">3</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/12.html" class="person"><span class="avatar"  aria-hidden="true">GJ</span>
+<span><b>Gabriela Juárez</b><span>0416122117</span></span></a></td>
+                    <td data-label="Edad">20 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/17.html" class="person"><span class="avatar"  aria-hidden="true">CO</span>
+<span><b>Carlos Ordoñez</b><span>0256424862</span></span></a></td>
+                    <td data-label="Edad">53 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/30.html" class="person"><span class="avatar"  aria-hidden="true">GV</span>
+<span><b>Gloria Villarreal Segundo</b><span>2041382520</span></span></a></td>
+                    <td data-label="Edad">9 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/31.html" class="person"><span class="avatar"  aria-hidden="true">GE</span>
+<span><b>Gabriel Esquibel Segundo</b><span>1837454659</span></span></a></td>
+                    <td data-label="Edad">33 años</td>
+                    <td data-label="Consultas" class="num">4</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/2.html" class="person"><span class="avatar"  aria-hidden="true">GL</span>
+<span><b>Gloria Lozada</b><span>0923733679</span></span></a></td>
+                    <td data-label="Edad">25 años</td>
+                    <td data-label="Consultas" class="num">1</td>
+                    <td data-label="Última cita" class="muted">4 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/18.html" class="person"><span class="avatar"  aria-hidden="true">LM</span>
+<span><b>Lic. Mario Araña</b><span>0737921999</span></span></a></td>
+                    <td data-label="Edad">51 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">4 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/29.html" class="person"><span class="avatar"  aria-hidden="true">BS</span>
+<span><b>Bruno Sánchez</b><span>1540204482</span></span></a></td>
+                    <td data-label="Edad">53 años</td>
+                    <td data-label="Consultas" class="num">3</td>
+                    <td data-label="Última cita" class="muted">4 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/1.html" class="person"><span class="avatar"  aria-hidden="true">SH</span>
+<span><b>Sofía Herrera</b><span>1051699260</span></span></a></td>
+                    <td data-label="Edad">32 años</td>
+                    <td data-label="Consultas" class="num">1</td>
+                    <td data-label="Última cita" class="muted">3 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/14.html" class="person"><span class="avatar"  aria-hidden="true">ÁL</span>
+<span><b>África Leiva</b><span>2300166929</span></span></a></td>
+                    <td data-label="Edad">31 años</td>
+                    <td data-label="Consultas" class="num">1</td>
+                    <td data-label="Última cita" class="muted">3 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/28.html" class="person"><span class="avatar"  aria-hidden="true">LI</span>
+<span><b>Lic. Isaac Bernal Hijo</b><span>0930081864</span></span></a></td>
+                    <td data-label="Edad">75 años</td>
+                    <td data-label="Consultas" class="num">8</td>
+                    <td data-label="Última cita" class="muted">3 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/33.html" class="person"><span class="avatar"  aria-hidden="true">EM</span>
+<span><b>Eduardo Mondragón</b><span>1118629748</span></span></a></td>
+                    <td data-label="Edad">78 años</td>
+                    <td data-label="Consultas" class="num">4</td>
+                    <td data-label="Última cita" class="muted">3 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/20.html" class="person"><span class="avatar"  aria-hidden="true">IE</span>
+<span><b>Ian Escalante</b><span>1912496849</span></span></a></td>
+                    <td data-label="Edad">33 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">2 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/10.html" class="person"><span class="avatar"  aria-hidden="true">LL</span>
+<span><b>Lic. Laia Marco Tercero</b><span>0747838787</span></span></a></td>
+                    <td data-label="Edad">51 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">1 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/16.html" class="person"><span class="avatar"  aria-hidden="true">JA</span>
+<span><b>Jon Ayala</b><span>1036983110</span></span></a></td>
+                    <td data-label="Edad">33 años</td>
+                    <td data-label="Consultas" class="num">5</td>
+                    <td data-label="Última cita" class="muted">1 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/27.html" class="person"><span class="avatar"  aria-hidden="true">CP</span>
+<span><b>Cristina Pelayo</b><span>1314737410</span></span></a></td>
+                    <td data-label="Edad">71 años</td>
+                    <td data-label="Consultas" class="num">2</td>
+                    <td data-label="Última cita" class="muted">1 dic. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/22.html" class="person"><span class="avatar"  aria-hidden="true">SA</span>
+<span><b>Sr. Aitor Longoria</b><span>0430573519</span></span></a></td>
+                    <td data-label="Edad">6 años</td>
+                    <td data-label="Consultas" class="num">1</td>
+                    <td data-label="Última cita" class="muted">30 nov. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/32.html" class="person"><span class="avatar"  aria-hidden="true">BR</span>
+<span><b>Biel Requena</b><span>1826137992</span></span></a></td>
+                    <td data-label="Edad">24 años</td>
+                    <td data-label="Consultas" class="num">5</td>
+                    <td data-label="Última cita" class="muted">30 nov. 2026</td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/6.html" class="person"><span class="avatar"  aria-hidden="true">DA</span>
+<span><b>Diego Arevalo</b><span>1211553688</span></span></a></td>
+                    <td data-label="Edad">16 años</td>
+                    <td data-label="Consultas" class="num">1</td>
+                    <td data-label="Última cita" class="muted">27 nov. 2026</td>
+                </tr>
+                        </tbody>
+        </table>
+    </div>
+    <nav class="pager" aria-label="Paginación">
+    <span>Página 1 de 2</span>
+    <div class="cluster">
+                    <span class="btn btn-sm" aria-disabled="true" style="opacity:.45"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+ Anterior</span>
+                            <a class="btn btn-sm" href="pacientes__page-2.html" rel="next">Siguiente <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+</a>
+            </div>
+</nav>
+        </main>
+    </div>
+</div>
+
+<nav class="tabbar" aria-label="Accesos rápidos">
+            <a href="../doctor.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+ Hoy</a>
+            <a href="agenda.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+ Agenda</a>
+            <a href="pacientes.html" aria-current="page"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 19.5c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.6c1.9.6 3.2 2.3 3.5 4.9"/></svg>
+ Mis pacientes</a>
+            <a href="horario.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+ Mi horario</a>
+        </nav>
+
+<div id="menu-usuario" class="menu" popover style="position-anchor:--me">
+    <div style="padding:.5rem .7rem .4rem"><b style="display:block;font-size:.9rem">Carlos Mendoza</b><span class="muted small">Doctor</span></div>
+    <hr>
+        <a href="perfil.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c.8-3.8 3.7-6 7.5-6s6.7 2.2 7.5 6"/></svg>
+ Mi perfil y apariencia</a>
+    <hr>
+    <form method="POST" action="../salir.html" data-demo-action="logout"><button type="submit"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4.5h3a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-3M10 16.5 5.5 12 10 7.5M5.5 12H15"/></svg>
+ Cerrar sesión</button></form>
+</div>
+
+<div id="toasts" class="toasts" role="region" aria-label="Notificaciones"></div>
+<p class="sr-only">Anuncios para lectores de pantalla</p>
+<div id="anuncios" class="sr-only" aria-live="polite"></div>
+
+<dialog id="confirmar" class="modal" aria-labelledby="confirmar-titulo" closedby="any">
+    <form method="dialog">
+        <div class="modal-body">
+            <h2 id="confirmar-titulo">¿Confirmar?</h2>
+            <p data-detalle></p>
+            <div class="field" data-motivo hidden>
+                <label for="confirmar-motivo">Motivo <span class="muted" style="font-weight:400">(opcional)</span></label>
+                <textarea id="confirmar-motivo" class="textarea" rows="2" style="min-height:70px" placeholder="Ayuda a la clínica a reorganizar la agenda"></textarea>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn" value="cancelar" autofocus>Volver</button>
+            <button class="btn btn-danger" value="ok">Confirmar</button>
+        </div>
+    </form>
+</dialog>
+</body>
+</html>

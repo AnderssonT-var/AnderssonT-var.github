@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" data-demo-root="../../../" data-demo-cita="144">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<script>try{document.querySelector('meta[name="color-scheme"]').content=localStorage.getItem('color-scheme')??'light dark'}catch(e){}</script>
+<meta name="theme-color" content="#EEF3F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1412" media="(prefers-color-scheme: dark)">
+
+<meta name="description" content="Reserva tu cita médica en línea en TovelMedical: elige especialidad, doctor y hora en un minuto.">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:500,600,700|instrument-sans:400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="../../../build/assets/app-DmvEGFLJ.css" /><link rel="modulepreload" href="../../../build/assets/app-BYjgg4Tf.js" /><link rel="stylesheet" href="../../../build/assets/app-DmvEGFLJ.css" /><script type="module" src="../../../build/assets/app-BYjgg4Tf.js"></script>    <title>Editar paciente · TovelMedical</title>
+<link rel="stylesheet" href="../../../demo.css">
+<script src="../../../demo.js"></script>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<a href="#contenido" class="sr-only">Saltar al contenido</a>
+<div class="shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+        <a href="../../../admin.html" class="brand">
+            <span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span>TovelMedical<small>Administración</small></span>
+        </a>
+
+        <nav class="nav">
+                            <span class="nav-title">Clínica</span>
+                                    <a href="../../../admin.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+ Resumen</a>
+                                    <a href="../../citas.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+ Citas</a>
+                                    <a href="../../pacientes.html" aria-current="page"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 19.5c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.6c1.9.6 3.2 2.3 3.5 4.9"/></svg>
+ Pacientes</a>
+                                    <a href="../../doctores.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v5a5 5 0 0 0 10 0v-5"/><path d="M11 13.5V16a4.5 4.5 0 0 0 9 0v-1.5"/><circle cx="20" cy="12.5" r="2"/></svg>
+ Doctores</a>
+                                    <a href="../../pagos.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M3 10h18M16 15h1.5"/><path d="M6 6l9-2.5 1 2.5"/></svg>
+ Pagos</a>
+                                            <span class="nav-title">Configuración</span>
+                                    <a href="../../especialidades.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.3V4.5a1 1 0 0 1 1-1h7.8l8.2 8.2a1.5 1.5 0 0 1 0 2.1l-6.7 6.7a1.5 1.5 0 0 1-2.1 0z"/><circle cx="8" cy="8" r="1.4"/></svg>
+ Especialidades</a>
+                                    <a href="../../consultorios.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.5V4.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M3 20.5h18M12.5 12v.5"/><path d="M16 6.5h3v14"/></svg>
+ Consultorios</a>
+                                    <a href="../../ajustes.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.6 14H3.3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.5 7.3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5v-.1a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1h.1a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+ Ajustes</a>
+                                    </nav>
+
+        <div class="sidebar-foot">
+            <button type="button" class="me" popovertarget="menu-usuario" style="anchor-name:--me">
+                <span class="avatar"  aria-hidden="true">AS</span>
+                <span style="min-width:0"><span class="me-name">Andrea Salazar</span><span class="me-role">admin@tovelmedical.com</span></span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="topbar">
+            <a href="../../../admin.html" class="brand" style="padding:0">
+                <span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                <span>TovelMedical</span>
+            </a>
+            <button type="button" popovertarget="menu-usuario" aria-label="Menú de Andrea Salazar" style="anchor-name:--me-m"><span class="avatar"  aria-hidden="true">AS</span>
+</button>
+        </header>
+
+        <main id="contenido" class="canvas" tabindex="-1">
+            <header class="page-head">
+    <div>
+        <a href="../11.html" class="back"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+ Volver a la ficha</a>        <h1>Verónica Altamirano</h1>
+            </div>
+    </header>
+
+    <form method="POST" action="../11.html" novalidate>
+                 <input type="hidden" name="_method" value="PUT">         <section class="form-section">
+            <header><h2>Identificación</h2><p>Validamos el dígito verificador de la cédula.</p></header>
+            <div class="form-grid">
+                <div class="field span-all">
+    <label for="f-name">Nombre completo</label>
+            <input id="f-name" type="text" name="name" value="Verónica Altamirano" class="input"  required>
+            </div>
+                <div class="field ">
+    <label for="f-cedula">Cédula</label>
+            <input id="f-cedula" type="text" name="cedula" value="1523231882" class="input" inputmode="numeric" maxlength="10"  required>
+            </div>
+                <div class="field ">
+    <label for="f-telefono">Celular<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <input id="f-telefono" type="tel" name="telefono" value="0961102295" class="input"  >
+            </div>
+                <div class="field span-all">
+    <label for="f-email">Correo</label>
+            <input id="f-email" type="email" name="email" value="alonso.alaniz@example.net" class="input"  required>
+            </div>
+            </div>
+        </section>
+        <section class="form-section">
+            <header><h2>Datos clínicos</h2><p>Lo verá el doctor antes de cada consulta.</p></header>
+            <div class="form-grid"><div class="field ">
+    <label for="f-fecha_nacimiento">Fecha de nacimiento<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <input id="f-fecha_nacimiento" type="date" name="fecha_nacimiento" value="1953-03-17" class="input" max="2026-11-23"  >
+            </div>
+<div class="field ">
+    <label for="f-genero">Género<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <select id="f-genero" name="genero" class="select"  ><option value="">Prefiero no decir</option>
+            <option value="femenino" >Femenino</option>
+            <option value="masculino" selected>Masculino</option>
+            <option value="otro" >Otro</option></select>
+            </div>
+<div class="field ">
+    <label for="f-grupo_sanguineo">Grupo sanguíneo<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <select id="f-grupo_sanguineo" name="grupo_sanguineo" class="select"  ><option value="">No lo sé</option>
+    <option >O+</option><option >O-</option><option >A+</option><option >A-</option><option selected>B+</option><option >B-</option><option >AB+</option><option >AB-</option></select>
+            </div>
+<div class="field ">
+    <label for="f-direccion">Dirección<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <input id="f-direccion" type="text" name="direccion" value="Praza Escribano, 72, 6º B" class="input" autocomplete="street-address"  >
+            </div>
+<div class="field span-all">
+    <label for="f-contacto_emergencia">Contacto de emergencia<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <input id="f-contacto_emergencia" type="text" name="contacto_emergencia" value="" class="input" placeholder="Nombre y teléfono"  >
+            </div>
+<div class="field span-all">
+    <label for="f-alergias">Alergias<span class="muted" style="font-weight:400"> (opcional)</span></label>
+            <textarea id="f-alergias" name="alergias" class="textarea" placeholder="Medicamentos, alimentos u otras" maxlength="500"  ></textarea>
+            </div>
+</div>
+        </section>
+        <div class="form-actions">
+            <a href="../11.html" class="btn btn-ghost">Cancelar</a>
+            <button class="btn btn-primary">Guardar cambios</button>
+        </div>
+    </form>
+        </main>
+    </div>
+</div>
+
+<nav class="tabbar" aria-label="Accesos rápidos">
+            <a href="../../../admin.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+ Resumen</a>
+            <a href="../../citas.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+ Citas</a>
+            <a href="../../pacientes.html" aria-current="page"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 19.5c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.6c1.9.6 3.2 2.3 3.5 4.9"/></svg>
+ Pacientes</a>
+            <a href="../../doctores.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v5a5 5 0 0 0 10 0v-5"/><path d="M11 13.5V16a4.5 4.5 0 0 0 9 0v-1.5"/><circle cx="20" cy="12.5" r="2"/></svg>
+ Doctores</a>
+                <button type="button" popovertarget="menu-usuario"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+ Más</button>
+    </nav>
+
+<div id="menu-usuario" class="menu" popover style="position-anchor:--me">
+    <div style="padding:.5rem .7rem .4rem"><b style="display:block;font-size:.9rem">Andrea Salazar</b><span class="muted small">Administración</span></div>
+    <hr>
+            <a href="../../pagos.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M3 10h18M16 15h1.5"/><path d="M6 6l9-2.5 1 2.5"/></svg>
+ Pagos</a>
+            <a href="../../especialidades.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.3V4.5a1 1 0 0 1 1-1h7.8l8.2 8.2a1.5 1.5 0 0 1 0 2.1l-6.7 6.7a1.5 1.5 0 0 1-2.1 0z"/><circle cx="8" cy="8" r="1.4"/></svg>
+ Especialidades</a>
+            <a href="../../consultorios.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.5V4.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M3 20.5h18M12.5 12v.5"/><path d="M16 6.5h3v14"/></svg>
+ Consultorios</a>
+            <a href="../../ajustes.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.6 14H3.3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.5 7.3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5v-.1a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1h.1a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+ Ajustes</a>
+        <a href="../../perfil.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c.8-3.8 3.7-6 7.5-6s6.7 2.2 7.5 6"/></svg>
+ Mi perfil y apariencia</a>
+    <hr>
+    <form method="POST" action="../../../salir.html" data-demo-action="logout"><button type="submit"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4.5h3a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-3M10 16.5 5.5 12 10 7.5M5.5 12H15"/></svg>
+ Cerrar sesión</button></form>
+</div>
+
+<div id="toasts" class="toasts" role="region" aria-label="Notificaciones"></div>
+<p class="sr-only">Anuncios para lectores de pantalla</p>
+<div id="anuncios" class="sr-only" aria-live="polite"></div>
+
+<dialog id="confirmar" class="modal" aria-labelledby="confirmar-titulo" closedby="any">
+    <form method="dialog">
+        <div class="modal-body">
+            <h2 id="confirmar-titulo">¿Confirmar?</h2>
+            <p data-detalle></p>
+            <div class="field" data-motivo hidden>
+                <label for="confirmar-motivo">Motivo <span class="muted" style="font-weight:400">(opcional)</span></label>
+                <textarea id="confirmar-motivo" class="textarea" rows="2" style="min-height:70px" placeholder="Ayuda a la clínica a reorganizar la agenda"></textarea>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn" value="cancelar" autofocus>Volver</button>
+            <button class="btn btn-danger" value="ok">Confirmar</button>
+        </div>
+    </form>
+</dialog>
+</body>
+</html>

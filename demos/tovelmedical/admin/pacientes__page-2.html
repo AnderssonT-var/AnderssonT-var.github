@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es" data-demo-root="../" data-demo-cita="147">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<script>try{document.querySelector('meta[name="color-scheme"]').content=localStorage.getItem('color-scheme')??'light dark'}catch(e){}</script>
+<meta name="theme-color" content="#EEF3F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1412" media="(prefers-color-scheme: dark)">
+
+<meta name="description" content="Reserva tu cita médica en línea en TovelMedical: elige especialidad, doctor y hora en un minuto.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=bricolage-grotesque:500,600,700|instrument-sans:400,500,600,700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="../build/assets/app-DmvEGFLJ.css" /><link rel="modulepreload" href="../build/assets/app-BYjgg4Tf.js" /><link rel="stylesheet" href="../build/assets/app-DmvEGFLJ.css" /><script type="module" src="../build/assets/app-BYjgg4Tf.js"></script>    <title>Pacientes · TovelMedical</title>
+<link rel="stylesheet" href="../demo.css">
+<script src="../demo.js"></script>
+<meta name="robots" content="noindex">
+</head>
+<body>
+<a href="#contenido" class="sr-only">Saltar al contenido</a>
+<div class="shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+        <a href="../admin.html" class="brand">
+            <span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+            <span>TovelMedical<small>Administración</small></span>
+        </a>
+
+        <nav class="nav">
+                            <span class="nav-title">Clínica</span>
+                                    <a href="../admin.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+ Resumen</a>
+                                    <a href="citas.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+ Citas</a>
+                                    <a href="pacientes.html" aria-current="page"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 19.5c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.6c1.9.6 3.2 2.3 3.5 4.9"/></svg>
+ Pacientes</a>
+                                    <a href="doctores.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v5a5 5 0 0 0 10 0v-5"/><path d="M11 13.5V16a4.5 4.5 0 0 0 9 0v-1.5"/><circle cx="20" cy="12.5" r="2"/></svg>
+ Doctores</a>
+                                    <a href="pagos.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M3 10h18M16 15h1.5"/><path d="M6 6l9-2.5 1 2.5"/></svg>
+ Pagos</a>
+                                            <span class="nav-title">Configuración</span>
+                                    <a href="especialidades.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.3V4.5a1 1 0 0 1 1-1h7.8l8.2 8.2a1.5 1.5 0 0 1 0 2.1l-6.7 6.7a1.5 1.5 0 0 1-2.1 0z"/><circle cx="8" cy="8" r="1.4"/></svg>
+ Especialidades</a>
+                                    <a href="consultorios.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.5V4.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M3 20.5h18M12.5 12v.5"/><path d="M16 6.5h3v14"/></svg>
+ Consultorios</a>
+                                    <a href="ajustes.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.6 14H3.3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.5 7.3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5v-.1a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1h.1a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+ Ajustes</a>
+                                    </nav>
+
+        <div class="sidebar-foot">
+            <button type="button" class="me" popovertarget="menu-usuario" style="anchor-name:--me">
+                <span class="avatar"  aria-hidden="true">AS</span>
+                <span style="min-width:0"><span class="me-name">Andrea Salazar</span><span class="me-role">admin@tovelmedical.com</span></span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="main">
+        <header class="topbar">
+            <a href="../admin.html" class="brand" style="padding:0">
+                <span class="brand-mark"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+                <span>TovelMedical</span>
+            </a>
+            <button type="button" popovertarget="menu-usuario" aria-label="Menú de Andrea Salazar" style="anchor-name:--me-m"><span class="avatar"  aria-hidden="true">AS</span>
+</button>
+        </header>
+
+        <main id="contenido" class="canvas" tabindex="-1">
+            <header class="page-head">
+    <div>
+                <h1>Pacientes</h1>
+        <p>35 registrados. Los pacientes también pueden crear su propia cuenta desde la web.</p>    </div>
+    <div class="cluster"><a href="pacientes/create.html" class="btn btn-primary"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+ Nuevo paciente</a></div></header>
+
+    <form class="filters" method="GET" role="search">
+        <div class="field grow"><label for="q" class="sr-only">Buscar</label>
+            <div class="search"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+<input id="q" name="q" value="" class="input" placeholder="Nombre, cédula o correo" type="search"></div></div>
+        <button class="btn">Buscar</button>
+    </form>
+
+        <div class="table-wrap" role="region" aria-label="Lista de pacientes" tabindex="0">
+        <table class="table">
+            <thead><tr><th>Paciente</th><th>Cédula</th><th>Teléfono</th><th>Citas</th><th>Última cita</th><th><span class="sr-only">Acciones</span></th></tr></thead>
+            <tbody>
+                            <tr>
+                    <td><a href="pacientes/16.html" class="person"><span class="avatar"  aria-hidden="true">JA</span>
+<span><b>Jon Ayala</b><span>garcia.carolina@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">1501052565</td>
+                    <td data-label="Teléfono" class="num">0991328987</td>
+                    <td data-label="Citas" class="num">18</td>
+                    <td data-label="Última cita" class="muted">4 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/17.html" class="person"><span class="avatar"  aria-hidden="true">CO</span>
+<span><b>Carlos Ordoñez</b><span>rcarbajal@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">0640737995</td>
+                    <td data-label="Teléfono" class="num">0925360574</td>
+                    <td data-label="Citas" class="num">17</td>
+                    <td data-label="Última cita" class="muted">2 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">LM</span>
+<span><b>Lic. Mario Araña</b><span>arnau.carrillo@example.org</span></span></a></td>
+                    <td data-label="Cédula" class="num">2214441004</td>
+                    <td data-label="Teléfono" class="num">0901373595</td>
+                    <td data-label="Citas" class="num">21</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/19.html" class="person"><span class="avatar"  aria-hidden="true">JM</span>
+<span><b>José Manuel Madera</b><span>pau69@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">1200160719</td>
+                    <td data-label="Teléfono" class="num">0977044189</td>
+                    <td data-label="Citas" class="num">21</td>
+                    <td data-label="Última cita" class="muted">30 nov. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">IE</span>
+<span><b>Ian Escalante</b><span>raquel42@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">2123255107</td>
+                    <td data-label="Teléfono" class="num">0901022968</td>
+                    <td data-label="Citas" class="num">18</td>
+                    <td data-label="Última cita" class="muted">4 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/21.html" class="person"><span class="avatar"  aria-hidden="true">JL</span>
+<span><b>Jaime Lara Segundo</b><span>yaiza00@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">0244195574</td>
+                    <td data-label="Teléfono" class="num">0972547904</td>
+                    <td data-label="Citas" class="num">13</td>
+                    <td data-label="Última cita" class="muted">2 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">SA</span>
+<span><b>Sr. Aitor Longoria</b><span>reyna.noa@example.com</span></span></a></td>
+                    <td data-label="Cédula" class="num">0638978965</td>
+                    <td data-label="Teléfono" class="num">0944188931</td>
+                    <td data-label="Citas" class="num">17</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">SB</span>
+<span><b>Sr. Biel Robledo</b><span>mireles.irene@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">1020781561</td>
+                    <td data-label="Teléfono" class="num">0988107020</td>
+                    <td data-label="Citas" class="num">8</td>
+                    <td data-label="Última cita" class="muted">5 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">HO</span>
+<span><b>Helena Orta Tercero</b><span>pablo.dominquez@example.org</span></span></a></td>
+                    <td data-label="Cédula" class="num">0449757962</td>
+                    <td data-label="Teléfono" class="num">0977385359</td>
+                    <td data-label="Citas" class="num">9</td>
+                    <td data-label="Última cita" class="muted">4 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/25.html" class="person"><span class="avatar"  aria-hidden="true">EV</span>
+<span><b>Erik Valero</b><span>omar.moya@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">1534287014</td>
+                    <td data-label="Teléfono" class="num">0958350708</td>
+                    <td data-label="Citas" class="num">19</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">DY</span>
+<span><b>Dr. Yeray Carrera</b><span>alejandro.quintana@example.net</span></span></a></td>
+                    <td data-label="Cédula" class="num">1303441982</td>
+                    <td data-label="Teléfono" class="num">0985454979</td>
+                    <td data-label="Citas" class="num">13</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">CP</span>
+<span><b>Cristina Pelayo</b><span>rael.noa@example.com</span></span></a></td>
+                    <td data-label="Cédula" class="num">2041592375</td>
+                    <td data-label="Teléfono" class="num">0977091735</td>
+                    <td data-label="Citas" class="num">11</td>
+                    <td data-label="Última cita" class="muted">26 nov. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/28.html" class="person"><span class="avatar"  aria-hidden="true">LI</span>
+<span><b>Lic. Isaac Bernal Hijo</b><span>gael.olivera@example.com</span></span></a></td>
+                    <td data-label="Cédula" class="num">1713843827</td>
+                    <td data-label="Teléfono" class="num">0980603632</td>
+                    <td data-label="Citas" class="num">25</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="#" data-demo-off class="person"><span class="avatar"  aria-hidden="true">BS</span>
+<span><b>Bruno Sánchez</b><span>xarteaga@example.com</span></span></a></td>
+                    <td data-label="Cédula" class="num">1719739680</td>
+                    <td data-label="Teléfono" class="num">0917088957</td>
+                    <td data-label="Citas" class="num">12</td>
+                    <td data-label="Última cita" class="muted">30 nov. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                            <tr>
+                    <td><a href="pacientes/30.html" class="person"><span class="avatar"  aria-hidden="true">GV</span>
+<span><b>Gloria Villarreal Segundo</b><span>olga83@example.com</span></span></a></td>
+                    <td data-label="Cédula" class="num">0157982091</td>
+                    <td data-label="Teléfono" class="num">0928228809</td>
+                    <td data-label="Citas" class="num">13</td>
+                    <td data-label="Última cita" class="muted">7 dic. 2026</td>
+                    <td class="actions">
+                                                <a href="#" data-demo-off class="btn btn-sm btn-ghost"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>
+ Editar</a>
+                    </td>
+                </tr>
+                        </tbody>
+        </table>
+    </div>
+    <nav class="pager" aria-label="Paginación">
+    <span>Página 2 de 3</span>
+    <div class="cluster">
+                    <a class="btn btn-sm" href="#" data-demo-off rel="prev"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg>
+ Anterior</a>
+                            <a class="btn btn-sm" href="#" data-demo-off rel="next">Siguiente <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 6 6 6-6 6"/></svg>
+</a>
+            </div>
+</nav>
+        </main>
+    </div>
+</div>
+
+<nav class="tabbar" aria-label="Accesos rápidos">
+            <a href="../admin.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z"/></svg>
+ Resumen</a>
+            <a href="citas.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+ Citas</a>
+            <a href="pacientes.html" aria-current="page"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 19.5c.6-3.3 3.2-5 6.5-5s5.9 1.7 6.5 5"/><path d="M16 5.2a3.5 3.5 0 0 1 0 6.6M18 14.6c1.9.6 3.2 2.3 3.5 4.9"/></svg>
+ Pacientes</a>
+            <a href="doctores.html" aria-current=""><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3.5v5a5 5 0 0 0 10 0v-5"/><path d="M11 13.5V16a4.5 4.5 0 0 0 9 0v-1.5"/><circle cx="20" cy="12.5" r="2"/></svg>
+ Doctores</a>
+                <button type="button" popovertarget="menu-usuario"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+ Más</button>
+    </nav>
+
+<div id="menu-usuario" class="menu" popover style="position-anchor:--me">
+    <div style="padding:.5rem .7rem .4rem"><b style="display:block;font-size:.9rem">Andrea Salazar</b><span class="muted small">Administración</span></div>
+    <hr>
+            <a href="pagos.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M3 10h18M16 15h1.5"/><path d="M6 6l9-2.5 1 2.5"/></svg>
+ Pagos</a>
+            <a href="especialidades.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.3V4.5a1 1 0 0 1 1-1h7.8l8.2 8.2a1.5 1.5 0 0 1 0 2.1l-6.7 6.7a1.5 1.5 0 0 1-2.1 0z"/><circle cx="8" cy="8" r="1.4"/></svg>
+ Especialidades</a>
+            <a href="consultorios.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20.5V4.5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16"/><path d="M3 20.5h18M12.5 12v.5"/><path d="M16 6.5h3v14"/></svg>
+ Consultorios</a>
+            <a href="ajustes.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1v.3a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-2.7-1.1l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3.6 14H3.3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.5 7.3l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5v-.1a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1h.1a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+ Ajustes</a>
+        <a href="perfil.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c.8-3.8 3.7-6 7.5-6s6.7 2.2 7.5 6"/></svg>
+ Mi perfil y apariencia</a>
+    <hr>
+    <form method="POST" action="../salir.html" data-demo-action="logout"><button type="submit"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4.5h3a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5h-3M10 16.5 5.5 12 10 7.5M5.5 12H15"/></svg>
+ Cerrar sesión</button></form>
+</div>
+
+<div id="toasts" class="toasts" role="region" aria-label="Notificaciones"></div>
+<p class="sr-only">Anuncios para lectores de pantalla</p>
+<div id="anuncios" class="sr-only" aria-live="polite"></div>
+
+<dialog id="confirmar" class="modal" aria-labelledby="confirmar-titulo" closedby="any">
+    <form method="dialog">
+        <div class="modal-body">
+            <h2 id="confirmar-titulo">¿Confirmar?</h2>
+            <p data-detalle></p>
+            <div class="field" data-motivo hidden>
+                <label for="confirmar-motivo">Motivo <span class="muted" style="font-weight:400">(opcional)</span></label>
+                <textarea id="confirmar-motivo" class="textarea" rows="2" style="min-height:70px" placeholder="Ayuda a la clínica a reorganizar la agenda"></textarea>
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn" value="cancelar" autofocus>Volver</button>
+            <button class="btn btn-danger" value="ok">Confirmar</button>
+        </div>
+    </form>
+</dialog>
+</body>
+</html>

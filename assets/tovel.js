@@ -111,6 +111,7 @@ if(proc){ const ps = $$('.pstep', proc);
 const hz = $('.hz'), rail = $('#rail');
 if(hz && rail){
   const bar = $('.bar', hz), cnt = $('#hzN'), cards = $$('.pc', rail), imgs = cards.map(c => $('.im img', c));
+  const productos = cards.filter(c => !c.classList.contains('end')).length; // la tarjeta final no cuenta
   const size = () => { if(reduce) return; hz.style.height = (innerHeight + Math.max(rail.scrollWidth - innerWidth + 40, 0)) + 'px'; };
   size(); addEventListener('resize', size); addEventListener('load', size);
   if(reduce){ const st = $('.stick', hz); st.style.position = 'relative'; st.style.height = 'auto'; rail.style.overflowX = 'auto'; hz.style.paddingBlock = '40px'; }
@@ -119,7 +120,7 @@ if(hz && rail){
       const p = clamp(-r.top/(r.height - innerHeight), 0, 1); hx = lerp(hx, p, 1 - Math.pow(.0005, dt));
       rail.style.transform = `translate3d(${(-hx*max).toFixed(1)}px,0,0)`; T.setVar(bar, '--hp', hx.toFixed(3));
       imgs.forEach((im,i) => { if(im) im.style.transform = `translate3d(${((hx*(cards.length-1) - i)*-30).toFixed(1)}px,0,0)`; });
-      if(cnt) cnt.textContent = String(Math.min(cards.length, Math.round(hx*(cards.length-1)) + 1)).padStart(2,'0'); }); }
+      if(cnt) cnt.textContent = String(Math.min(productos, Math.round(hx*(cards.length-1)) + 1)).padStart(2,'0'); }); }
 }
 
 /* ---------- trabajos: vista previa flotante ---------- */

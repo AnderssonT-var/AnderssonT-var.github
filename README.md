@@ -8,7 +8,7 @@ Sitio: https://anderssont-var.github.io/AnderssonT-var.github/
 El sitio de la empresa está dividido en pestañas que comparten estilos y comportamiento:
 - `index.html`: inicio con la portada 3D (la T pasa de plano a pieza sólida con el scroll), manifiesto, cifras y accesos a cada pestaña.
 - `servicios.html`: las cinco líneas de servicio, el proceso de trabajo y los planes.
-- `productos.html`: Facmit, VYTRAFIT y RADICAL en recorrido horizontal, más trabajos con demo.
+- `productos.html`: Facmit, VYTRAFIT, RADICAL, Click S&E, Monitor de facturas y TovelMedical en recorrido horizontal, más trabajos con demo.
 - `labs.html`: consola neumórfica interactiva (domótica, alarma, electrónica y robótica, Red Neuronal Junior, impresión 3D).
 - `contacto.html`: WhatsApp, correo y formulario.
 - `assets/`: `tovel.css` y `tovel.js` (compartidos), `hero.css`/`hero.js` (portada 3D con Three.js) y `labs.css`/`labs.js` (consola).
